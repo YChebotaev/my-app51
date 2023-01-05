@@ -1,0 +1,472 @@
+@font-face {
+    font-family: "Gilroy";
+    src: url("fonts/Gilroy-Regular.ttf");
+  }
+  
+  
+  .container {
+      max-width: 480px;
+      margin: 0;
+  }
+  
+  .main-wrapper {
+      width: 100%;
+      background: #1E1E1E;
+      margin-top: 26px;
+      border-radius: 12px 12px 0 0;
+      min-height: 100vh;
+  }
+  
+  .header-title {
+      font-family: 'Gilroy';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 72px;
+      line-height: 86px;
+      letter-spacing: 0.02em;
+      color: #FFFFFF;
+      text-transform: uppercase;
+      margin-left: 16px;
+      margin-top: 2px;
+  }
+  .rect6{
+    background: url('images/rect6.svg');
+    background-size: cover;
+  }
+  .marquee1 {
+       text-align:center;
+       font-size:26px;
+       color:#14f77e;
+       margin-left:10%;
+       margin-right:10%;
+       border-radius:4px;
+       padding:10px;
+       box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        height: 50px;
+        overflow:hidden;
+  }
+  
+  .marquee {
+        width: 100%;
+        height: 19px;
+        overflow: hidden;
+        background: #FFFFFF;
+        margin-top: 12px;
+        font-family: 'Gilroy';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 17px;
+      text-transform: uppercase;
+      color: #2B70F5;
+      padding-top: 1px;
+  }
+  
+  .content-wrapper {
+      margin-top: 21px;
+      padding: 0 16px;
+  }
+  
+  .chats-wrapper {
+      margin-top: 18px;
+      padding: 0 16px;
+      background: linear-gradient(137.68deg, rgba(75, 230, 202, 0.08) -1.72%, rgba(63, 216, 222, 0.08) 46.33%, rgba(199, 142, 234, 0.08) 107.32%);
+      border-radius: 10px 10px 0px 0px;
+      overflow: hidden;
+  }
+  
+  .section {
+      margin-top: 28px;
+      width: 100%;
+  }
+  
+  .section .section-title{
+      font-family: 'Gilroy';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 27px;
+      line-height: 30px;	
+      text-decoration-line: underline;
+      color: #FFFFFF;	
+  }
+  
+  .section-cols {
+      display: flex;
+      width: 100%;
+  }
+  
+  .section-cols .col-3{
+      display: flex;
+      width: 33.3%;
+  }
+  
+  .content-wrapper .grad-rect {
+      border-radius: 30px;
+  }
+  
+  .rect-cols {
+      display: flex;
+      width: 100%;
+  }
+  
+  .rect-cols .col-3{
+      display: flex;
+      width: 33.3%;
+  }
+  
+  .content-wrapper .rect1 {
+      height: 87px;
+      background: url('images/rect1.svg');
+      background-size: cover;
+  }
+  
+  .content-wrapper .rect3 {
+      height: 87px;
+      background: url('images/rect3.svg');
+      background-size: cover;
+  }
+  
+  .content-wrapper .rect1 .rect1-title,
+  .content-wrapper .rect3 .rect3-title {
+      padding: 18px 0 0 17px;
+      width: 223px;
+      font-family: 'Gilroy';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 24px;
+      color: #1E1E1E;
+  }
+  
+  .content-wrapper .rect1 .rect1-heart_img,
+  .content-wrapper .rect3 .rect3-heart_img {
+      float: right;
+      margin-right: 10px;
+      margin-top: -48px;
+  }
+  
+  .content-wrapper .content-heart_img {
+      position: absolute;
+    top: 68px;
+    right: 0;
+    width: 36%;
+  }
+  
+  
+  .section1 .section-cols {
+      margin-top: 12px;
+  }
+  
+  .section1 .col-3 {
+      margin-right: 27px;
+      flex-direction: column;
+  }
+  
+  .section1 .col-3 .post-author {
+      font-family: 'Gilroy';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 10px;
+      line-height: 12px;
+      letter-spacing: 0.01em;
+      color: #FFFFFF;
+  }
+  
+  .section1 .col-3 .post-title {
+      font-family: 'Gilroy';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 13px;
+      color: #FFFFFF;
+      margin-top: 6px;
+  }
+  
+  .section1 .col-3 .post-likes {
+      color: #D73F51;
+      margin-top: 6px;
+      font-size: 8px;
+  }
+  
+  .section1 .col-3 .post-likes-num {
+      font-family: 'Gilroy';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 8px;
+      line-height: 10px;
+      letter-spacing: 0.01em;
+      color: #D73F51;
+      margin-left: 4px;
+  }
+  
+  .content-wrapper .rect2 {
+      height: 144px;
+      margin-top: 32px;
+      background: url('images/rect2.svg');
+      background-size: cover;
+      padding: 6px;
+  }
+  .rect5{
+    background: url('images/rect5.svg');
+    height: 144px;
+    margin-top: 32px;
+ background-size: cover;
+    padding: 6px;
+    
+  }
+  .rect5 div{
+    padding: 8px 0 0 21px;
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 27px;
+    line-height: 30px;
+    text-decoration-line: underline;
+    color: #1E1E1E;
+  }
+  .inputText{
+    word-wrap: break-word;
+    word-break: break-all;
+  }
+  .content-wrapper .rect4 {
+      height: 144px;
+      margin-top: 32px;
+      background: url('images/rect4.svg');
+      background-size: cover;
+      padding: 6px;
+  }
+  
+  .content-wrapper .rect2 .rect2-title,
+  .content-wrapper .rect4 .rect4-title{
+      padding: 8px 0 0 21px;
+      font-family: 'Gilroy';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 27px;
+      line-height: 30px;
+      text-decoration-line: underline;
+      color: #1E1E1E;
+  }
+  
+  .content-wrapper .rect2 .rect-cols,
+  .content-wrapper .rect4 .rect-cols {
+      margin-top: 16px;
+  }
+  
+  .content-wrapper .rect2 .item-game, 
+  .content-wrapper .rect4 .item-game {
+      width: 100%;
+      height: 70px;
+    margin: 0 6px;
+      background: #FFFFFF;
+      border-radius: 20px;
+  }
+  
+  .section2 .chats-list{
+      width: 100%;
+      margin-top: 15px;
+      display: flex;
+      flex-direction: column;
+  }
+  
+  .section2 .chats-list .chat-item{
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 7px;
+  }
+  
+  .section2 .chats-list .chat-title{
+      font-family: 'Gilroy';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 21px;
+  }
+  
+  .section2 .chats-list .chat-num-members{
+      padding-top: 4px;
+      font-family: 'Gilroy';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 8px;
+      line-height: 9px;
+      text-align: right;
+      letter-spacing: 0.01em;
+  }
+  
+  .section2 .chats-list .chat-title-1, 
+  .section2 .chats-list .chat-num-members-1 {
+      color: #FFFFFF;
+  }
+  
+  .section2 .chats-list .chat-title-2,
+  .section2 .chats-list .chat-num-members-2 {
+      color: rgba(255, 255, 255, 0.5);
+  }
+  
+  .section2 .chats-list .chat-title-3,
+  .section2 .chats-list .chat-num-members-3 {
+      color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .section2 .chats-list .chat-num-members-4 {
+      color: #D73F51;
+  }
+  
+  .section2 .chats-list .chat-num-members-5 {
+      color: rgba(255, 65, 99, 0.55);
+  }
+  
+  .section2 .chats-list .chat-num-members-6 {
+      color: rgba(255, 65, 99, 0.25);
+  }
+  
+  .chats-wrapper .chats {
+      display: flex;
+      flex-direction: column;
+  }
+  
+  .chats-wrapper .chats-border {
+      width: 120%;
+      height: 2px;
+      
+      background: #151515;
+      margin-left: -18px;
+  }
+  
+  .chats .chat-item{
+      display: flex;
+      padding: 14px 0;
+  }
+  
+  .chats .chat-item .chat-icon{
+      width: 51px;
+      height: 54px;
+      background: #4BE0E6;
+      border-radius: 10px;
+  }
+  
+  .chats .chat-item .chat-data {
+      width: 70%;
+      margin-left: 12px;
+  }
+  
+  .chats .chat-item .chat-data .chat-title{
+      font-family: 'Gilroy';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 19px;
+      color: #FFFFFF;
+  }
+  
+  .chats .chat-item .chat-data .chat-last-user{
+      padding-top: 2px;
+      font-family: 'Gilroy';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 14px;
+      letter-spacing: 0.01em;
+      color: rgba(63, 216, 222, 0.78);
+  }
+  
+  .chats .chat-item .chat-data .chat-last-message{
+      padding-top: 4px;
+      font-family: 'Gilroy';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 12px;
+      line-height: 14px;
+      color: rgba(255, 255, 255, 0.65);
+  }
+  
+  .chats .chat-item .chat-data .chat-self-message{
+      font-family: 'Gilroy';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 12px;
+      line-height: 14px;
+      letter-spacing: 0.01em;
+      color: #FFFFFF;
+  }
+  
+  .chats .chat-item .chat-details {
+      display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .chats .chat-item .chat-details .chat-time{
+      font-family: 'Gilroy';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 12px;
+      line-height: 14px;
+      text-align: right;
+      color: rgba(255, 255, 255, 0.65);
+  }
+  
+  .chats .chat-item .chat-details .chat-num-messages{
+      background: #151515;
+      border-radius: 10px;
+      padding: 4px 8px;
+      font-family: 'Gilroy';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 10px;
+      line-height: 12px;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.65);
+  }
+  
+  
+  .bottom-button {
+      width: 180px;
+      height: 54px;
+      margin: auto;
+      margin-top: 30px;
+      padding-bottom: 12px;
+  }
+  
+  .bottom-button .bottom-button-item {
+      border: none;
+      margin: 0 4px;
+  }
+  
+  .bottom-button .bottom-btn_return {
+      width: 44px;
+      height: 40px;
+      background: url('images/bottom-btn_return.svg');
+  }
+  
+  .bottom-button .bottom-btn_create-post {
+      width: 59px;
+      height: 54px;
+      background: url('images/bottom-btn_create-post.svg');
+  }
+  
+  .bottom-button .bottom-btn_profile {
+      width: 44px;
+      height: 40px;
+      background: url('images/bottom-btn_profile.svg');
+  }
+  
+  .bottom-button .bottom-btn_return2 {
+      width: 44px;
+      height: 40px;
+      background: url('images/bottom-btn_return_2.svg');
+  }
+  
+  .bottom-button .bottom-btn_create-post2 {
+      width: 59px;
+      height: 54px;
+      background: url('images/bottom-btn_create-post_2.svg');
+  }
+  
+  .bottom-button .bottom-btn_profile2 {
+      width: 44px;
+      height: 40px;
+      background: url('images/bottom-btn_profile_2.svg');
+  }
