@@ -18,7 +18,7 @@ const ArticleCreate = () => {
         // e.target.style.height = `${Math.min(e.target.scrollHeight, limit)}px`;
       }
       const fetchData = async () => {
-        const respons = await fetch(`https://11f4-188-170-79-164.eu.ngrok.io/api/v1/posts/create_post?title=${title}&content=${content}`, {
+        const respons = await fetch(`https://0f89-2a00-f940-2-4-2-00-2a50.eu.ngrok.io/api/v1/posts/create_post?title=${title}&content=${content}`, {
           method: "POST",
           mode: "cors",
           headers: {

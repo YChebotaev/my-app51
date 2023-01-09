@@ -2,11 +2,12 @@ import React from 'react'
 import './../styles/style.css';
 import heart from "./../styles/images/heart1.png"
 import { Link } from 'react-router-dom';
+import Header from './CommonComponents/Header';
 const Chat = () => {
   return (
 <div class="main-wrapper">
 		<div class="header-title">Moove</div>
-		<div class="marquee" data-duplicated='true' data-direction='left'>By skolkovo &emsp; By skolkovo &emsp; By skolkovo &emsp; By skolkovo &emsp; By skolkovo</div>
+      <Header/>
     <div class="content-wrapper">  
     	<img class="content-heart_img" src={heart}/>
       <div class="section section2">

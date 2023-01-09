@@ -5,11 +5,12 @@ import { Link } from 'react-router-dom';
 import Footer from './CommonComponents/Footer';
 import heartArticle from "./../styles/images/heartArticle.svg"
 import commentArticle from "./../styles/images/commentArticle.svg"
+import Header from './CommonComponents/Header';
 const Article = () => {
     const [active,setActive] = useState("popular")
     const [posts,setPosts] = useState(null)
     useEffect(()=>{
-        fetch(`https://11f4-188-170-79-164.eu.ngrok.io/api/v1/posts/all_types_posts`, {
+        fetch(`https://0f89-2a00-f940-2-4-2-00-2a50.eu.ngrok.io/api/v1/posts/all_types_posts`, {
             method: "GET",
             headers: {
               "TOKEN":window.Telegram.WebApp.initDataUnsafe.user.id,
@@ -29,7 +30,7 @@ const Article = () => {
   return (
     <div class="main-wrapper">
     <div class="header-title">Moove</div>
-    <div class="marquee" data-duplicated='true' data-direction='left'>By skolkovo &emsp; By skolkovo &emsp; By skolkovo &emsp; By skolkovo &emsp; By skolkovo</div>
+    <Header/>
 <div class="content-wrapper">  
   <div class="section section1">
     	<img class="content-heart_img" src={heart}/>

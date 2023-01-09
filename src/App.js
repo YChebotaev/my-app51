@@ -7,6 +7,7 @@ import Article from './Components/Article';
 import ArticleCreate from './Components/ArticleCreate';
 
 function App() {
+  window.Telegram.WebApp.backgroundColor = "#1E1E1E";
   return (
     <div className="App">
      <Routes>

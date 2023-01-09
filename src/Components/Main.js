@@ -3,11 +3,12 @@ import './../styles/style.css';
 import heart from "./../styles/images/heart1.png"
 import { Link } from 'react-router-dom';
 import Footer from './CommonComponents/Footer';
+import Header from './CommonComponents/Header';
 const Main = () => {
   return (
     <div class="main-wrapper">
     <div class="header-title">Moove</div>
-    <div class="marquee" data-duplicated='true' data-direction='left'>By skolkovo &emsp; By skolkovo &emsp; By skolkovo &emsp; By skolkovo &emsp; By skolkovo</div>
+    <Header/>
 <div class="content-wrapper">  
   <div class="grad-rect rect1">
     <div class="rect1-title">Объясняем, что тут у нас происходит</div>
