@@ -9,7 +9,7 @@ const Chat = () => {
 		<div class="header-title">Moove</div>
       <Header/>
     <div class="content-wrapper">  
-    	<img class="content-heart_img" src={heart}/>
+    	<img class="content-heart_img" src={heart} alt="" />
       <div class="section section2">
         <div class="section-title">Чаты</div>
       </div>

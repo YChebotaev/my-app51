@@ -1,10 +1,11 @@
-import logo from './logo.svg';
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import './App.css';
 import Main from './Components/Main';
 import Chat from './Components/Chats';
 import Article from './Components/Article';
 import ArticleCreate from './Components/ArticleCreate';
+
+import './styles/fonts/stylesheet.css'
 
 function App() {
   window.Telegram.WebApp.backgroundColor = "#1E1E1E";

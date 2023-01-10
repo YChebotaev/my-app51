@@ -1,3 +1,14 @@
+# Environment variables
+
+Create `.env` file with followng content:
+
+```
+REACT_APP_BACKEND_URL=https://0694-2g01-f940-2-7-3-00-12ab.eu.ngrok.io
+REACT_APP_DEBUG_TOKEN=788636432
+```
+
+(Exact URL is given for example-only purposes)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
