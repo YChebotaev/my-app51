@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react'
-import heart from "./../styles/images/heart1.png"
+import { Link } from 'react-router-dom';
+import heart from "../styles/images/heart1.png"
 import Footer from './CommonComponents/Footer';
 import heartArticle from "../styles/images/heartArticle.svg"
 import commentArticle from "../styles/images/commentArticle.svg"
@@ -72,9 +73,19 @@ const Article = () => {
           <img class="content-heart_img" src={heart} alt="" />
           <WhatToRead />
         </div>
-        <div style={{ height: 42, borderRadius: 10, display: "flex", justifyContent: "center", alignItems: "center" }} class="grad-rect rect5">
+        <Link
+          to="/leaderboard"
+          class="grad-rect rect5"
+          style={{
+            height: 42,
+            borderRadius: 10,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            textDecoration: 'none'
+          }}>
           <div class="rect2-title" style={{ padding: 0, textDecorationLine: "none" }}>Лидерборд</div>
-        </div>
+        </Link>
         <div class="chats-wrapper">
           <div class="chats">
             <div class="chat-item" style={{ padding: '14px 0px 10px 0px' }}>
