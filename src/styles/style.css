@@ -350,9 +350,8 @@
 }
 
 .chats .chat-item .chat-icon {
-  width: 51px;
+  flex-basis: 65.8px;
   height: 54px;
-  background: #4be0e6;
   border-radius: 10px;
 }
 
@@ -470,14 +469,17 @@
 }
 
 .bottom-button {
-  position: sticky;
+  position: fixed;
   left: 0;
-  bottom: 0;
-  width: 190px;
+  bottom: 12px;
+  width: 100%;
   height: 54px;
-  margin: auto;
-  margin-top: 30px;
-  padding-bottom: 12px;
+}
+
+.bottom-button-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .bottom-button .bottom-button-item {
