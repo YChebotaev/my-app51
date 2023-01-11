@@ -6,8 +6,14 @@ import Onboarding, { useOnboarding } from './CommonComponents/Onboarding';
 
 import './../styles/style.css';
 
-const Main = () => {
-  const { isOpen, page, spotlightedRef, totalPages, onNextPage, onClose } = useOnboarding(0, 5)
+const Main = ({ isFirstTime }) => {
+  const { isOpen, page, spotlightedRef, totalPages, onNextPage, onClose } = useOnboarding(0, 5, isFirstTime)
+  const whatToReadRef = (isFirstTime && page === 1) ? spotlightedRef : null
+  const gamesRef = (isFirstTime && page === 2) ? spotlightedRef : null
+  const chatsRef = (isFirstTime && page === 3) ? spotlightedRef : null
+  const articleButtonRef = (isFirstTime && page === 4) ? spotlightedRef : null
+  const isShowFooter = (!isFirstTime || isOpen) ? page === 4 : true
+  const isShowOnboarding = isFirstTime || isOpen
 
   return (
     <>
@@ -19,7 +25,7 @@ const Main = () => {
             <div class="rect1-title">Объясняем, что тут у нас происходит</div>
             <div class="rect1-question" />
           </div>
-          <div ref={page === 1 ? spotlightedRef : null} class="section section1">
+          <div ref={whatToReadRef} class="section section1">
             <Link to="/article"><div class="section-title">Есть что почитать</div></Link>
             <div class="section-cols">
               <div class="col-3">
@@ -39,7 +45,7 @@ const Main = () => {
               </div>
             </div>
           </div>
-          <div ref={page === 2 ? spotlightedRef : null} class="grad-rect rect2">
+          <div ref={gamesRef} class="grad-rect rect2">
             <div class="rect2-title">Игры</div>
             <div class="rect-cols">
               <div class="col-3">
@@ -53,7 +59,7 @@ const Main = () => {
               </div>
             </div>
           </div>
-          <div ref={page === 3 ? spotlightedRef : null} class="section section2">
+          <div ref={chatsRef} class="section section2">
             <Link to="/chat"><div class="section-title">Чаты</div></Link>
             <div class="chats-list">
               <div class="chat-item">
@@ -75,9 +81,9 @@ const Main = () => {
             </div>
           </div>
         </div>
-        <Footer articleButtonRef={page === 4 ? spotlightedRef : null} />
+        {isShowFooter && <Footer articleButtonRef={articleButtonRef} />}
       </div>
-      {isOpen && (
+      {isShowOnboarding && (
         <Onboarding
           page={page}
           totalPages={totalPages}

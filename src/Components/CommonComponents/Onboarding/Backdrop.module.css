@@ -8,7 +8,7 @@
 }
 
 .overlay {
-  background: #000000bd;
+  background: #000000e0;
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -20,4 +20,5 @@
 
 .spotlight {
   background-color: gray;
+  border-radius: 10px;
 }

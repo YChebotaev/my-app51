@@ -1,4 +1,4 @@
-import React, { useMemo, useRef } from "react";
+import React, { useEffect, useMemo, useRef } from "react";
 import FirstPage from "./FirstPage";
 import SecondPage from './SecondPage'
 import ThirdPage from './ThirdPage'
@@ -8,7 +8,6 @@ import context from './context'
 
 const Introduction = ({ page, spotlightedRef, totalPages, onNextPage, onClose }) => {
   const spotlightRef = useRef()
-
   const currentPage = useMemo(() => {
     switch (page) {
       case 0:
@@ -25,6 +24,16 @@ const Introduction = ({ page, spotlightedRef, totalPages, onNextPage, onClose })
         return null
     }
   }, [page])
+
+  useEffect(() => {
+    if (currentPage != null) {
+      document.body.style.overflow = 'hidden'
+    }
+
+    return () => {
+      document.body.style.removeProperty('overflow')
+    }
+  }, [currentPage])
 
   return (
     <context.Provider value={{

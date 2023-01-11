@@ -3,7 +3,7 @@ import { useOnboardingInternal } from './useOnboardingInternal'
 import classes from './Backdrop.module.css'
 
 const Backdrop = ({ children }) => {
-  const { spotlightRef} = useOnboardingInternal()
+  const { spotlightRef } = useOnboardingInternal()
 
   return (
     <>

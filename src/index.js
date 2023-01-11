@@ -6,10 +6,13 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const isFirstTime = window.localStorage.getItem('isFirstTime') === 'true'
+window.localStorage.setItem('isFirstTime', false)
+
 root.render(
   <React.StrictMode>
-     <BrowserRouter>
-    <App />
+    <BrowserRouter>
+      <App isFirstTime={isFirstTime} />
     </BrowserRouter>
   </React.StrictMode>
 );

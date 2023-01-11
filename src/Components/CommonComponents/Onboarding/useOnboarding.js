@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 
-export const useOnboarding = (initialPage, totalPages) => {
-  const [isOpen, setIsOpen] = useState(true)
+export const useOnboarding = (initialPage, totalPages, initialOpen) => {
+  const [isOpen, setIsOpen] = useState(initialOpen)
   const [page, setPage] = useState(initialPage)
   const spotlightedRef = useRef()
 
@@ -16,6 +16,10 @@ export const useOnboarding = (initialPage, totalPages) => {
     spotlightedRef,
     onNextPage() {
       setPage(page + 1)
+
+      if (page + 1 === totalPages) {
+        setIsOpen(false)
+      }
     },
     onClose() {
       setIsOpen(false)

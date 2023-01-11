@@ -8,12 +8,13 @@ import Leaderboard from "./Components/Leaderboard";
 import './App.css';
 import './styles/fonts/stylesheet.css'
 
-function App() {
+function App({ isFirstTime }) {
   window.Telegram.WebApp.backgroundColor = "#1E1E1E";
+
   return (
     <div className="App">
       <Routes>
-        <Route path="" element={<Main />} />
+        <Route path="" element={<Main isFirstTime={isFirstTime} />} />
         <Route path="/chat" element={<Chat />} />
         <Route path="/article" element={<Article />} />
         <Route path="/createArticle" element={<ArticleCreate />} />

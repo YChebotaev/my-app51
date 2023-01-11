@@ -14,17 +14,22 @@ const SecondPage = () => {
       <CloseButton />
       <Counter />
       <Backdrop>
-        <div className={commonClasses.textWrapper} style={{ position: 'relative', top: 400 }}>
+        <div
+          className={commonClasses.textWrapper}
+          style={{
+            position: 'absolute',
+            top: 'calc(100vh - 360px)',
+            width: 'calc(100vw - 60px)'
+          }}
+        >
           <p className={commonClasses.text}>Чтобы перейти к написанию новой  статьи, нажми на эту кнопку</p>
-        </div>
-        <div className={commonClasses.buttonWrapper} style={{ position: 'relative', top: 410 }}>
           <NextButton>Понятно, давай дальше</NextButton>
         </div>
         <div
           className={commonClasses.arrowDown2}
           style={{
-            position: 'relative',
-            top: 470,
+            position: 'absolute',
+            top: 'calc(100vh - 260px)',
             left: 'calc(50% - 100px)',
             width: 154,
             height: 174
