@@ -217,7 +217,7 @@
   font-family: "Gilroy";
   font-style: normal;
   font-weight: 600;
-  font-size: 27px;
+  font-size: 20px;
   line-height: 30px;
   color: #ffffff;
 }
@@ -466,6 +466,10 @@
   overflow: hidden;
   border-radius: 10px;
   margin-top: 16px;
+}
+
+.chats .chat-item .image-wrapper img {
+  display: block;
 }
 
 .bottom-button {

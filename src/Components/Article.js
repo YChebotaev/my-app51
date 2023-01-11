@@ -6,7 +6,6 @@ import heartArticle from "../styles/images/heartArticle.svg"
 import commentArticle from "../styles/images/commentArticle.svg"
 import Header from './CommonComponents/Header';
 import WhatToRead from './CommonComponents/WhatToRead';
-import dummyImage from '../styles/images/dummy.jpg'
 
 import './../styles/style.css';
 
@@ -126,7 +125,7 @@ const Article = () => {
                       </div>
                       <div className='chat-title'>{a.title}</div>
                       <div className='image-wrapper'>
-                        <img src={dummyImage} width="100%" alt="" />
+                        <img src="https://via.placeholder.com/600x300.jpg" width="100%" alt="" />
                       </div>
                       <div className='chat-excerpt'></div>
                     </div>
