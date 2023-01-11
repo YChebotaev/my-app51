@@ -22,8 +22,8 @@ const Main = ({ isFirstTime }) => {
         <Header />
         <div class="content-wrapper">
           <div class="grad-rect rect1" onClick={() => onOpen()}>
-            <div class="rect1-title">Объясняем, что тут у нас происходит</div>
             <div class="rect1-question" />
+            <div class="rect1-title">Объясняем, что тут у нас происходит</div>
           </div>
           <div ref={whatToReadRef} class="section section1">
             <Link to="/article"><div class="section-title">Есть что почитать</div></Link>

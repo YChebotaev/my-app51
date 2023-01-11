@@ -102,10 +102,9 @@
 }
 
 .content-wrapper .rect1 {
-  height: 87px;
-  background: url("images/rect1.svg");
-  background-size: cover;
-  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
 .content-wrapper .rect3 {
@@ -116,8 +115,6 @@
 
 .content-wrapper .rect1 .rect1-title,
 .content-wrapper .rect3 .rect3-title {
-  padding: 21px 0 0 21px;
-  width: 223px;
   font-family: "Gilroy";
   font-style: normal;
   font-weight: 600;
@@ -131,9 +128,10 @@
   width: 59px;
   height: 54px;
   background: url("images/rect1-question.svg");
-  position: absolute;
+  flex-shrink: 0;
+  /* position: absolute;
   top: calc(50% - 27px);
-  left: calc(100% - 59px - 23px);
+  left: calc(100% - 59px - 23px); */
 }
 
 .content-wrapper .rect1 .rect1-heart_img,
@@ -243,7 +241,7 @@
   font-size: 27px;
   line-height: 30px;
   text-decoration-line: underline;
-  color: #1e1e1e;
+  color: #ffffff;
 }
 
 .content-wrapper .rect2 .rect-cols,
@@ -298,13 +296,11 @@
   color: #ffffff;
 }
 
-.section2 .chats-list .chat-title-2,
-.section2 .chats-list .chat-num-members-2 {
+.section2 .chats-list .chat-title-2 {
   color: rgba(255, 255, 255, 0.5);
 }
 
-.section2 .chats-list .chat-title-3,
-.section2 .chats-list .chat-num-members-3 {
+.section2 .chats-list .chat-title-3 {
   color: rgba(255, 255, 255, 0.2);
 }
 
@@ -318,6 +314,14 @@
 
 .section2 .chats-list .chat-num-members-6 {
   color: rgba(255, 65, 99, 0.25);
+}
+
+.section2 .chats-list .chat-num-members-2 {
+  opacity: 0.5;
+}
+
+.section2 .chats-list .chat-num-members-3 {
+  opacity: 0.2;
 }
 
 .chats-wrapper .chats {
