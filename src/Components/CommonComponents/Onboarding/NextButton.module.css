@@ -1,0 +1,15 @@
+.nextButton {
+  display: block;
+  border: none;
+  border-radius: 10px;
+  background-color: #D73F51;
+  font-family: 'Gilroy';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  color: #FFFFFF;
+  padding: 10px 0;
+  width: 100%;
+}

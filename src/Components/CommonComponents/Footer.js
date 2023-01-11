@@ -1,7 +1,8 @@
 import React from 'react'
-import './../../styles/style.css';
 import { Link } from 'react-router-dom';
-const Footer = () => {
+import '../../styles/style.css';
+
+const Footer = ({ articleButtonRef }) => {
   return (
     <div class="bottom-button">
       <div className='bottom-button-wrapper'>
@@ -11,7 +12,9 @@ const Footer = () => {
             window.history.back()
           }}>
         </button>
-        <Link to="/createArticle"><button class="bottom-button-item bottom-btn_create-post"></button></Link>
+        <Link to="/createArticle">
+          <button ref={articleButtonRef} class="bottom-button-item bottom-btn_create-post"></button>
+        </Link>
         <button class="bottom-button-item bottom-btn_profile"></button>
       </div>
     </div>

@@ -1,0 +1,23 @@
+.backdrop {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.overlay {
+  background: #000000bd;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  mix-blend-mode: hard-light;
+}
+
+.spotlight {
+  background-color: gray;
+}

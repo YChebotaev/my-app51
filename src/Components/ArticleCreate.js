@@ -1,10 +1,6 @@
-import React, { useMemo, useState, /*useEffect*/ } from 'react'
-import './../styles/style.css';
+import React, { useMemo, useState } from 'react'
 import arrow from "./../styles/images/arrow.svg"
 import { Link } from 'react-router-dom';
-// import Footer from './CommonComponents/Footer';
-// import heartArticle from "./../styles/images/heartArticle.svg"
-// import commentArticle from "./../styles/images/commentArticle.svg"
 import imagePick from "./../styles/images/imagePick.svg"
 import play from "./../styles/images/play.svg"
 import share from "./../styles/images/share.svg"
@@ -13,6 +9,8 @@ import dummyAvatar from '../styles/images/dummy-avatar.svg'
 import okIcon from '../styles/images/ok-icon.svg'
 import failIcon from '../styles/images/fail-icon.svg'
 import imagePlaceholder from '../styles/images/image-placeholder.svg'
+
+import './../styles/style.css';
 
 const ArticleCreate = () => {
   const [title, setTitle] = useState("")
@@ -66,7 +64,12 @@ const ArticleCreate = () => {
     <div class="main-wrapper">
       <div class="content-wrapper">
         <div class="section section1">
-          <div class="section-title" style={{ textAlign: "left", display: "flex", align: "center", paddingTop: 25 }}><Link to="/article" ><img src={arrow} style={{ marginLeft: 12, marginRight: 18 }} /></Link>Новая запись</div>
+          <div class="section-title" style={{ textAlign: "left", display: "flex", align: "center", paddingTop: 25 }}>
+            <Link to="/article" >
+              <img src={arrow} style={{ marginLeft: 12, marginRight: 18 }} alt="" />
+            </Link>
+            Новая запись
+          </div>
         </div>
         <div style={{
           textAlign: "left",

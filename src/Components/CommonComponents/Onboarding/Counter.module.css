@@ -1,0 +1,18 @@
+.counter {
+  position: fixed;
+  top: 10px;
+  left: 20px;
+  background: transparent;
+  border: none;
+  z-index: 2;
+}
+
+.currentPage {
+  font-size: 48px;
+  color: #ffffff;
+}
+
+.totalPages {
+  font-size: 25px;
+  color: #ffffff;
+}

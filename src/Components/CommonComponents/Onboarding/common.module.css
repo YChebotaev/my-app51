@@ -1,0 +1,35 @@
+.textWrapper {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.text {
+  font-size: 18px;
+  color: #ffffff;
+  text-align: center;
+}
+
+.buttonWrapper {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.arrowUp {
+  background-image: url('../../../styles/images/swoosh-arrow-up.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 160px;
+  height: 174px;
+}
+
+.arrowDown {
+  background-image: url('../../../styles/images/swoosh-arrow-down.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.arrowDown2 {
+  background-image: url('../../../styles/images/swoosh-arrow-down-2.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
