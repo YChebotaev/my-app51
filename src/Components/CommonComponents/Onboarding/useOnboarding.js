@@ -21,6 +21,10 @@ export const useOnboarding = (initialPage, totalPages, initialOpen) => {
         setIsOpen(false)
       }
     },
+    onOpen(page = 0) {
+      setPage(page)
+      setIsOpen(true)
+    },
     onClose() {
       setIsOpen(false)
     }

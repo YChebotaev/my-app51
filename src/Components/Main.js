@@ -7,13 +7,13 @@ import Onboarding, { useOnboarding } from './CommonComponents/Onboarding';
 import './../styles/style.css';
 
 const Main = ({ isFirstTime }) => {
-  const { isOpen, page, spotlightedRef, totalPages, onNextPage, onClose } = useOnboarding(0, 5, isFirstTime)
-  const whatToReadRef = (isFirstTime && page === 1) ? spotlightedRef : null
-  const gamesRef = (isFirstTime && page === 2) ? spotlightedRef : null
-  const chatsRef = (isFirstTime && page === 3) ? spotlightedRef : null
-  const articleButtonRef = (isFirstTime && page === 4) ? spotlightedRef : null
-  const isShowFooter = (!isFirstTime || isOpen) ? page === 4 : true
-  const isShowOnboarding = isFirstTime || isOpen
+  const { isOpen, page, spotlightedRef, totalPages, onOpen, onNextPage, onClose } = useOnboarding(0, 5, isFirstTime)
+  const whatToReadRef = (isOpen && page === 1) ? spotlightedRef : null
+  const gamesRef = (isOpen && page === 2) ? spotlightedRef : null
+  const chatsRef = (isOpen && page === 3) ? spotlightedRef : null
+  const articleButtonRef = (isOpen && page === 4) ? spotlightedRef : null
+  const isShowFooter = isOpen ? page === 4 : true
+  const isShowOnboarding = isOpen
 
   return (
     <>
@@ -21,7 +21,7 @@ const Main = ({ isFirstTime }) => {
         <div class="header-title">Moove</div>
         <Header />
         <div class="content-wrapper">
-          <div class="grad-rect rect1">
+          <div class="grad-rect rect1" onClick={() => onOpen()}>
             <div class="rect1-title">Объясняем, что тут у нас происходит</div>
             <div class="rect1-question" />
           </div>
