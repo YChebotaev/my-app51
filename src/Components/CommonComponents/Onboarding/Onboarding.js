@@ -6,7 +6,7 @@ import FourthPage from './FourthPage'
 import FifthPage from './FifthPage'
 import context from './context'
 
-const Introduction = ({ page, spotlightedRef, totalPages, onNextPage, onClose }) => {
+const Introduction = ({ page, spotlightedRef, mainWrapperRef, totalPages, onNextPage, onClose }) => {
   const spotlightRef = useRef()
   const currentPage = useMemo(() => {
     switch (page) {
@@ -41,6 +41,7 @@ const Introduction = ({ page, spotlightedRef, totalPages, onNextPage, onClose })
       totalPages,
       spotlightRef,
       spotlightedRef,
+      mainWrapperRef,
       onNextPage,
       onClose
     }}>

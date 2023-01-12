@@ -1,5 +1,5 @@
+import { useOnboardingInternal } from '../useOnboardingInternal'
 import classes from './NextButton.module.css'
-import { useOnboardingInternal } from './useOnboardingInternal'
 
 const NextButton = ({ children }) => {
   const { onNextPage } = useOnboardingInternal()

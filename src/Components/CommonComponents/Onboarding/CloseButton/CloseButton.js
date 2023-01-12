@@ -1,6 +1,6 @@
 import classes from './CloseButton.module.css'
-import { useOnboardingInternal } from './useOnboardingInternal'
-import closeImage from '../../../styles/images/close.svg'
+import { useOnboardingInternal } from '../useOnboardingInternal'
+import closeImage from '../../../../styles/images/close.svg'
 
 const CloseButton = () => {
   const { onClose } = useOnboardingInternal()

@@ -1,5 +1,5 @@
 // import { useEffect } from 'react'
-import { useOnboardingInternal } from './useOnboardingInternal'
+import { useOnboardingInternal } from '../useOnboardingInternal'
 import classes from './Backdrop.module.css'
 
 const Backdrop = ({ children }) => {

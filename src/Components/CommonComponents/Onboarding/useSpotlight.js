@@ -1,7 +1,7 @@
 import { useEffect, useCallback } from 'react'
 import { useOnboardingInternal } from './useOnboardingInternal'
 
-export const useSpotlight = () => {
+export const useSpotlight = ({ mainWrapperRef, translateY } = {}) => {
   const { page, spotlightRef, spotlightedRef } = useOnboardingInternal()
 
   const recalculateStyles = useCallback(() => {
@@ -13,7 +13,7 @@ export const useSpotlight = () => {
       Object.assign(spotlightDiv.style, {
         position: 'relative',
         display: 'block',
-        top: `${spotlightedRect.top}px`,
+        top: `${spotlightedRect.top + (translateY ?? 0)}px`,
         left: `${spotlightedRect.left}px`,
         width: `${spotlightedRect.width}px`,
         height: `${spotlightedRect.height}px`
@@ -21,16 +21,24 @@ export const useSpotlight = () => {
     }
 
     return { spotlightedEl, spotlightDiv }
-  }, [spotlightRef, spotlightedRef])
+  }, [spotlightRef, spotlightedRef, translateY])
 
   useEffect(() => {
+    const mainWrapperEl = mainWrapperRef?.current
     const { spotlightedEl, spotlightDiv } = recalculateStyles()
     const resizeHandler = () => recalculateStyles()
+    const scrollHandler = () => recalculateStyles()
 
     window.addEventListener('resize', resizeHandler, { passive: true })
+    window.addEventListener('scroll', scrollHandler, { passive: true })
+
+    if (mainWrapperEl) {
+      mainWrapperEl.style.transform = `translate(0, ${translateY}px)`;
+    }
 
     return () => {
       window.removeEventListener('resize', resizeHandler)
+      window.removeEventListener('scroll', scrollHandler)
 
       if (spotlightedEl) {
         spotlightDiv.style.display = 'none'
@@ -40,6 +48,10 @@ export const useSpotlight = () => {
         spotlightDiv.style.removeProperty('width')
         spotlightDiv.style.removeProperty('height')
       }
+
+      if (mainWrapperEl) {
+        mainWrapperEl.style.removeProperty('transform')
+      }
     }
-  }, [page, spotlightRef, spotlightedRef, recalculateStyles])
+  }, [page, spotlightRef, spotlightedRef, mainWrapperRef, translateY, recalculateStyles])
 }

@@ -18,7 +18,7 @@ const SecondPage = () => {
           className={commonClasses.textWrapper}
           style={{
             position: 'absolute',
-            top: 'calc(100vh - 360px)',
+            top: 'calc(100vh - 380px)',
             width: 'calc(100vw - 60px)'
           }}
         >

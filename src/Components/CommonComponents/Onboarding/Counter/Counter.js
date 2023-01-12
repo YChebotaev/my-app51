@@ -1,5 +1,5 @@
 import classes from './Counter.module.css'
-import { useOnboardingInternal } from './useOnboardingInternal'
+import { useOnboardingInternal } from '../useOnboardingInternal'
 
 const Counter = () => {
   const { page, totalPages } = useOnboardingInternal()

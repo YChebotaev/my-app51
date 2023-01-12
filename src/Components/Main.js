@@ -7,7 +7,20 @@ import Onboarding, { useOnboarding } from './CommonComponents/Onboarding';
 import './../styles/style.css';
 
 const Main = ({ isFirstTime }) => {
-  const { isOpen, page, spotlightedRef, totalPages, onOpen, onNextPage, onClose } = useOnboarding(0, 5, isFirstTime)
+  const {
+    isOpen,
+    page,
+    spotlightedRef,
+    totalPages,
+    mainWrapperRef,
+    onOpen,
+    onNextPage,
+    onClose
+  } = useOnboarding({
+    initialPage: 0,
+    totalPages: 5,
+    initialOpen: isFirstTime
+  })
   const whatToReadRef = (isOpen && page === 1) ? spotlightedRef : null
   const gamesRef = (isOpen && page === 2) ? spotlightedRef : null
   const chatsRef = (isOpen && page === 3) ? spotlightedRef : null
@@ -17,7 +30,7 @@ const Main = ({ isFirstTime }) => {
 
   return (
     <>
-      <div class="main-wrapper">
+      <div ref={mainWrapperRef} class="main-wrapper">
         <div class="header-title">Moove</div>
         <Header />
         <div class="content-wrapper">
@@ -94,6 +107,7 @@ const Main = ({ isFirstTime }) => {
           page={page}
           totalPages={totalPages}
           spotlightedRef={spotlightedRef}
+          mainWrapperRef={mainWrapperRef}
           onNextPage={onNextPage}
           onClose={onClose}
         />

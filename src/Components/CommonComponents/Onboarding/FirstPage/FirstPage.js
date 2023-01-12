@@ -1,8 +1,8 @@
 import React from "react";
-import Backdrop from './Backdrop'
-import NextButton from './NextButton'
+import Backdrop from '../Backdrop'
+import NextButton from '../NextButton'
+import CloseButton from "../CloseButton";
 import classes from './FirstPage.module.css'
-import CloseButton from "./CloseButton";
 
 const FirstPage = () => {
   return (
