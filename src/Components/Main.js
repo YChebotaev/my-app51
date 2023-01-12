@@ -31,17 +31,23 @@ const Main = ({ isFirstTime }) => {
               <div class="col-3">
                 <div class="post-author">@anovikov</div>
                 <div class="post-title">Как зумеры изменили всё за год</div>
-                <div class="post-likes">❤<span class="post-likes-num">24</span></div>
+                <div class="post-likes">
+                  <div class="post-likes-num">24</div>
+                </div>
               </div>
               <div class="col-3">
                 <div class="post-author">@anovikov</div>
                 <div class="post-title">Кто такой зумер и с чем его едят</div>
-                <div class="post-likes">❤<span class="post-likes-num">1.2K</span></div>
+                <div class="post-likes">
+                  <div class="post-likes-num">1.2K</div>
+                </div>
               </div>
               <div class="col-3">
                 <div class="post-author">@anovikov</div>
                 <div class="post-title">Как зумеры изменили всё за год</div>
-                <div class="post-likes">❤<span class="post-likes-num">24</span></div>
+                <div class="post-likes">
+                  <div class="post-likes-num">24</div>
+                </div>
               </div>
             </div>
           </div>

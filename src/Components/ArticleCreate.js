@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react'
+import TextareaAutosize from 'react-textarea-autosize'
 import arrow from "./../styles/images/arrow.svg"
-import { Link } from 'react-router-dom';
 import imagePick from "./../styles/images/imagePick.svg"
 import play from "./../styles/images/play.svg"
 import share from "./../styles/images/share.svg"
@@ -65,9 +65,14 @@ const ArticleCreate = () => {
       <div class="content-wrapper">
         <div class="section section1">
           <div class="section-title" style={{ textAlign: "left", display: "flex", align: "center", paddingTop: 25 }}>
-            <Link to="/article" >
-              <img src={arrow} style={{ marginLeft: 12, marginRight: 18 }} alt="" />
-            </Link>
+            <img
+              src={arrow}
+              style={{ marginLeft: 12, marginRight: 18 }}
+              alt=""
+              onClick={() => {
+                window.history.back()
+              }}
+            />
             Новая запись
           </div>
         </div>
@@ -161,7 +166,7 @@ const ArticleCreate = () => {
           display: 'flex',
           flexDirection: "column"
         }}>
-          <textarea
+          <TextareaAutosize
             value={content}
             name="element"
             className='inputText'
@@ -227,25 +232,27 @@ const ArticleCreate = () => {
               <img src={share} alt="" />
             </div>
           </div>
-          <button
-            className={canSubmit ? "rect6" : ''}
-            style={{
-              ...(canSubmit ? {
-                background: `url(${sendButtonBackground})`,
-                color: '#FFFFFF',
-              } : {
-                background: "#616161",
-                color: "#D9D9D9"
-              }),
-              borderRadius: 10,
-              height: 42,
-              border: "none",
-              fontSize: 16,
-              width: "35%",
-              fontWeight: 600
-            }}
-            onClick={() => submit()}
-          >Отправить</button>
+          {submitResult == null && (
+            <button
+              className={canSubmit ? "rect6" : ''}
+              style={{
+                ...(canSubmit ? {
+                  background: `url(${sendButtonBackground})`,
+                  color: '#FFFFFF',
+                } : {
+                  background: "#616161",
+                  color: "#D9D9D9"
+                }),
+                borderRadius: 10,
+                height: 42,
+                border: "none",
+                fontSize: 16,
+                width: "35%",
+                fontWeight: 600
+              }}
+              onClick={() => submit()}
+            >Отправить</button>
+          )}
         </div>
       </div>
       {submitResult != null && (

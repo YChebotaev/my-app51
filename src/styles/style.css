@@ -192,7 +192,11 @@
   line-height: 10px;
   letter-spacing: 0.01em;
   color: #d73f51;
-  margin-left: 4px;
+  display: inline-block;
+  background-image: url('./images/heart.svg');
+  background-repeat: no-repeat;
+  padding-left: 10px;
+  background-position: center left;
 }
 
 .content-wrapper .rect2 {
@@ -224,6 +228,11 @@
   word-wrap: break-word;
   word-break: break-all;
 }
+
+.inputText:focus {
+  outline: none;
+}
+
 .content-wrapper .rect4 {
   height: 144px;
   margin-top: 32px;
@@ -529,4 +538,8 @@
   width: 44px;
   height: 40px;
   background: url("images/bottom-btn_profile_2.svg");
+}
+
+.bottom-button-placeholder {
+  height: 70px;
 }

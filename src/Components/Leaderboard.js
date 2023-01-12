@@ -9,7 +9,7 @@ const Leaderboard = () => {
       backgroundSize: 'cover',
       backgroundPosition: 'center'
     }}>
-      <Footer />
+      <Footer withoutPlaceholder />
     </div>
 	)
 }
