@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react'
 import TextareaAutosize from 'react-textarea-autosize'
-import arrow from "./../styles/images/arrow.svg"
+import PageTitle from './CommonComponents/PageTitle'
 import imagePick from "./../styles/images/imagePick.svg"
 import play from "./../styles/images/play.svg"
 import share from "./../styles/images/share.svg"
@@ -63,19 +63,7 @@ const ArticleCreate = () => {
   return (
     <div class="main-wrapper">
       <div class="content-wrapper">
-        <div class="section section1">
-          <div class="section-title" style={{ textAlign: "left", display: "flex", align: "center", paddingTop: 25 }}>
-            <img
-              src={arrow}
-              style={{ marginLeft: 12, marginRight: 18 }}
-              alt=""
-              onClick={() => {
-                window.history.back()
-              }}
-            />
-            Новая запись
-          </div>
-        </div>
+        <PageTitle>Новая запись</PageTitle>
         <div style={{
           textAlign: "left",
           margin: "23px 0 24px 0",

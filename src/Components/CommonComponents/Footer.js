@@ -2,10 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import '../../styles/style.css';
 
-const Footer = ({ articleButtonRef, withoutPlaceholder = false }) => {
+const Footer = ({ articleButtonRef }) => {
   return (
     <>
-      {!withoutPlaceholder && <div className="bottom-button-placeholder" />}
+      <div className="bottom-button-placeholder" />
       <div class="bottom-button">
         <div className='bottom-button-wrapper'>
           <button

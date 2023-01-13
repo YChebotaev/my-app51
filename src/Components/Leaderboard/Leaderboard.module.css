@@ -1,0 +1,122 @@
+.leaderboard {
+}
+
+.table {
+  width: 100%;
+}
+
+.headerCell {
+  font-size: 7px;
+  color: rgba(255, 255, 255, 0.8);
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.placeHeaderCell {
+}
+
+.authorHeaderCell {
+  text-align: left;
+}
+
+.viewsHeaderCell {
+  text-align: right;
+}
+
+.reactionsHeaderCell {
+  text-align: right;
+  padding-right: 10px;
+}
+
+.cell {
+}
+
+.reactionsCell {
+  padding-right: 10px;
+}
+
+.cellBorderTop {
+  border-top: 2px solid #151515;
+}
+
+.cellBorderBottom {
+  border-bottom: 2px solid #151515;
+}
+
+.leadingCell {
+}
+
+.place {
+  display: flex;
+  gap: 3px;
+  color: #ffffff;
+  padding-left: 10px;
+}
+
+.placeNumber {
+}
+
+.placePrefix {
+  font-size: 15px;
+  color: #d73f51;
+}
+
+.leadingPlace {
+  justify-content: center;
+  padding-left: 0;
+}
+
+.leadingPlaceNumber {
+  font-size: 27px;
+  color: #d73f51;
+}
+
+.author {
+  display: flex;
+  gap: 10px;
+}
+
+.authorPadding {
+  padding: 5px 0;
+}
+
+.leadingAuthorPadding {
+  padding: 10px 0;
+}
+
+.authorLeft {
+}
+
+.authorRight {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 3px;
+}
+
+.authorUserpic {
+  width: 33px;
+  height: 33px;
+  background-image: url("../../styles/images/leaderboard-avatar-mock.svg");
+}
+
+.authorName {
+  font-size: 12px;
+  color: #d73f51;
+}
+
+.authorUsername {
+  font-size: 10px;
+  color: #ffffff;
+}
+
+.viewsCount {
+  text-align: right;
+  font-size: 10px;
+  color: #ffffff;
+}
+
+.reactionsCount {
+  text-align: right;
+  font-size: 10px;
+  color: #ffffff;
+}
