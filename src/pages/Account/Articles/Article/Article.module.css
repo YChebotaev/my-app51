@@ -1,0 +1,38 @@
+.article {
+  padding: 10px;
+  display: flex;
+  gap: 15px;
+}
+
+.articleLeft {}
+
+.articleRight {
+  display: flex;
+  flex-flow: column;
+  gap: 5px;
+  justify-content: center;
+}
+
+.articlePreview {
+  background-image: url('../../../../styles/images/dummy-article-preview.png');
+  width: 54px;
+  height: 54px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 10px;
+}
+
+.articleTitle {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18.83px;
+  color: #ffffff;
+}
+
+.articlePubDate {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 14.32px;
+  letter-spacing: 0.01em;
+  color: #F25353;
+}

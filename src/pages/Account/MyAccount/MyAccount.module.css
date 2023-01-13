@@ -1,0 +1,62 @@
+.myAccount {
+  display: flex;
+  background-image: url('../../../styles/images/my-account-background.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 10px;
+}
+
+.myAccountLeft {
+  flex-grow: 1;
+  padding: 5px;
+}
+
+.myAccountRight {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.myAccountRightArrow {
+  width: 25px;
+  height: 24px;
+  background-image: url('../../../styles/images/account-arrow-right.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.me {
+  display: flex;
+  gap: 11px;
+}
+
+.meLeft {}
+
+.meRight {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+
+.meAvatar {
+  width: 74px;
+  height: 79px;
+  background-image: url('../../../styles/images/shit-74.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.meName {
+  font-size: 20px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.meUsername {
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: underline;
+}

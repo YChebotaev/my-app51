@@ -1,0 +1,35 @@
+.tabs {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  border-bottom: 2px solid #151515;
+}
+
+.tabsWrapper {
+  background-color: #191e2f;
+  border-radius: 10px 10px 0 0;
+}
+
+.tab {
+  display: flex;
+  gap: 5px;
+}
+
+.tabName {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.activeTab .tabName {
+}
+
+.passiveTab .tabName {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.tabCount {
+  font-size: 14px;
+  font-weight: 600;
+  color: #D73F51;
+}

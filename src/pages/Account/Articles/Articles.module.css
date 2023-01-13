@@ -1,0 +1,13 @@
+.articles {}
+
+.actionContent {
+  height: 100%;
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: #1E1E1E;
+  user-select: none;
+}

@@ -4,8 +4,7 @@ import Chat from './pages/Chats';
 import Article from './pages/Article';
 import ArticleCreate from './pages/ArticleCreate';
 import Leaderboard from "./pages/Leaderboard";
-
-import './App.css';
+import Account from './pages/Account'
 import './styles/fonts/stylesheet.css'
 
 function App({ isFirstTime }) {
@@ -19,6 +18,7 @@ function App({ isFirstTime }) {
         <Route path="/article" element={<Article />} />
         <Route path="/createArticle" element={<ArticleCreate />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
+        <Route path="/account" element={<Account />} />
       </Routes>
     </div>
   );

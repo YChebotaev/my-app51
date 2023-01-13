@@ -1,6 +1,6 @@
 import arrow from "../../styles/images/arrow.svg"
 
-const PageHeader = ({ children }) => {
+const PageTitle = ({ children }) => {
   return (
     <div class="section section1">
       <div class="section-title" style={{ textAlign: "left", display: "flex", align: "center", paddingTop: 25 }}>
@@ -18,4 +18,4 @@ const PageHeader = ({ children }) => {
   )
 }
 
-export default PageHeader
+export default PageTitle
