@@ -1,9 +1,8 @@
 import React from 'react'
-import './../styles/style.css';
+import Header from '../components/common/Header';
+import Footer from '../components/common/Footer';
 import heart from "./../styles/images/heart1.png"
-// import { Link } from 'react-router-dom';
-import Header from './CommonComponents/Header';
-import Footer from './CommonComponents/Footer';
+import '../styles/style.css';
 
 const Chat = () => {
 	const chats = [

@@ -1,13 +1,12 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import heart from "../styles/images/heart1.png"
-import Footer from './CommonComponents/Footer';
-import heartArticle from "../styles/images/heartArticle.svg"
-import commentArticle from "../styles/images/commentArticle.svg"
-import Header from './CommonComponents/Header';
-import WhatToRead from './CommonComponents/WhatToRead';
-
-import './../styles/style.css';
+import Footer from '../components/common/Footer';
+import WhatToRead from '../components/common/WhatToRead';
+import Header from '../components/common/Header';
+import heart from "../styles/images/heart1.png";
+import commentArticle from "../styles/images/commentArticle.svg";
+import heartArticle from "../styles/images/heartArticle.svg";
+import '../styles/style.css';
 
 const Article = () => {
   const [active, setActive] = useState("popular")

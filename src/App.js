@@ -1,9 +1,9 @@
 import { Routes, Route } from "react-router-dom";
-import Main from './Components/Main';
-import Chat from './Components/Chats';
-import Article from './Components/Article';
-import ArticleCreate from './Components/ArticleCreate';
-import Leaderboard from "./Components/Leaderboard";
+import Main from './pages/Main';
+import Chat from './pages/Chats';
+import Article from './pages/Article';
+import ArticleCreate from './pages/ArticleCreate';
+import Leaderboard from "./pages/Leaderboard";
 
 import './App.css';
 import './styles/fonts/stylesheet.css'

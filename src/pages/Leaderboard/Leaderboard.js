@@ -1,6 +1,6 @@
 import React from 'react'
-import Footer from '../CommonComponents/Footer'
-import PageTitle from '../CommonComponents/PageTitle'
+import Footer from '../../components/common/Footer'
+import PageTitle from '../../components/common/PageTitle'
 import classes from './Leaderboard.module.css'
 
 const Leaderboard = () => {

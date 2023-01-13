@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react'
 import TextareaAutosize from 'react-textarea-autosize'
-import PageTitle from './CommonComponents/PageTitle'
+import PageTitle from '../components/common/PageTitle'
 import imagePick from "./../styles/images/imagePick.svg"
 import play from "./../styles/images/play.svg"
 import share from "./../styles/images/share.svg"
@@ -9,8 +9,7 @@ import dummyAvatar from '../styles/images/dummy-avatar.svg'
 import okIcon from '../styles/images/ok-icon.svg'
 import failIcon from '../styles/images/fail-icon.svg'
 import imagePlaceholder from '../styles/images/image-placeholder.svg'
-
-import './../styles/style.css';
+import '../styles/style.css';
 
 const ArticleCreate = () => {
   const [title, setTitle] = useState("")

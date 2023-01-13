@@ -1,10 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import Footer from './CommonComponents/Footer';
-import Header from './CommonComponents/Header';
-import Onboarding, { useOnboarding } from './CommonComponents/Onboarding';
-
-import './../styles/style.css';
+import Footer from '../components/common/Footer';
+import Header from '../components/common/Header';
+import Onboarding, { useOnboarding } from '../components/common/Onboarding';
+import '../styles/style.css';
 
 const Main = ({ isFirstTime }) => {
   const {
