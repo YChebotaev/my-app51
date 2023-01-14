@@ -30,47 +30,47 @@ const Main = ({ isFirstTime }) => {
 
   return (
     <>
-      <div ref={mainWrapperRef} class="main-wrapper">
-        <div class="header-title">Moove</div>
+      <div ref={mainWrapperRef} className="main-wrapper">
+        <div className="header-title">Moove</div>
         <Header />
-        <div class="content-wrapper">
-          <div class="grad-rect rect1" onClick={() => onOpen()}>
-            <div class="rect1-question" />
-            <div class="rect1-title">Объясняем, что тут у нас происходит</div>
+        <div className="content-wrapper">
+          <div className="grad-rect rect1" onClick={() => onOpen()}>
+            <div className="rect1-question" />
+            <div className="rect1-title">Объясняем, что тут у нас происходит</div>
           </div>
           <WhatToRead ref={whatToReadRef} />
-          <div ref={gamesRef} class="grad-rect rect2">
-            <div class="rect2-title">Игры</div>
-            <div class="rect-cols">
-              <div class="col-3">
-                <div class="item-game"></div>
+          <div ref={gamesRef} className="grad-rect rect2">
+            <div className="rect2-title">Игры</div>
+            <div className="rect-cols">
+              <div className="col-3">
+                <div className="item-game"></div>
               </div>
-              <div class="col-3">
-                <div class="item-game"></div>
+              <div className="col-3">
+                <div className="item-game"></div>
               </div>
-              <div class="col-3">
-                <div class="item-game"></div>
+              <div className="col-3">
+                <div className="item-game"></div>
               </div>
             </div>
           </div>
-          <div ref={chatsRef} class="section section2">
-            <Link to="/chat"><div class="section-title">Чаты</div></Link>
-            <div class="chats-list">
-              <div class="chat-item">
-                <div class="chat-title chat-title-1">Название чата</div>
-                <div class="chat-num-members chat-num-members-1">11K участников</div>
+          <div ref={chatsRef} className="section section2">
+            <Link to="/chat"><div className="section-title">Чаты</div></Link>
+            <div className="chats-list">
+              <div className="chat-item">
+                <div className="chat-title chat-title-1">Название чата</div>
+                <div className="chat-num-members chat-num-members-1">11K участников</div>
               </div>
-              <div class="chat-item">
-                <div class="chat-title chat-title-1">Название чата другое</div>
-                <div class="chat-num-members chat-num-members-1">11K участников</div>
+              <div className="chat-item">
+                <div className="chat-title chat-title-1">Название чата другое</div>
+                <div className="chat-num-members chat-num-members-1">11K участников</div>
               </div>
-              <div class="chat-item">
-                <div class="chat-title chat-title-2">Длииинное название чата</div>
-                <div class="chat-num-members chat-num-members-2">11K участников</div>
+              <div className="chat-item">
+                <div className="chat-title chat-title-2">Длииинное название чата</div>
+                <div className="chat-num-members chat-num-members-2">11K участников</div>
               </div>
-              <div class="chat-item">
-                <div class="chat-title chat-title-3">Длииинное название чата</div>
-                <div class="chat-num-members chat-num-members-3">11K участников</div>
+              <div className="chat-item">
+                <div className="chat-title chat-title-3">Длииинное название чата</div>
+                <div className="chat-num-members chat-num-members-3">11K участников</div>
               </div>
             </div>
           </div>

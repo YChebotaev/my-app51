@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Main from './pages/Main';
 import Chat from './pages/Chats';
 import Article from './pages/Article';
-import ArticleCreate from './pages/ArticleCreate';
+import { ArticleCreate } from './pages/ArticleCreate';
 import Leaderboard from "./pages/Leaderboard";
 import { Account } from './pages/Account'
 import './styles/fonts/stylesheet.css'

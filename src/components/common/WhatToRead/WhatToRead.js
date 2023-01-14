@@ -14,18 +14,18 @@ export const WhatToRead = forwardRef(
     })
 
     return (
-      <div ref={ref} class="section section1">
-        <Link to="/article"><div class="section-title">Есть что почитать</div></Link>
+      <div ref={ref} className="section section1">
+        <Link to="/article"><div className="section-title">Есть что почитать</div></Link>
         {isLoading ? (
           <Skeleton />
         ) : (
-          <div class="section-cols">
+          <div className="section-cols">
             {data.map(({ created_at, content, likes_amount }) => (
-              <div key={created_at} class="col-3">
-                <div class="post-author">@username</div>
-                <div class="post-title">{content}</div>
-                <div class="post-likes">
-                  <span class="post-likes-num">{likes_amount}</span>
+              <div key={created_at} className="col-3">
+                <div className="post-author">@username</div>
+                <div className="post-title">{content}</div>
+                <div className="post-likes">
+                  <span className="post-likes-num">{likes_amount}</span>
                 </div>
               </div>
             ))}

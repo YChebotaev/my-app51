@@ -1,24 +1,23 @@
 import React, { useMemo, useState } from 'react'
-import TextareaAutosize from 'react-textarea-autosize'
-import PageTitle from '../components/common/PageTitle'
-import { Notification } from '../components/common/Notification'
-import { useProfilePictureUrl } from '../hooks'
-import imagePick from "./../styles/images/imagePick.svg"
-import play from "./../styles/images/play.svg"
-import share from "./../styles/images/share.svg"
-import sendButtonBackground from '../styles/images/send-button-background.svg'
-import dummyAvatar from '../styles/images/dummy-avatar.svg'
-import okIcon from '../styles/images/ok-icon.svg'
-import failIcon from '../styles/images/fail-icon.svg'
-import imagePlaceholder from '../styles/images/image-placeholder.svg'
-import '../styles/style.css';
+import { useMutation } from '@tanstack/react-query'
+import { useForm } from 'react-hook-form'
+import { ContentEditor } from './ContentEditor'
+import PageTitle from '../../components/common/PageTitle'
+import { Notification } from '../../components/common/Notification'
+import { useProfilePictureUrl, useApiClient } from '../../hooks'
+import imagePick from "./../../styles/images/imagePick.svg"
+import play from "./../../styles/images/play.svg"
+import share from "./../../styles/images/share.svg"
+import sendButtonBackground from '../../styles/images/send-button-background.svg'
+import dummyAvatar from '../../styles/images/dummy-avatar.svg'
+import okIcon from '../../styles/images/ok-icon.svg'
+import failIcon from '../../styles/images/fail-icon.svg'
+import imagePlaceholder from '../../styles/images/image-placeholder.svg'
+import '../../styles/style.css';
 
-const ArticleCreate = () => {
-  const [title, setTitle] = useState("")
-  const [subtitle, setSubtitle] = useState("")
-  const [content, setContent] = useState("")
+export const ArticleCreate = () => {
+  const apiClient = useApiClient()
   const [submitResult, setSubmitResult] = useState(null) // null | 'success' | 'fail'
-  const canSubmit = title !== '' && subtitle !== '' && content !== ''
   const [submitResultText, submitResultIcon] = useMemo(() => {
     switch (submitResult) {
       case 'success': return [
@@ -33,38 +32,32 @@ const ArticleCreate = () => {
     }
   }, [submitResult])
   const { data: avatarUrl, isLoading: isLoadingAvatarUrl } = useProfilePictureUrl()
-  // const handleKeyDown = (e) => {
-  //   e.target.style.height = 'inherit';
-  //   e.target.style.height = `${e.target.scrollHeight}px`;
-  //   // In case you have a limitation
-  //   // e.target.style.height = `${Math.min(e.target.scrollHeight, limit)}px`;
-  // }
+  const { mutate } = useMutation(['posts', 'create_post'], async (variables) => {
+    const { data } = await apiClient.post('/posts/create_post', variables)
 
-  const submit = async () => {
-    const r = await fetch(`${process.env['REACT_APP_BACKEND_URL']}/api/v1/posts/create_post`, {
-      method: "POST",
-      mode: "cors",
-      headers: {
-        "TOKEN": window.Telegram.WebApp.initDataUnsafe.user?.id ?? process.env['REACT_APP_DEBUG_TOKEN'],
-        "ngrok-skip-browser-warning": "69420",
-      },
-      body: JSON.stringify({
-        title,
-        subtitle,
-        content
-      }),
-    });
-
-    if (r.status === 200) {
+    return data
+  }, {
+    onSuccess() {
       setSubmitResult('success')
-    } else {
+    },
+    onError() {
       setSubmitResult('fail')
     }
-  };
+  })
+  const { control, register, handleSubmit, watch } = useForm({
+    defaultValues: {
+      title: '',
+      subtitle: '',
+      content: []
+    }
+  })
+  const canSubmit = watch('title') !== '' && watch('subtitle') !== '' && watch('content') !== ''
+
+  console.log('content =', watch('content'))
 
   return (
-    <div class="main-wrapper">
-      <div class="content-wrapper">
+    <div className="main-wrapper">
+      <form className="content-wrapper" onSubmit={handleSubmit(mutate)}>
         <PageTitle>Новая запись</PageTitle>
         <div style={{
           textAlign: "left",
@@ -88,9 +81,8 @@ const ArticleCreate = () => {
           flexDirection: "column"
         }}>
           <input
-            value={title}
+            {...register('title')}
             placeholder="Текст заголовка..."
-            name="element"
             className='inputText'
             style={{
               backgroundColor: "transparent",
@@ -105,7 +97,7 @@ const ArticleCreate = () => {
               lineHeight: '19px',
               padding: '5px 0'
             }}
-            onChange={(e) => setTitle(e.target.value)}
+          // onChange={(e) => setTitle(e.target.value)}
           // onKeyDown={handleKeyDown}
           />
         </div>
@@ -129,8 +121,7 @@ const ArticleCreate = () => {
           flexDirection: "column"
         }}>
           <input
-            value={subtitle}
-            name="element"
+            {...register('subtitle')}
             className='inputText'
             placeholder="Текст подзаголовка..."
             style={{
@@ -146,7 +137,7 @@ const ArticleCreate = () => {
               lineHeight: '18px',
               padding: '5px 0'
             }}
-            onChange={(e) => setSubtitle(e.target.value)}
+          // onChange={(e) => setSubtitle(e.target.value)}
           // onKeyDown={handleKeyDown}
           />
         </div>
@@ -156,27 +147,7 @@ const ArticleCreate = () => {
           display: 'flex',
           flexDirection: "column"
         }}>
-          <TextareaAutosize
-            value={content}
-            name="element"
-            className='inputText'
-            placeholder="Текст записи..."
-            style={{
-              backgroundColor: "transparent",
-              border: 0,
-              color: "white",
-              wordBreak: "break-word",
-              resize: "none",
-              fontFamily: 'Gilroy',
-              fontStyle: 'normal',
-              fontHeight: '500',
-              fontSize: '14px',
-              lineHeight: '18px',
-              padding: '5px 0'
-            }}
-            onChange={(e) => setContent(e.target.value)}
-          // onKeyDown={handleKeyDown}
-          />
+          <ContentEditor name="content" control={control} />
         </div>
         <div style={{
           display: "flex",
@@ -224,6 +195,7 @@ const ArticleCreate = () => {
           </div>
           {submitResult == null && (
             <button
+              type='submit'
               className={canSubmit ? "rect6" : ''}
               style={{
                 ...(canSubmit ? {
@@ -240,47 +212,13 @@ const ArticleCreate = () => {
                 width: "35%",
                 fontWeight: 600
               }}
-              onClick={() => submit()}
             >Отправить</button>
           )}
         </div>
-      </div>
+      </form>
       {submitResult != null && (
         <Notification icon={submitResultIcon} text={submitResultText} />
       )}
-      {/* {submitResult != null && (
-        <div style={{
-          display: 'flex',
-          flexFlow: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: 22,
-          position: 'fixed',
-          top: 'calc(100vh - 50% - 91px)',
-          left: 'calc(100vw - 50% - 123px)',
-          width: 246,
-          height: 182,
-          background: 'rgba(255, 255, 255, 0.03)',
-          boxShadow: '0px 4px 32px rgba(0, 0, 0, 0.6)',
-          backdropFilter: 'blur(12.5px)',
-          borderRadius: 10,
-        }}>
-          <div>
-            {submitResultIcon}
-          </div>
-          <div style={{
-            fontFamily: 'Gilroy',
-            fontStyle: 'normal',
-            fontWeight: '600',
-            fontSize: '20px',
-            lineHeight: '24px',
-            textAlign: 'center',
-            color: '#ffffff'
-          }}>{submitResultText}</div>
-        </div>
-      )} */}
     </div>
   )
 }
-
-export default ArticleCreate

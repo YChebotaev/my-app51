@@ -47,21 +47,21 @@ const Chat = () => {
 	const renderChat = (chat) => {
 		return (
 			<a key={chat.id} style={{ textDecoration: "none" }} href={chat.href}>
-				<div class="chat-item">
-					<div class="chat-icon" style={{
+				<div className="chat-item">
+					<div className="chat-icon" style={{
 						backgroundImage: `url("${chat.video}")`,
 						backgroundPosition: 'center',
 						backgroundRepeat: 'no-repeat',
 						backgroundSize: 'cover',
 					}}></div>
-					<div class="chat-data" style={{
+					<div className="chat-data" style={{
 						display: "flex",
 						alignItems: "center",
 						paddingLeft: 12
 					}}>
-						<div class="chat-title">{chat.name}</div>
+						<div className="chat-title">{chat.name}</div>
 					</div>
-					<div class="chat-details">
+					<div className="chat-details">
 
 					</div>
 				</div>
@@ -70,19 +70,19 @@ const Chat = () => {
 	}
 
 	return (
-		<div class="main-wrapper">
-			<div class="header-title">Moove</div>
+		<div className="main-wrapper">
+			<div className="header-title">Moove</div>
 			<Header />
-			<div class="content-wrapper">
-				<img class="content-heart_img" src={heart} alt="" />
-				<div class="section section2">
-					<div class="section-title">Чаты</div>
+			<div className="content-wrapper">
+				<img className="content-heart_img" src={heart} alt="" />
+				<div className="section section2">
+					<div className="section-title">Чаты</div>
 				</div>
 			</div>
-			<div class="chats-wrapper">
-				<div class="chats">
+			<div className="chats-wrapper">
+				<div className="chats">
 					{renderChat(chats[0])}
-					<div class="chats-border"></div>
+					<div className="chats-border"></div>
 					{chats.slice(1).map(renderChat)}
 				</div>
 			</div>

@@ -4,19 +4,19 @@ import '../../styles/style.css';
 
 const Footer = ({ articleButtonRef, withoutPlaceholder }) => {
   const bottomButtonElement = (
-    <div class="bottom-button">
+    <div className="bottom-button">
       <div className='bottom-button-wrapper'>
         <button
-          class="bottom-button-item bottom-btn_return"
+          className="bottom-button-item bottom-btn_return"
           onClick={() => {
             window.history.back()
           }}>
         </button>
         <Link to="/createArticle">
-          <button ref={articleButtonRef} class="bottom-button-item bottom-btn_create-post"></button>
+          <button ref={articleButtonRef} className="bottom-button-item bottom-btn_create-post"></button>
         </Link>
         <Link to="/account">
-          <button class="bottom-button-item bottom-btn_profile"></button>
+          <button className="bottom-button-item bottom-btn_profile"></button>
         </Link>
       </div>
     </div>

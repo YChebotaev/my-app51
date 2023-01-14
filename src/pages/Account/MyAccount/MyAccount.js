@@ -19,9 +19,7 @@ export const MyAccount = () => {
 
     return data
   })
-
   const { data: avatarUrl, isLoading: isLoadingAvatarUrl } = useProfilePictureUrl()
-
   const fullName = concatFullName(first_name, surname)
 
   return (

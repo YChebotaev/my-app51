@@ -63,17 +63,17 @@ const Article = () => {
   ]
 
   return (
-    <div class="main-wrapper">
-      <div class="header-title">Moove</div>
+    <div className="main-wrapper">
+      <div className="header-title">Moove</div>
       <Header />
-      <div class="content-wrapper">
-        <div class="section section1">
-          <img class="content-heart_img" src={heart} alt="" />
+      <div className="content-wrapper">
+        <div className="section section1">
+          <img className="content-heart_img" src={heart} alt="" />
           <WhatToRead />
         </div>
         <Link
           to="/leaderboard"
-          class="grad-rect rect5"
+          className="grad-rect rect5"
           style={{
             height: 42,
             borderRadius: 10,
@@ -82,23 +82,23 @@ const Article = () => {
             alignItems: "center",
             textDecoration: 'none'
           }}>
-          <div class="rect2-title" style={{ padding: 0, textDecorationLine: "none" }}>Лидерборд</div>
+          <div className="rect2-title" style={{ padding: 0, textDecorationLine: "none" }}>Лидерборд</div>
         </Link>
-        <div class="chats-wrapper">
-          <div class="chats">
-            <div class="chat-item" style={{ padding: '14px 0px 10px 0px' }}>
-              <div class="chat-title" onClick={() => setActive("popular")} style={{ paddingRight: 20, fontSize: 14, color: "#FFF", fontWeight: 600, opacity: active === "popular" ? 1 : 0.5 }}>ПОПУЛЯРНОЕ</div>
-              <div class="chat-title" onClick={() => setActive("recent")} style={{ paddingRight: 20, fontSize: 14, color: "#FFF", fontWeight: 600, opacity: active === "recent" ? 1 : 0.5 }}>СВЕЖЕЕ</div>
-              <div class="chat-title" onClick={() => setActive("my_feed")} style={{ paddingRight: 20, fontSize: 14, color: "#FFF", fontWeight: 600, opacity: active === "my_feed" ? 1 : 0.5 }}>МОЯ ЛЕНТА</div>
+        <div className="chats-wrapper">
+          <div className="chats">
+            <div className="chat-item" style={{ padding: '14px 0px 10px 0px' }}>
+              <div className="chat-title" onClick={() => setActive("popular")} style={{ paddingRight: 20, fontSize: 14, color: "#FFF", fontWeight: 600, opacity: active === "popular" ? 1 : 0.5 }}>ПОПУЛЯРНОЕ</div>
+              <div className="chat-title" onClick={() => setActive("recent")} style={{ paddingRight: 20, fontSize: 14, color: "#FFF", fontWeight: 600, opacity: active === "recent" ? 1 : 0.5 }}>СВЕЖЕЕ</div>
+              <div className="chat-title" onClick={() => setActive("my_feed")} style={{ paddingRight: 20, fontSize: 14, color: "#FFF", fontWeight: 600, opacity: active === "my_feed" ? 1 : 0.5 }}>МОЯ ЛЕНТА</div>
             </div>
-            <div class="chats-border" />
+            <div className="chats-border" />
             {visiblePosts?.map((i) => {
               return (
                 <a key={i.id} href={i.telegraph_url} style={{ textDecoration: "none" }}>
-                  <div class="chat-item">
-                    <div class="chat-data" style={{ display: "flex", marginLeft: 0, flexDirection: "column", justifyContent: "flex-start", alignItems: "flex-start" }}>
-                      <div class="chat-title">{i.title}</div>
-                      <div class="chat-last-user" style={{ display: 'flex', alignItems: 'center', marginTop: 5 }}>
+                  <div className="chat-item">
+                    <div className="chat-data" style={{ display: "flex", marginLeft: 0, flexDirection: "column", justifyContent: "flex-start", alignItems: "flex-start" }}>
+                      <div className="chat-title">{i.title}</div>
+                      <div className="chat-last-user" style={{ display: 'flex', alignItems: 'center', marginTop: 5 }}>
                         <img src={heartArticle} alt="" />
                         <span style={{ paddingLeft: 5 }}>{i.likes_amount ?? 0}</span>
                         {' '}
@@ -111,7 +111,7 @@ const Article = () => {
               )
             })}
             <div className='show-more' onClick={() => setIsShowMore(true)}>Показать еще</div>
-            <div class="chats-border" />
+            <div className="chats-border" />
             {articles.map(a => {
               return (
                 <a key={a.id} href={a.telegraph_url} style={{ display: 'block', textDecoration: "none" }}>
