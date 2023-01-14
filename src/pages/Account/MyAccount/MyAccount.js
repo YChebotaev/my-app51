@@ -6,11 +6,13 @@ import classes from "./MyAccount.module.css"
 
 export const MyAccount = () => {
   const apiClient = useApiClient()
-  const { data: {
-    first_name,
-    surname,
-    username_link
-  } = {} } = useQuery(['telegram_user', 'my_profile'], async () => {
+  const {
+    data: {
+      first_name,
+      surname,
+      username_link
+    } = {}
+  } = useQuery(['telegram_user', 'my_profile'], async () => {
     const { data } = await apiClient.get('/telegram_user/my_profile')
 
     return data

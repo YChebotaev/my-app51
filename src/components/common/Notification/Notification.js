@@ -1,11 +1,30 @@
+import { useState, useEffect } from 'react'
 import { useSpring, animated } from '@react-spring/web'
 import classes from './Notification.module.css'
 
 export const Notification = ({ isOpen, icon, text }) => {
+  const [isFirstRender, setIsFirstRender] = useState(true)
   const style = useSpring({
-    from: { opacity: isOpen ? 0 : 1, pointerEvents: isOpen ? 'none' : 'auto' },
-    to: { opacity: isOpen ? 1 : 0, pointerEvents: isOpen ? 'auto' : 'none' }
+    immediate: isFirstRender,
+    from: isOpen ? {
+      opacity: 0,
+      pointerEvents: 'none'
+    } : {
+      opacity: 1,
+      pointerEvents: 'auto'
+    },
+    to: isOpen ? {
+      opacity: 1,
+      pointerEvents: 'auto'
+    } : {
+      opacity: 0,
+      pointerEvents: 'none'
+    }
   })
+
+  useEffect(() => {
+    setIsFirstRender(false)
+  }, [])
 
   return (
     <animated.div style={style} className={classes.notification}>

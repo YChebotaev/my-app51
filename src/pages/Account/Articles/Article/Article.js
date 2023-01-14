@@ -1,7 +1,7 @@
 import { format } from 'date-fns'
 import classes from './Article.module.css'
 
-export const Article = ({ article: { id, title, pubDate } }) => {
+export const Article = ({ article: { title, pubDate, isDraft } }) => {
   return (
     <div className={classes.article}>
       <div className={classes.articleLeft}>
@@ -10,7 +10,7 @@ export const Article = ({ article: { id, title, pubDate } }) => {
       <div className={classes.articleRight}>
         <div className={classes.articleTitle}>{title}</div>
         <div className={classes.articlePubDate}>
-          Опубликовано {format(pubDate, 'd.M.yyyy')}
+          {isDraft ? 'Черновик' : 'Опубликовано'} {format(pubDate, 'd.M.yyyy')}
         </div>
       </div>
     </div>
