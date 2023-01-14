@@ -2,7 +2,7 @@ import React, { forwardRef } from 'react'
 import { Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query'
 import { Skeleton } from './Skeleton'
-import { useApiClient } from '../../../hooks/useApiClient'
+import { useApiClient } from '../../../hooks'
 
 export const WhatToRead = forwardRef(
   (_, ref) => {

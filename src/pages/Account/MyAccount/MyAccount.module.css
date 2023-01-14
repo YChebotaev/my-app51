@@ -46,6 +46,13 @@
   background-image: url('../../../styles/images/shit-74.svg');
   background-repeat: no-repeat;
   background-size: contain;
+  border-radius: 10px;
+}
+
+.meAvatarSkeleton {
+  width: 74px;
+  height: 79px;
+  border-radius: 10px;
 }
 
 .meName {

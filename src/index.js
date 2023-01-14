@@ -3,15 +3,15 @@ import ReactDOM from 'react-dom/client';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
 import './index.css';
 import App from './App';
-import { createApiClient } from './utils/createApiClient'
-import { useApiClient } from './hooks/useApiClient'
+import { createApiClient, getTelegramUserId } from './utils'
+import { useApiClient } from './hooks'
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 
 const queryClient = new QueryClient()
 const apiClient = createApiClient({
   baseURL: process.env['REACT_APP_BACKEND_URL'] + '/api/v1',
-  token: window.Telegram.WebApp.initDataUnsafe.user?.id ?? process.env['REACT_APP_DEBUG_TOKEN'],
+  token: getTelegramUserId(),
   ngrokSkipBrowserWarning: '69420'
 })
 const root = ReactDOM.createRoot(document.getElementById('root'));

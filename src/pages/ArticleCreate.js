@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react'
 import TextareaAutosize from 'react-textarea-autosize'
 import PageTitle from '../components/common/PageTitle'
 import { Notification } from '../components/common/Notification'
+import { useProfilePictureUrl } from '../hooks'
 import imagePick from "./../styles/images/imagePick.svg"
 import play from "./../styles/images/play.svg"
 import share from "./../styles/images/share.svg"
@@ -31,6 +32,7 @@ const ArticleCreate = () => {
       default: return [null, null]
     }
   }, [submitResult])
+  const { data: avatarUrl, isLoading: isLoadingAvatarUrl } = useProfilePictureUrl()
   // const handleKeyDown = (e) => {
   //   e.target.style.height = 'inherit';
   //   e.target.style.height = `${e.target.scrollHeight}px`;
@@ -71,7 +73,7 @@ const ArticleCreate = () => {
           gap: '10px'
         }}>
           <div>
-            <img src={dummyAvatar} alt="" />
+            <img src={isLoadingAvatarUrl ? dummyAvatar : avatarUrl} width="15" alt="" style={{ borderRadius: 3 }} />
           </div>
           <span style={{
             fontSize: 15,
