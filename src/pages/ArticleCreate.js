@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react'
 import TextareaAutosize from 'react-textarea-autosize'
 import PageTitle from '../components/common/PageTitle'
+import { Notification } from '../components/common/Notification'
 import imagePick from "./../styles/images/imagePick.svg"
 import play from "./../styles/images/play.svg"
 import share from "./../styles/images/share.svg"
@@ -243,6 +244,9 @@ const ArticleCreate = () => {
         </div>
       </div>
       {submitResult != null && (
+        <Notification icon={submitResultIcon} text={submitResultText} />
+      )}
+      {/* {submitResult != null && (
         <div style={{
           display: 'flex',
           flexFlow: 'column',
@@ -272,7 +276,7 @@ const ArticleCreate = () => {
             color: '#ffffff'
           }}>{submitResultText}</div>
         </div>
-      )}
+      )} */}
     </div>
   )
 }

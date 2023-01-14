@@ -1,13 +1,19 @@
 import PageTitle from "../../components/common/PageTitle"
 import Footer from "../../components/common/Footer"
 import { Tabs, useTabs } from '../../components/common/Tabs'
+import { Notification, useNotification } from '../../components/common/Notification'
 import { MyAccount } from './MyAccount'
 import { Articles } from './Articles'
+import deleteIcon from '../../styles/images/delete.svg'
 import classes from "./Account.module.css"
 import "../../styles/style.css"
 
 const Account = () => {
   const { getTabProps, getContentProps } = useTabs(0)
+  const {
+    isOpen: isDeleteNotificationOpen,
+    onOpen: onDeleteNotificationOpen
+  } = useNotification()
 
   return (
     <div className="main-wrapper">
@@ -86,13 +92,22 @@ const Account = () => {
                 },
               ]}
                 onEdit={(item) => {}}
-                onDelete={(item) => {}}
+                onDelete={(item) => {
+                  onDeleteNotificationOpen({
+                    timeout: 3000
+                  })
+                }}
               />
             </Tabs.Content>
           </Tabs.Wrapper>
         </div>
       </div>
       <Footer withoutPlaceholder />
+      <Notification
+        isOpen={isDeleteNotificationOpen}
+        icon={<img src={deleteIcon} alt="" />}
+        text="Статья удалена"
+      />
     </div>
   )
 }
