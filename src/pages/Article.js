@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Footer from '../components/common/Footer';
-import WhatToRead from '../components/common/WhatToRead';
+import { WhatToRead } from '../components/common/WhatToRead';
 import Header from '../components/common/Header';
 import heart from "../styles/images/heart1.png";
 import commentArticle from "../styles/images/commentArticle.svg";

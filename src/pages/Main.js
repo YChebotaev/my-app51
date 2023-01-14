@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Footer from '../components/common/Footer';
 import Header from '../components/common/Header';
 import Onboarding, { useOnboarding } from '../components/common/Onboarding';
+import { WhatToRead } from '../components/common/WhatToRead'
 import '../styles/style.css';
 
 const Main = ({ isFirstTime }) => {
@@ -37,32 +38,7 @@ const Main = ({ isFirstTime }) => {
             <div class="rect1-question" />
             <div class="rect1-title">Объясняем, что тут у нас происходит</div>
           </div>
-          <div ref={whatToReadRef} class="section section1">
-            <Link to="/article"><div class="section-title">Есть что почитать</div></Link>
-            <div class="section-cols">
-              <div class="col-3">
-                <div class="post-author">@anovikov</div>
-                <div class="post-title">Как зумеры изменили всё за год</div>
-                <div class="post-likes">
-                  <div class="post-likes-num">24</div>
-                </div>
-              </div>
-              <div class="col-3">
-                <div class="post-author">@anovikov</div>
-                <div class="post-title">Кто такой зумер и с чем его едят</div>
-                <div class="post-likes">
-                  <div class="post-likes-num">1.2K</div>
-                </div>
-              </div>
-              <div class="col-3">
-                <div class="post-author">@anovikov</div>
-                <div class="post-title">Как зумеры изменили всё за год</div>
-                <div class="post-likes">
-                  <div class="post-likes-num">24</div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <WhatToRead ref={whatToReadRef} />
           <div ref={gamesRef} class="grad-rect rect2">
             <div class="rect2-title">Игры</div>
             <div class="rect-cols">
