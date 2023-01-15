@@ -4,6 +4,7 @@ import { PlainTextPlugin } from '@lexical/react/LexicalPlainTextPlugin'
 import { ContentEditable } from '@lexical/react/LexicalContentEditable'
 import LexicalErrorBoundary from "@lexical/react/LexicalErrorBoundary";
 import classes from './ContentEditor.module.css'
+import { RootNode } from 'lexical';
 
 export const ContentEditor = ({ control, name }) => {
   const { field } = useController({ control, name })
@@ -12,6 +13,7 @@ export const ContentEditor = ({ control, name }) => {
     <LexicalComposer
       initialConfig={{
         namespace: 'ArticleCreate',
+        nodes: [RootNode],
         onError(e) { console.error(e) }
       }}
     >

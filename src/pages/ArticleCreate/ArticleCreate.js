@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useMemo, useState, useRef } from 'react'
 import { useMutation } from '@tanstack/react-query'
 import { useForm } from 'react-hook-form'
 import { ContentEditor } from './ContentEditor'
@@ -17,6 +17,7 @@ import '../../styles/style.css';
 
 export const ArticleCreate = () => {
   const apiClient = useApiClient()
+  const fileRef = useRef()
   const [submitResult, setSubmitResult] = useState(null) // null | 'success' | 'fail'
   const [submitResultText, submitResultIcon] = useMemo(() => {
     switch (submitResult) {
@@ -110,9 +111,15 @@ export const ArticleCreate = () => {
             borderRadius: 10,
             minHeight: 174,
             margin: "23px 0px 24px 23px",
-          }}>
+          }}
+            onClick={() => {
+              const fileInput = fileRef.current
+
+              fileInput.click()
+            }}>
             <img src={imagePlaceholder} alt="" />
           </div>
+          <input ref={fileRef} type="file" style={{ opacity: 0, width: 0, height: 0 }} />
         </div>
         <div style={{
           textAlign: "left",
