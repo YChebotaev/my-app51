@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useRef } from 'react'
+import React, { useMemo, useState } from 'react'
 import { useMutation } from '@tanstack/react-query'
 import { useForm } from 'react-hook-form'
 import { ContentEditor } from './ContentEditor'
@@ -12,12 +12,12 @@ import sendButtonBackground from '../../styles/images/send-button-background.svg
 import dummyAvatar from '../../styles/images/dummy-avatar.svg'
 import okIcon from '../../styles/images/ok-icon.svg'
 import failIcon from '../../styles/images/fail-icon.svg'
-import imagePlaceholder from '../../styles/images/image-placeholder.svg'
+
 import '../../styles/style.css';
+import { UploadImage } from './UploadImage'
 
 export const ArticleCreate = () => {
   const apiClient = useApiClient()
-  const fileRef = useRef()
   const [submitResult, setSubmitResult] = useState(null) // null | 'success' | 'fail'
   const [submitResultText, submitResultIcon] = useMemo(() => {
     switch (submitResult) {
@@ -102,24 +102,8 @@ export const ArticleCreate = () => {
           // onKeyDown={handleKeyDown}
           />
         </div>
-        <div>
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: '#D9D9D9',
-            borderRadius: 10,
-            minHeight: 174,
-            margin: "23px 0px 24px 23px",
-          }}
-            onClick={() => {
-              const fileInput = fileRef.current
-
-              fileInput.click()
-            }}>
-            <img src={imagePlaceholder} alt="" />
-          </div>
-          <input ref={fileRef} type="file" style={{ opacity: 0, width: 0, height: 0 }} />
+        <div style={{ padding: '23px 0px 24px 23px' }} >
+          <UploadImage />
         </div>
         <div style={{
           textAlign: "left",

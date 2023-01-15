@@ -9,11 +9,10 @@ export const useProfilePictureUrl = () => {
 
   const result = useQuery(['image', userId, 'profile_picture'], async () => {
     const { data } = await apiClient.get(`../../image/${userId}/profile_picture.png`, {
-      responseType: 'arraybuffer'
+      responseType: 'blob'
     })
 
-    const buffer = new Blob([new Uint8Array(data, 0, data.length)])
-    const url = URL.createObjectURL(buffer)
+    const url = URL.createObjectURL(data)
 
     return url
   })

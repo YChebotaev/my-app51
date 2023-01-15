@@ -1,0 +1,19 @@
+.imagePlaceholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #D9D9D9;
+  border-radius: 10px;
+  min-height: 174px;
+}
+
+.uploadedImage {
+  display: block;
+  border-radius: 10px;
+  min-height: 174px;
+}
+
+.imageSkeleton {
+  height: 174px;
+  border-radius: 10px;
+}

@@ -7,7 +7,7 @@ import { useApiClient } from '../../../hooks'
 export const WhatToRead = forwardRef(
   (_, ref) => {
     const apiClient = useApiClient()
-    let { data, isLoading } = useQuery(['posts', 'three_last_posts'], async () => {
+    const { data, isLoading } = useQuery(['posts', 'three_last_posts'], async () => {
       const { data } = await apiClient.get('/posts/three_last_posts')
 
       return data
