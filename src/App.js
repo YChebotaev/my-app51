@@ -5,6 +5,7 @@ import Article from './pages/Article';
 import { ArticleCreate } from './pages/ArticleCreate';
 import Leaderboard from "./pages/Leaderboard";
 import { Account } from './pages/Account'
+import { Networking } from './pages/Networking'
 import './styles/fonts/stylesheet.css'
 
 function App({ isFirstTime }) {
@@ -19,6 +20,7 @@ function App({ isFirstTime }) {
         <Route path="/createArticle" element={<ArticleCreate />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/account" element={<Account />} />
+        <Route path="/networking" element={<Networking />} />
       </Routes>
     </div>
   );

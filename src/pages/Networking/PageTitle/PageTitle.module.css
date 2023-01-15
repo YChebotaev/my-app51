@@ -1,0 +1,15 @@
+.pageTitle {
+  display: flex;
+  background-color: #1a1a1a;
+  justify-content: space-between;
+}
+
+.ptLeft {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.ptRight {
+  padding: 10px;
+}

@@ -2,19 +2,19 @@ import React, { useMemo, useState } from 'react'
 import { useMutation } from '@tanstack/react-query'
 import { useForm } from 'react-hook-form'
 import { ContentEditor } from './ContentEditor'
+import { UploadImage } from './UploadImage'
 import PageTitle from '../../components/common/PageTitle'
 import { Notification } from '../../components/common/Notification'
 import { useProfilePictureUrl, useApiClient } from '../../hooks'
-import imagePick from "./../../styles/images/imagePick.svg"
-import play from "./../../styles/images/play.svg"
-import share from "./../../styles/images/share.svg"
+import imagePick from "../../styles/images/imagePick.svg"
+import play from "../../styles/images/play.svg"
+import share from "../../styles/images/share.svg"
 import sendButtonBackground from '../../styles/images/send-button-background.svg'
 import dummyAvatar from '../../styles/images/dummy-avatar.svg'
 import okIcon from '../../styles/images/ok-icon.svg'
 import failIcon from '../../styles/images/fail-icon.svg'
 
 import '../../styles/style.css';
-import { UploadImage } from './UploadImage'
 
 export const ArticleCreate = () => {
   const apiClient = useApiClient()
@@ -53,8 +53,6 @@ export const ArticleCreate = () => {
     }
   })
   const canSubmit = watch('title') !== '' && watch('subtitle') !== '' && watch('content') !== ''
-
-  console.log('content =', watch('content'))
 
   return (
     <div className="main-wrapper">
