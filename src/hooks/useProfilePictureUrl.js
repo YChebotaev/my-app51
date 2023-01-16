@@ -12,9 +12,13 @@ export const useProfilePictureUrl = () => {
       responseType: 'blob'
     })
 
-    const url = URL.createObjectURL(data)
+    return data
+  }, {
+    select(data) {
+      const url = URL.createObjectURL(data)
 
-    return url
+      return url
+    }
   })
 
   useEffect(() => () => {

@@ -1,0 +1,10 @@
+.listCards {
+  display: flex;
+  flex-flow: column;
+  gap: 15px;
+  padding-bottom: 15px;
+}
+
+.cardWrapper {
+  padding: 0 15px;
+}

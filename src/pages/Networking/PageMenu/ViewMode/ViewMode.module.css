@@ -1,0 +1,23 @@
+.viewMode {
+  display: flex;
+  gap: 15px;
+}
+
+.vmButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  padding: 0;
+  min-width: 30px;
+  min-height: 30px;
+}
+
+.vmButton:first-of-type {
+  padding: 10px 0 10px 10px;
+}
+
+.vmButton:last-of-type {
+  padding: 10px 10px 10px 0;
+}

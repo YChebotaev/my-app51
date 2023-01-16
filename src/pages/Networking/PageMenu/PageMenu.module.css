@@ -1,0 +1,12 @@
+.pageMenu {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pmLeft {
+  padding: 10px;
+}
+
+.pmRight {
+  padding: 10px;
+}

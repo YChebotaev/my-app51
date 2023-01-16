@@ -1,0 +1,112 @@
+.card {
+  display: flex;
+  gap: 20px;
+  background-color: rgb(20, 22, 35);
+  border-radius: 10px;
+}
+
+.cardWrapper {
+  position: relative;
+}
+
+.cardLeft {
+  padding: 15px 0px 15px 15px;
+}
+
+.cardRight {
+  flex-grow: 1;
+  padding: 15px 10px 15px 0px;
+}
+
+.cardAvatar {
+  background-image: url('../../../../styles/images/dummy-card.jpg');
+  background-size: cover;
+  width: 114px;
+  height: 117px;
+  border-radius: 10px;
+}
+
+.cardDetails {
+  display: flex;
+  flex-flow: column;
+  gap: 5px;
+  height: 100%;
+}
+
+.cardName {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cnName {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+  color: #ffffff;
+}
+
+.cnProfession {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 8px;
+  line-height: 11px;
+  color: #D73F51;
+  border: 1px solid #D73F51;
+  padding: 2px 5px;
+  border-radius: 7px;
+}
+
+.cardBio {
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 11px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.cardTags {
+  flex-grow: 1;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.cardTag {
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 11px;
+  padding: 5px;
+  border-radius: 8px;
+  background-color: #D73F51;
+  color: #ffffff; 
+}
+
+.cardActions {
+  display: flex;
+  gap: 10px;
+}
+
+.cardAction {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.cardPlace {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #D73F51;
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 12px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+}

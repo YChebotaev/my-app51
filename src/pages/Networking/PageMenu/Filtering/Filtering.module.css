@@ -1,0 +1,42 @@
+.filtering {
+  display: flex;
+}
+
+.filteringButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  padding: 0;
+  min-width: 30px;
+  min-height: 30px;
+  padding: 15px;
+}
+
+.filteringItems {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.filteringItem {
+  display: flex;
+  background-color: #D73F51;
+  border: none;
+  border-radius: 8px;
+  padding: 5px 10px;
+  gap: 10px;
+}
+
+.fiLeft {
+  font-size: 10px;
+  color: #ffffff;
+}
+
+.fiRight {
+  background-image: url('../../../../styles/images/cross-small.svg');
+  background-size: cover;
+  width: 12px;
+  height: 12px;
+}
