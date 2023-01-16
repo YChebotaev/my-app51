@@ -1,4 +1,4 @@
-import arrow from "../../styles/images/arrow.svg"
+import arrow from "../../../styles/images/arrow.svg"
 
 const PageTitle = ({ children }) => {
   return (

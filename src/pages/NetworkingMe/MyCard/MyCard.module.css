@@ -1,0 +1,160 @@
+.myCard {
+  display: flex;
+  gap: 20px;
+  background-color: rgb(20, 22, 35);
+  border-radius: 10px;
+}
+
+.mcWrapper {
+  position: relative;
+}
+
+.mcLeft {
+  padding: 15px 0px 15px 15px;
+}
+
+.mcRight {
+  flex-grow: 1;
+  padding: 15px 10px 15px 0px;
+}
+
+.mcAvatar {
+  background-image: url('../../../styles/images/dummy-card.jpg');
+  background-size: cover;
+  width: 114px;
+  height: 117px;
+  border-radius: 10px;
+}
+
+.mcDetails {
+  display: flex;
+  flex-flow: column;
+  gap: 5px;
+  height: 100%;
+}
+
+.mcName {
+  display: flex;
+  justify-content: space-between;
+}
+
+.mcnName {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+  color: #ffffff;
+}
+
+.mcnUsername {
+  font-size: 14px;
+  font-weight: 500;
+  color: #D73F51;
+}
+
+.mcnOnlyUsername {
+  font-size: 16px;
+}
+
+.mcnProfession {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 8px;
+  line-height: 11px;
+  color: #D73F51;
+  border: 1px solid #D73F51;
+  padding: 2px 5px;
+  border-radius: 7px;
+}
+
+.mcBio {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 11px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.mcbEditIcon {
+  background-image: url('../../../styles/images/networking-my-pencil.svg');
+  background-size: contain;
+  width: 8px;
+  height: 7px;
+  display: inline-block;
+  margin-left: 1ex;
+}
+
+.mcTags {
+  flex-grow: 1;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.mcTag {
+  display: flex;
+  border-radius: 8px;
+  background-color: #D73F51;
+  color: #ffffff; 
+  border: none;
+  padding: 0;
+  align-items: center;
+  padding-right: 5px;
+}
+
+.mctLeft {
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 11px;
+  padding: 5px;
+}
+
+.mctRight {
+  background-image: url('../../../styles/images/cross-small.svg');
+  background-size: cover;
+  width: 12px;
+  height: 12px;
+}
+
+.mctAddButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  padding: 0 5px;
+  height: 21px;
+  color: #ffffff;
+}
+
+.mcAvailability {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mcaText {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 11px;
+  color: #ffffff;
+}
+
+.mcaToggleWrapper {}
+
+.mcPlace {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #D73F51;
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 12px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+}

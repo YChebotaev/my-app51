@@ -3,7 +3,7 @@ import { useMutation } from '@tanstack/react-query'
 import { useForm } from 'react-hook-form'
 import { ContentEditor } from './ContentEditor'
 import { UploadImage } from './UploadImage'
-import PageTitle from '../../components/common/PageTitle'
+import { PageTitle } from '../../components/common/PageTitle'
 import { Notification } from '../../components/common/Notification'
 import { useProfilePictureUrl, useApiClient } from '../../hooks'
 import imagePick from "../../styles/images/imagePick.svg"
@@ -57,7 +57,7 @@ export const ArticleCreate = () => {
   return (
     <div className="main-wrapper">
       <form className="content-wrapper" onSubmit={handleSubmit(mutate)}>
-        <PageTitle>Новая запись</PageTitle>
+        <PageTitle legacy>Новая запись</PageTitle>
         <div style={{
           textAlign: "left",
           margin: "23px 0 24px 0",

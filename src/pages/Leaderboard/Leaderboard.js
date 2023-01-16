@@ -1,6 +1,6 @@
 import React from 'react'
 import Footer from '../../components/common/Footer'
-import PageTitle from '../../components/common/PageTitle'
+import { PageTitle } from '../../components/common/PageTitle'
 import classes from './Leaderboard.module.css'
 
 const Leaderboard = () => {
@@ -129,7 +129,7 @@ const Leaderboard = () => {
 
   return (
     <div className="main-wrapper">
-      <PageTitle>Лидерборд</PageTitle>
+      <PageTitle legacy>Лидерборд</PageTitle>
       <div className={classes.leaderboard}>
         <table className={classes.table}>
           <thead>

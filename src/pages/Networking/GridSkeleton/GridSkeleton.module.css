@@ -1,0 +1,11 @@
+.gridSkeleton {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  padding: 0 15px 15px 15px;
+}
+
+.gsSkeleton {
+  height: 335px;
+  border-radius: 10px;
+}

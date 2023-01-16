@@ -1,0 +1,11 @@
+.listSkeleton {
+  display: flex;
+  flex-flow: column;
+  padding: 0 15px 15px 15px;
+  gap: 15px;
+}
+
+.lsSkeleton {
+  height: 147px;
+  border-radius: 10px;
+}

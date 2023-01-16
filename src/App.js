@@ -6,7 +6,10 @@ import { ArticleCreate } from './pages/ArticleCreate';
 import Leaderboard from "./pages/Leaderboard";
 import { Account } from './pages/Account'
 import { Networking } from './pages/Networking'
+import { NetworkingMe } from './pages/NetworkingMe'
+import { NetworkingCreate } from './pages/NetworkingCreate'
 import './styles/fonts/stylesheet.css'
+import './styles/toggle.css'
 
 function App({ isFirstTime }) {
   window.Telegram.WebApp.backgroundColor = "#1E1E1E";
@@ -20,6 +23,8 @@ function App({ isFirstTime }) {
         <Route path="/createArticle" element={<ArticleCreate />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/account" element={<Account />} />
+        <Route path="/networking/me" element={<NetworkingMe />} />
+        <Route path="/networking/create" element={<NetworkingCreate />} />
         <Route path="/networking" element={<Networking />} />
       </Routes>
     </div>

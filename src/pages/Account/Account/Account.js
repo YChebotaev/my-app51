@@ -1,4 +1,4 @@
-import PageTitle from "../../../components/common/PageTitle"
+import { PageTitle } from "../../../components/common/PageTitle"
 import Footer from "../../../components/common/Footer"
 import { Tabs, useTabs } from '../../../components/common/Tabs'
 import { Notification, useNotification } from '../../../components/common/Notification'
@@ -17,7 +17,7 @@ export const Account = () => {
 
   return (
     <div className="main-wrapper">
-      <PageTitle>Мой аккаунт</PageTitle>
+      <PageTitle legacy>Мой аккаунт</PageTitle>
       <div className={classes.account}>
         <div className={classes.myAccountWrapper}>
           <MyAccount />
