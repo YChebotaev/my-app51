@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useMutation } from '@tanstack/react-query'
+import { AddButton } from './AddButton'
 import { useApiClient } from '../../../../hooks'
 import classes from './Tags.module.css'
 
@@ -83,7 +84,32 @@ export const Tags = ({
         </button>
       )}
       {(!firstTag || !secondTag || !thirdTag) && (
-        <button className={classes.tagsAddButton}>+</button>
+        <AddButton onAdd={(name) => {
+          switch (true) {
+            case !firstTag:
+              mutate({
+                firstTag: name,
+                secondTag,
+                thirdTag
+              })
+              break
+            case !secondTag:
+              mutate({
+                firstTag,
+                secondTag: name,
+                thirdTag
+              })
+              break
+            case !thirdTag:
+              mutate({
+                firstTag,
+                secondTag,
+                thirdTag: name
+              })
+              break
+            default: break
+          }
+        }} />
       )}
     </div>
   )
