@@ -18,14 +18,6 @@
   padding: 15px 10px 15px 0px;
 }
 
-.cardAvatar {
-  background-image: url('../../../../styles/images/dummy-card.jpg');
-  background-size: cover;
-  width: 114px;
-  height: 117px;
-  border-radius: 10px;
-}
-
 .cardDetails {
   display: flex;
   flex-flow: column;

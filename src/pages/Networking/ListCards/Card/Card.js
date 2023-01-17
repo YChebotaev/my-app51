@@ -1,5 +1,6 @@
 import { getFullName } from '../../../../utils'
 import { Profession } from '../../../../components/networking/Profession'
+import { CardAvatar } from '../../../../components/networking/CardAvatar'
 import classes from './Card.module.css'
 
 export const Card = ({ card: {
@@ -24,7 +25,7 @@ export const Card = ({ card: {
     <div className={classes.cardWrapper}>
       <div className={classes.card}>
         <div className={classes.cardLeft}>
-          <div className={classes.cardAvatar} />
+          <CardAvatar src={card_profile_img} />
         </div>
         <div className={classes.cardRight}>
           <div className={classes.cardDetails}>

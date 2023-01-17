@@ -1,0 +1,12 @@
+.cardAvatar {
+  background-size: cover;
+  width: 114px;
+  height: 117px;
+  border-radius: 10px;
+}
+
+.caSkeleton {
+  width: 114px;
+  height: 117px;
+  border-radius: 10px;
+}
