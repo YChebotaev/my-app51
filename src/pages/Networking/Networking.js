@@ -1,4 +1,5 @@
 import { useState, useMemo, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import context from './context'
 import { MyCardLink } from './MyCardLink'
@@ -16,6 +17,7 @@ import classes from './Networking.module.css'
 
 export const Networking = () => {
   const apiClient = useApiClient()
+  const navigate = useNavigate()
   const filterButtonRef = useRef()
   const [viewMode, setViewMode] = useState('list') // 'list' | 'grid'
   const [isFilterPopupOpen, setIsFilterPopupOpen] = useState(false)
@@ -45,6 +47,11 @@ export const Networking = () => {
     //   ]
     // }
   }, {
+    onSuccess(data) {
+      if (data === null) {
+        navigate('/networking/create')
+      }
+    },
     select({ cards }) {
       return cards
     }
