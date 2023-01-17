@@ -1,10 +1,10 @@
 import classes from './MyCard.module.css'
-import Toggle from 'react-toggle'
 import { useQuery } from '@tanstack/react-query'
 import cn from 'classnames'
 import { Bio } from './Bio'
 import { Tags } from './Tags'
 import { ProfileImage } from './ProfileImage'
+import { ChatOpenToggle } from './ChatOpenToggle'
 import { Profession } from '../../../components/networking/Profession'
 import { Skeleton } from '../../../components/common/Skeleton'
 import { useApiClient } from '../../../hooks'
@@ -78,9 +78,7 @@ export const MyCard = () => {
             <div className={classes.mcAvailability}>
               <div className={classes.mcaText}>Доступен для чата</div>
               <div className={classes.mcaToggleWrapper}>
-                <Toggle
-                  icons={false}
-                />
+                <ChatOpenToggle initialChatOpen={data?.chat_open === 'available'} />
               </div>
             </div>
           </div>
