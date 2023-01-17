@@ -14,8 +14,6 @@ export const FilterPopup = () => {
     const el = ref.current
     const targetEl = filterButtonRef.current
 
-    console.log({el, targetEl})
-
     if (el && targetEl) {
       const targetRect = targetEl.getBoundingClientRect()
 
@@ -40,7 +38,10 @@ export const FilterPopup = () => {
 
     window.addEventListener('resize', handleResize, { passive: true })
     window.addEventListener('scroll', handleScroll, { passive: true })
-    document.addEventListener('click', handleClickOutside, { passive: true })
+    
+    setTimeout(() => {
+      document.addEventListener('click', handleClickOutside, { passive: true })
+    }, 0)
 
     return () => {
       window.removeEventListener('resize', handleResize)
@@ -51,14 +52,18 @@ export const FilterPopup = () => {
 
   return (
     <div ref={ref} className={classes.filterPopup}>
-      {possibleFilters.map(filter => (
-        <button key={filter.id} className={classes.fpFilter} onClick={() => onAddFilter(filter)}>
-          <div className={classes.fpfLeft}>
-            {filter.name}
-          </div>
-          <div className={classes.fpfRight}>+</div>
-        </button>
-      ))}
+      {possibleFilters.length === 0 ? (
+        <p style={{ color: '#ffffff' }}>Нет фильтров для выбора</p>
+      ) : (
+        possibleFilters.map(filter => (
+          <button key={filter.id} className={classes.fpFilter} onClick={() => onAddFilter(filter)}>
+            <div className={classes.fpfLeft}>
+              {filter.name}
+            </div>
+            <div className={classes.fpfRight}>+</div>
+          </button>
+        ))
+      )}
     </div>
   )
 }

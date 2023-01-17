@@ -17,29 +17,19 @@ import classes from './Networking.module.css'
 export const Networking = () => {
   const apiClient = useApiClient()
   const filterButtonRef = useRef()
-  const [viewMode, setViewMode] = useState('grid') // 'list' | 'grid'
+  const [viewMode, setViewMode] = useState('list') // 'list' | 'grid'
   const [isFilterPopupOpen, setIsFilterPopupOpen] = useState(false)
-  const [activeFilters, setActiveFilters] = useState([
-    {
-      id: '0112dbf5-1114-4664-8aca-4b6601de6d64',
-      name: 'Дизайн'
-    },
-    {
-      id: '553d8b3e-c5d8-4843-90b9-0b0e86a14244',
-      name: 'Финтех'
-    }
-  ])
-  let { data, isLoading } = useQuery(['cards', 'all_cards'], async () => {
+  const [activeFilters, setActiveFilters] = useState([])
+  const { data, isLoading } = useQuery(['cards', 'all_cards', {
+    ...(activeFilters[0] ? { first_tag: activeFilters[0].id } : null),
+    ...(activeFilters[1] ? { second_tag: activeFilters[1].id } : null),
+  }], async () => {
     const { data } = await apiClient.post(
       '/cards/all_cards',
       {
-        first_tag: null,
-        second_tag: null
+        ...(activeFilters[0] ? { first_tag: activeFilters[0].name } : null),
+        ...(activeFilters[1] ? { second_tag: activeFilters[1].name } : null),
       }
-      // {
-      //   ...(activeFilters[0] ? { first_tag: activeFilters[0].name } : {}),
-      //   ...(activeFilters[1] ? { second_tag: activeFilters[1].name } : {}),
-      // }
     )
 
     return data
@@ -59,16 +49,7 @@ export const Networking = () => {
       return cards
     }
   })
-  // isLoading = true
   const [possibleFilters, setPossibleFilters] = useState([
-    {
-      id: '0112dbf5-1114-4664-8aca-4b6601de6d64',
-      name: 'Дизайн'
-    },
-    {
-      id: '553d8b3e-c5d8-4843-90b9-0b0e86a14244',
-      name: 'Финтех'
-    },
     {
       id: 'dd439afb-c9f8-492e-a9e4-8b42242ead73',
       name: 'Дизайн'
@@ -76,10 +57,6 @@ export const Networking = () => {
     {
       id: '1fbc0ec4-b758-4913-8630-fb7106c6ed29',
       name: 'Финтех'
-    },
-    {
-      id: '7a985d64-18fe-4077-adff-115796a36e69',
-      name: 'Дизайн'
     },
   ])
   const items = useMemo(() => {
@@ -113,21 +90,16 @@ export const Networking = () => {
       onFilterPopupClose() {
         setIsFilterPopupOpen(false)
       },
+      onFilterPopupOpen() {
+        setIsFilterPopupOpen(true)
+      },
       onDeleteFilter(filter) {
-        setPossibleFilters(
-          filters => [...filters, filter]
-        )
-        setActiveFilters(
-          filters => () => filters.filter(f => f.id !== filter.id)
-        )
+        setPossibleFilters([...possibleFilters, filter])
+        setActiveFilters(activeFilters.filter(f => f.id !== filter.id))
       },
       onAddFilter(filter) {
-        setPossibleFilters(
-          filters => () => filters.filter(f => f.id !== filter.id)
-        )
-        setActiveFilters(
-          filters => [...filters, filter]
-        )
+        setPossibleFilters(possibleFilters.filter(f => f.id !== filter.id))
+        setActiveFilters([...activeFilters, filter])
       }
     }}>
       <div className={classes.networkingWrapper}>
