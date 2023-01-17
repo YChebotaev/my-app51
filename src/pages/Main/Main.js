@@ -1,12 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import Footer from '../components/common/Footer';
-import Header from '../components/common/Header';
-import Onboarding, { useOnboarding } from '../components/common/Onboarding';
-import { WhatToRead } from '../components/common/WhatToRead'
-import '../styles/style.css';
+import { Networking } from './Networking'
+import Footer from '../../components/common/Footer';
+import Header from '../../components/common/Header';
+import Onboarding, { useOnboarding } from '../../components/common/Onboarding';
+import { WhatToRead } from '../../components/common/WhatToRead'
+import '../../styles/style.css';
 
-const Main = ({ isFirstTime }) => {
+export const Main = ({ isFirstTime }) => {
   const {
     isOpen,
     page,
@@ -39,7 +40,8 @@ const Main = ({ isFirstTime }) => {
             <div className="rect1-title">Объясняем, что тут у нас происходит</div>
           </div>
           <WhatToRead ref={whatToReadRef} />
-          <div ref={gamesRef} className="grad-rect rect2">
+          <Networking ref={gamesRef} />
+          {/* <div ref={gamesRef} className="grad-rect rect2">
             <div className="rect2-title">Игры</div>
             <div className="rect-cols">
               <div className="col-3">
@@ -52,7 +54,7 @@ const Main = ({ isFirstTime }) => {
                 <div className="item-game"></div>
               </div>
             </div>
-          </div>
+          </div> */}
           <div ref={chatsRef} className="section section2">
             <Link to="/chat"><div className="section-title">Чаты</div></Link>
             <div className="chats-list">
@@ -90,5 +92,3 @@ const Main = ({ isFirstTime }) => {
     </>
   )
 }
-
-export default Main
