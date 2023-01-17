@@ -1,27 +1,27 @@
-import { useEffect } from 'react'
-import { useQuery } from '@tanstack/react-query'
-import { useNavigate } from 'react-router-dom'
+// import { useEffect } from 'react'
+// import { useQuery } from '@tanstack/react-query'
+// import { useNavigate } from 'react-router-dom'
 import { MyCard } from './MyCard'
+// import { useApiClient } from '../../hooks'
 import { PageTitle } from '../../components/common/PageTitle'
 import { TitleSeparator } from '../../components/networking/TitleSeparator'
-import { useApiClient } from '../../hooks'
 import classes from './NetworkingMe.module.css'
 
 export const NetworkingMe = () => {
-  const apiClient = useApiClient()
-  const navigate = useNavigate()
+  // const apiClient = useApiClient()
+  // const navigate = useNavigate()
 
-  const { data } = useQuery(['cards', 'my_card'], async () => {
-    const { data } = await apiClient.get('/cards/my_card')
+  // const { data } = useQuery(['cards', 'my_card'], async () => {
+  //   const { data } = await apiClient.get('/cards/my_card')
 
-    return data
-  })
+  //   return data
+  // })
 
-  useEffect(() => {
-    if (data === null) {
-      navigate('/networking/create')
-    }
-  }, [data, navigate])
+  // useEffect(() => {
+  //   if (data === null) {
+  //     navigate('/networking/create')
+  //   }
+  // }, [data, navigate])
 
   return (
     <div className={classes.networkingMe}>

@@ -2,6 +2,8 @@ import classes from './MyCard.module.css'
 import Toggle from 'react-toggle'
 import { useQuery } from '@tanstack/react-query'
 import cn from 'classnames'
+import { Bio } from './Bio'
+import { Tags } from './Tags'
 import { Skeleton } from '../../../components/common/Skeleton'
 import { useApiClient } from '../../../hooks'
 import { concatFullName } from '../../../utils'
@@ -14,7 +16,20 @@ export const MyCard = () => {
   } = useQuery(['cards', 'my_card'], async () => {
     const { data } = await apiClient.get('/cards/my_card')
 
-    return data
+    return data /*?? {
+      "author_username": "string",
+      "first_name": "string",
+      "surname": "string",
+      "raiting": "string",
+      "description": "string",
+      "aprroval_status": "string",
+      "role": "string",
+      "proffesion": "string",
+      "first_tag": "string",
+      "second_tag": "string",
+      "chat_open": "string",
+      "card_profile_img": "string"
+    }*/
   })
   const fullName = concatFullName(data?.first_name, data?.surname)
 
@@ -48,26 +63,15 @@ export const MyCard = () => {
                 {data?.proffesion && <div className={classes.mcnProfession}>{data.proffesion}</div>}
               </div>
             )}
-            <div className={classes.mcBio}>
-              {data?.description}
-              <div className={classes.mcbEditIcon} />
+            <div className={classes.mcBioWrapper}>
+              <Bio initialValue={data?.description} />
             </div>
-            <div className={classes.mcTags}>
-              {data?.first_tag && (
-                <button key="first_tag" className={classes.mcTag}>
-                  <div className={classes.mctLeft}>{data?.first_tag}</div>
-                  <div className={classes.mctRight}></div>
-                </button>
-              )}
-              {data?.second_tag && (
-                <button key="second_tag" className={classes.mcTag}>
-                  <div className={classes.mctLeft}>{data?.second_tag}</div>
-                  <div className={classes.mctRight}></div>
-                </button>
-              )}
-              {(!data?.first_tag || !data?.second_tag) && (
-                <button className={classes.mctAddButton}>+</button>
-              )}
+            <div className={classes.mcTagsWrapper}>
+              <Tags
+                initialFirstTag={data?.first_tag}
+                initialSecondTag={data?.second_tag}
+                initialThirdTag={data?.third_tag}
+              />
             </div>
             <div className={classes.mcAvailability}>
               <div className={classes.mcaText}>Доступен для чата</div>
