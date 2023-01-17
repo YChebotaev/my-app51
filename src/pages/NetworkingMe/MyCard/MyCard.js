@@ -4,9 +4,11 @@ import { useQuery } from '@tanstack/react-query'
 import cn from 'classnames'
 import { Bio } from './Bio'
 import { Tags } from './Tags'
+import { ProfileImage } from './ProfileImage'
+import { Profession } from '../../../components/networking/Profession'
 import { Skeleton } from '../../../components/common/Skeleton'
 import { useApiClient } from '../../../hooks'
-import { concatFullName } from '../../../utils'
+import { getFullName } from '../../../utils'
 
 export const MyCard = () => {
   const apiClient = useApiClient()
@@ -31,7 +33,7 @@ export const MyCard = () => {
       "card_profile_img": "string"
     }*/
   })
-  const fullName = concatFullName(data?.first_name, data?.surname)
+  const fullName = getFullName(data?.first_name, data?.surname)
 
   if (isLoading) {
     return (
@@ -43,7 +45,7 @@ export const MyCard = () => {
     <div className={classes.mcWrapper}>
       <div className={classes.myCard}>
         <div className={classes.mcLeft}>
-          <div className={classes.mcAvatar} />
+          <ProfileImage initialImageSrc={data?.card_profile_img} />
         </div>
         <div className={classes.mcRight}>
           <div className={classes.mcDetails}>
@@ -51,7 +53,7 @@ export const MyCard = () => {
               <>
                 <div className={classes.mcName}>
                   <div className={classes.mcnName}>{fullName}</div>
-                  {data?.proffesion && <div className={classes.mcnProfession}>{data.proffesion}</div>}
+                  {data?.proffesion && <Profession profession={data?.proffesion} />}
                 </div>
                 {data?.author_username && <div className={classes.mcnUsername}>{data?.author_username}</div>}
               </>
@@ -60,7 +62,7 @@ export const MyCard = () => {
                 <div className={cn(classes.mcnUsername, classes.mcnOnlyUsername)}>
                   {data?.author_username}
                 </div>
-                {data?.proffesion && <div className={classes.mcnProfession}>{data.proffesion}</div>}
+                {data?.proffesion && <Profession profession={data?.proffesion} />}
               </div>
             )}
             <div className={classes.mcBioWrapper}>

@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import cn from 'classnames'
 import { useApiClient, useProfilePictureUrl } from '../../../hooks'
-import { concatFullName } from '../../../utils'
+import { getFullName } from '../../../utils'
 import classes from "./MyAccount.module.css"
 import { Skeleton } from '../../../components/common/Skeleton'
 
@@ -20,7 +20,7 @@ export const MyAccount = () => {
     return data
   })
   const { data: avatarUrl, isLoading: isLoadingAvatarUrl } = useProfilePictureUrl()
-  const fullName = concatFullName(first_name, surname)
+  const fullName = getFullName(first_name, surname)
 
   return (
     <div className={classes.myAccount}>

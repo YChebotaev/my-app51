@@ -1,23 +1,45 @@
+import { Profession } from '../../../../components/networking/Profession'
+import { getFullName } from '../../../../utils'
 import classes from './Card.module.css'
 
-export const Card = () => (
-  <div className={classes.cardWrapper}>
-    <div className={classes.card}>
-      <div className={classes.cardAvatar} />
-      <div className={classes.cardDetails}>
-        <div className={classes.cardName}>Вася Пупкин 🧑🏻‍🏫</div>
-        <div className={classes.cardProfession}>Преподаватель</div>
-        <div className={classes.cardBio}>Преподаватель чего-то там</div>
-        <div className={classes.cardTags}>
-          <div className={classes.cardTag}>Финтех</div>
-          <div className={classes.cardTag}>Дизайн</div>
-        </div>
-        <div className={classes.cardActions}>
-          <button className={classes.cardAction}>Написать письмо</button>
-          <button className={classes.cardAction}>Начать чат</button>
+export const Card = ({ card: {
+  id,
+  author_username,
+  first_name,
+  surname,
+  raiting,
+  description,
+  aprroval_status,
+  role,
+  proffesion,
+  first_tag,
+  second_tag,
+  third_tag,
+  chat_open,
+  card_profile_img,
+}}) => {
+  const fullName = getFullName(first_name, surname)
+
+  return (
+    <div className={classes.cardWrapper}>
+      <div className={classes.card}>
+        <div className={classes.cardAvatar} />
+        <div className={classes.cardDetails}>
+          <div className={classes.cardName}>{fullName}</div>
+          <Profession profession={proffesion} />
+          <div className={classes.cardBio}>{description}</div>
+          <div className={classes.cardTags}>
+            {first_tag && <div className={classes.cardTag}>{first_tag}</div>}
+            {second_tag && <div className={classes.cardTag}>{second_tag}</div>}
+            {third_tag && <div className={classes.cardTag}>{third_tag}</div>}
+          </div>
+          <div className={classes.cardActions}>
+            <button className={classes.cardAction}>Написать письмо</button>
+            <button className={classes.cardAction}>Начать чат</button>
+          </div>
         </div>
       </div>
+      <div className={classes.cardPlace}>#{raiting}</div>
     </div>
-    <div className={classes.cardPlace}>#1</div>
-  </div>
-)
+  )
+}

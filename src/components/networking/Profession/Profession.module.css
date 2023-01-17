@@ -1,0 +1,12 @@
+.profession {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 8px;
+  line-height: 11px;
+  color: #D73F51;
+  border: 1px solid #D73F51;
+  padding: 2px 5px;
+  border-radius: 7px;
+}

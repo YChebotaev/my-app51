@@ -1,4 +1,4 @@
-export const concatFullName = (firstName, surname) => {
+export const getFullName = (firstName, surname) => {
   if (firstName && surname) {
     return `${firstName} ${surname}`
   } else
