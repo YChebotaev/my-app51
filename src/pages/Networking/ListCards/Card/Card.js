@@ -4,22 +4,25 @@ import { Profession } from '../../../../components/networking/Profession'
 import { CardAvatar } from '../../../../components/networking/CardAvatar'
 import classes from './Card.module.css'
 
-export const Card = ({ card: {
-  id,
-  author_username,
-  first_name,
-  surname,
-  raiting,
-  description,
-  aprroval_status,
-  role,
-  proffesion,
-  first_tag,
-  second_tag,
-  third_tag,
-  chat_open,
-  card_profile_img,
-} }) => {
+export const Card = ({
+  card: {
+    id,
+    author_username,
+    first_name,
+    surname,
+    raiting,
+    description,
+    aprroval_status,
+    role,
+    proffesion,
+    first_tag,
+    second_tag,
+    third_tag,
+    chat_open,
+    card_profile_img,
+  },
+  showActions = true
+}) => {
   const navigate = useNavigate()
   const fullName = getFullName(first_name, surname)
 
@@ -41,26 +44,28 @@ export const Card = ({ card: {
               {second_tag && <div className={classes.cardTag}>{second_tag}</div>}
               {third_tag && <div className={classes.cardTag}>{third_tag}</div>}
             </div>
-            <div className={classes.cardActions}>
-              <button
-                className={classes.cardAction}
-                onClick={(e) => {
-                  e.preventDefault()
-
-                  navigate(`/networking/${trimAtSymbol(author_username)}`)
-                }}
-              >Написать письмо</button>
-              {chat_open === 'available' && (
+            {showActions && (
+              <div className={classes.cardActions}>
                 <button
                   className={classes.cardAction}
                   onClick={(e) => {
                     e.preventDefault()
 
-                    window.open(`https://t.me/${trimAtSymbol(author_username)}`, '_blank')
+                    navigate(`/networking/${trimAtSymbol(author_username)}`)
                   }}
-                >Начать чат</button>
-              )}
-            </div>
+                >Написать письмо</button>
+                {chat_open === 'available' && (
+                  <button
+                    className={classes.cardAction}
+                    onClick={(e) => {
+                      e.preventDefault()
+
+                      window.open(`https://t.me/${trimAtSymbol(author_username)}`, '_blank')
+                    }}
+                  >Начать чат</button>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </div>

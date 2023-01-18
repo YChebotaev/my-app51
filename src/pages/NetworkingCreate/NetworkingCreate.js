@@ -98,6 +98,7 @@ export const NetworkingCreate = () => {
       </ul>
       <div className={classes.bioWrapper}>
         <CardTextEdit
+          name="description"
           control={control}
           title="Описание профиля (био)"
           inputPlaceholder="Описание профиля"

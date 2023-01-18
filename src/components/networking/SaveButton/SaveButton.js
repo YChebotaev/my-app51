@@ -1,7 +1,7 @@
 import classes from './SaveButton.module.css'
 
-export const SaveButton = () => (
+export const SaveButton = ({ children }) => (
   <button type="submit" className={classes.saveButton}>
-    Сохранить
+    {children ?? 'Сохранить'}
   </button>
 )
