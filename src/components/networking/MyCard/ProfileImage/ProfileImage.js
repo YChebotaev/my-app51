@@ -4,14 +4,14 @@ import { useApiClient, useLoadImage } from '../../../../hooks'
 import { Skeleton, KIND_FETCHING, KIND_UPDATING } from '../../../../components/common/Skeleton'
 import classes from './ProfileImage.module.css'
 
-export const ProfileImage = () => {
+export const ProfileImage = ({ src }) => {
   const fileRef = useRef()
   const apiClient = useApiClient()
-  const [imageSrc, setImageSrc] = useState()
+  const [imageSrc, setImageSrc] = useState(src)
   const { data: imageUrl, isLoading: isImageLoading } = useLoadImage(
     ['card_profile_img', imageSrc],
     imageSrc,
-    '/images/avatar-placeholder.png'
+    src ? undefined : '/images/avatar-placeholder.png'
   )
   const { mutate, isLoading: isImageUpdating } = useMutation(['cards', 'upload_image'], async () => {
     const file = fileRef.current.files[0]
@@ -39,7 +39,9 @@ export const ProfileImage = () => {
       />
       <button
         className={classes.piUploadButton}
-        onClick={() => {
+        onClick={(e) => {
+          e.preventDefault()
+
           fileRef.current.click()
         }}
       >Редактировать фото</button>

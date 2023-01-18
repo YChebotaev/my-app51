@@ -18,7 +18,9 @@ export const Tags = ({ control }) => {
         <button
           key="first_tag"
           className={classes.tagsTag}
-          onClick={() => {
+          onClick={(e) => {
+            e.preventDefault()
+
             firstTagField.onChange(null)
           }}
         >
@@ -30,7 +32,9 @@ export const Tags = ({ control }) => {
         <button
           key="second_tag"
           className={classes.tagsTag}
-          onClick={() => {
+          onClick={(e) => {
+            e.preventDefault()
+
             secondTagField.onChange(null)
           }}
         >
@@ -40,9 +44,11 @@ export const Tags = ({ control }) => {
       )}
       {thirdTagField.value && (
         <button
-          key="second_tag"
+          key="third_tag"
           className={classes.tagsTag}
-          onClick={() => {
+          onClick={(e) => {
+            e.preventDefault()
+
             thirdTagField.onChange(null)
           }}
         >

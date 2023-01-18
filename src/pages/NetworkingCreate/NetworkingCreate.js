@@ -1,14 +1,15 @@
 import { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
-import { useMutation } from '@tanstack/react-query'
-import { MyCard } from './MyCard'
-import { BioEdit } from './BioEdit'
-import { SaveButton } from './SaveButton'
+import { useMutation, useQuery } from '@tanstack/react-query'
 import { useApiClient } from '../../hooks'
 import { PageTitle } from '../../components/common/PageTitle'
 import { TitleSeparator } from '../../components/networking/TitleSeparator'
 import { Notification } from '../../components/common/Notification'
+import { MyCard } from '../../components/networking/MyCard'
+import { CardTextEdit } from '../../components/networking/CardTextEdit'
+import { SaveButton } from '../../components/networking/SaveButton'
+import { Skeleton } from '../../components/common/Skeleton'
 import classes from './NetworkingCreate.module.css'
 import okIcon from '../../styles/images/ok-icon.svg'
 import failIcon from '../../styles/images/fail-icon.svg'
@@ -16,6 +17,14 @@ import failIcon from '../../styles/images/fail-icon.svg'
 export const NetworkingCreate = () => {
   const navigate = useNavigate()
   const apiClient = useApiClient()
+  const {
+    data,
+    isLoading
+  } = useQuery(['telegram_user', 'my_profile'], async () => {
+    const { data } = await apiClient.get('/telegram_user/my_profile')
+
+    return data
+  })
   const { control, handleSubmit } = useForm({
     defaultValues: {
       description: '',
@@ -70,7 +79,17 @@ export const NetworkingCreate = () => {
       </PageTitle>
       <TitleSeparator />
       <div className={classes.myCardWrapper}>
-        <MyCard control={control} />
+        {isLoading ? (
+          <Skeleton style={{ height: 147, borderRadius: 10 }} />
+        ) : (
+          <MyCard
+            usernameLink={data?.username_link}
+            firstName={data?.first_name}
+            surname={data?.surname}
+            profession="student"
+            control={control}
+          />
+        )}
       </div>
       <ul className={classes.cardEditHelpText}>
         <li>
@@ -78,7 +97,11 @@ export const NetworkingCreate = () => {
         </li>
       </ul>
       <div className={classes.bioWrapper}>
-        <BioEdit control={control} />
+        <CardTextEdit
+          control={control}
+          title="Описание профиля (био)"
+          inputPlaceholder="Описание профиля"
+        />
       </div>
       <div className={classes.saveButtonWrapper}>
         <SaveButton />

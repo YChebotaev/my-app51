@@ -22,7 +22,9 @@ export const Popup = ({ items, onAdd, onClose }) => {
           <button
             key={name}
             className={classes.popupListItem}
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault()
+
               onAdd(name)
               onClose()
             }}

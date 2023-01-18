@@ -13,9 +13,15 @@ export const useLoadImage = (queryKey, src, placeholderSrc) => {
       return data
     } else
     if (src != null) {
-      const { data } = await apiClient.get(src, { responseType: 'blob' })
+      if (src.startsWith('http')) {
+        const { data } = await axios.get(src, { responseType: 'blob' })
+        
+        return data
+      } else {
+        const { data } = await apiClient.get(src, { responseType: 'blob' })
 
-      return data
+        return data
+      }
     } else {
       return null
     }

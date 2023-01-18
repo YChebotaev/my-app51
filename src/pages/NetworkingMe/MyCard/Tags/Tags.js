@@ -33,7 +33,9 @@ export const Tags = ({
         <button
           key="first_tag"
           className={classes.tagsTag}
-          onClick={() => {
+          onClick={(e) => {
+            e.preventDefault()
+
             setFirstTag(null)
 
             mutate({
@@ -51,7 +53,9 @@ export const Tags = ({
         <button
           key="second_tag"
           className={classes.tagsTag}
-          onClick={() => {
+          onClick={(e) => {
+            e.preventDefault()
+
             setSecondTag(null)
 
             mutate({
@@ -67,9 +71,11 @@ export const Tags = ({
       )}
       {thirdTag && (
         <button
-          key="second_tag"
+          key="third_tag"
           className={classes.tagsTag}
-          onClick={() => {
+          onClick={(e) => {
+            e.preventDefault()
+
             setThirdTag(null)
 
             mutate({

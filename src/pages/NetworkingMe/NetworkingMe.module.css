@@ -21,3 +21,19 @@
 .myCardWrapper {
   padding: 15px;
 }
+
+.cardEditHelpText {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: #ffffff;
+  padding-right: 15px;
+}
+
+.nmCardTextWrapper {
+  padding: 15px;
+}
+
+.nmSaveButtonWrapper {
+  padding: 15px;
+}
