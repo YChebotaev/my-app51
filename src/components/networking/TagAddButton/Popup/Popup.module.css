@@ -5,6 +5,8 @@
   position: absolute;
   width: 100px;
   overflow: hidden;
+  max-height: 150px;
+  overflow-y: scroll;
 }
 
 .popupInputWrapper {

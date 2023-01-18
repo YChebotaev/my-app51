@@ -1,4 +1,5 @@
-import { getFullName } from '../../../../utils'
+import { useNavigate } from 'react-router-dom'
+import { getFullName, trimAtSymbol } from '../../../../utils'
 import { Profession } from '../../../../components/networking/Profession'
 import { CardAvatar } from '../../../../components/networking/CardAvatar'
 import classes from './Card.module.css'
@@ -19,6 +20,7 @@ export const Card = ({ card: {
   chat_open,
   card_profile_img,
 } }) => {
+  const navigate = useNavigate()
   const fullName = getFullName(first_name, surname)
 
   return (
@@ -40,8 +42,24 @@ export const Card = ({ card: {
               {third_tag && <div className={classes.cardTag}>{third_tag}</div>}
             </div>
             <div className={classes.cardActions}>
-              <button className={classes.cardAction}>Написать письмо</button>
-              <button className={classes.cardAction}>Начать чат</button>
+              <button
+                className={classes.cardAction}
+                onClick={(e) => {
+                  e.preventDefault()
+
+                  navigate(`/networking/${trimAtSymbol(author_username)}`)
+                }}
+              >Написать письмо</button>
+              {chat_open === 'available' && (
+                <button
+                  className={classes.cardAction}
+                  onClick={(e) => {
+                    e.preventDefault()
+
+                    window.open(`https://t.me/${trimAtSymbol(author_username)}`, '_blank')
+                  }}
+                >Начать чат</button>
+              )}
             </div>
           </div>
         </div>

@@ -17,6 +17,12 @@
   width: 100%;
 }
 
+.cardAvatarSkeleton {
+  height: 150px;
+  border-radius: 10px;
+  width: 100%;
+}
+
 .cardDetails {
   display: flex;
   flex-flow: column;
@@ -58,6 +64,8 @@
 }
 
 .cardActions {
+  display: flex;
+  gap: 5px;
 }
 
 .cardAction {
@@ -83,4 +91,3 @@
   justify-content: center;
   font-weight: 500;
 }
-

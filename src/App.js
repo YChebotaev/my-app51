@@ -8,6 +8,7 @@ import { Account } from './pages/Account'
 import { Networking } from './pages/Networking'
 import { NetworkingMe } from './pages/NetworkingMe'
 import { NetworkingCreate } from './pages/NetworkingCreate'
+import { NetworkingCard } from './pages/NetworkingCard'
 import './styles/fonts/stylesheet.css'
 import './styles/toggle.css'
 
@@ -25,6 +26,7 @@ function App({ isFirstTime }) {
         <Route path="/account" element={<Account />} />
         <Route path="/networking/me" element={<NetworkingMe />} />
         <Route path="/networking/create" element={<NetworkingCreate />} />
+        <Route path="/networking/:username" element={<NetworkingCard />} />
         <Route path="/networking" element={<Networking />} />
       </Routes>
     </div>
