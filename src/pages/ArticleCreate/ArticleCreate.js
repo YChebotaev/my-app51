@@ -1,7 +1,8 @@
 import React, { useMemo, useState } from 'react'
 import { useMutation } from '@tanstack/react-query'
 import { useForm } from 'react-hook-form'
-import { ContentEditor } from './ContentEditor'
+import TextareaAutosize from 'react-textarea-autosize'
+// import { ContentEditor } from './ContentEditor'
 import { UploadImage } from './UploadImage'
 import { PageTitle } from '../../components/common/PageTitle'
 import { Notification } from '../../components/common/Notification'
@@ -39,17 +40,21 @@ export const ArticleCreate = () => {
     return data
   }, {
     onSuccess() {
+      console.log('onSuccess')
+
       setSubmitResult('success')
     },
     onError() {
+      console.log('onError')
+
       setSubmitResult('fail')
     }
   })
-  const { control, register, handleSubmit, watch } = useForm({
+  const { /* control, */ register, handleSubmit, watch } = useForm({
     defaultValues: {
       title: '',
       subtitle: '',
-      content: []
+      content: ''
     }
   })
   const canSubmit = watch('title') !== '' && watch('subtitle') !== '' && watch('content') !== ''
@@ -136,7 +141,25 @@ export const ArticleCreate = () => {
           display: 'flex',
           flexDirection: "column"
         }}>
-          <ContentEditor name="content" control={control} />
+          <TextareaAutosize
+            {...register('content')}
+            className='inputText'
+            placeholder="Текст записи..."
+            style={{
+              backgroundColor: "transparent",
+              border: 0,
+              color: "white",
+              wordBreak: "break-word",
+              resize: "none",
+              fontFamily: 'Gilroy',
+              fontStyle: 'normal',
+              fontHeight: '500',
+              fontSize: '14px',
+              lineHeight: '18px',
+              padding: '5px 0'
+            }}
+          />
+          {/* <ContentEditor name="content" control={control} /> */}
         </div>
         <div style={{
           display: "flex",
@@ -205,9 +228,7 @@ export const ArticleCreate = () => {
           )}
         </div>
       </form>
-      {submitResult != null && (
-        <Notification icon={submitResultIcon} text={submitResultText} />
-      )}
+      <Notification isOpen={submitResult != null} icon={submitResultIcon} text={submitResultText} />
     </div>
   )
 }

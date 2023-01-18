@@ -5,3 +5,16 @@
   font-size: 14px;
   color: #ffffff;
 }
+
+.ceWrapper {
+  position: relative;
+}
+
+.cePlaceholder {
+  position: absolute;
+  top: 4px;
+  left: 0px;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 14px;
+  pointer-events: none;
+}
