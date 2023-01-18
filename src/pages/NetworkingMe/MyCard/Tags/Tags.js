@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useMutation } from '@tanstack/react-query'
-import { AddButton } from './AddButton'
+import { AddButton } from '../../../../components/networking/TagAddButton'
 import { useApiClient } from '../../../../hooks'
 import classes from './Tags.module.css'
 

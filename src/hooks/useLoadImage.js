@@ -1,14 +1,24 @@
 import { useEffect } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { useApiClient } from './useApiClient'
+import axios from 'axios'
 
-export const useLoadImage = (queryKey, src) => {
+export const useLoadImage = (queryKey, src, placeholderSrc) => {
   const apiClient = useApiClient()
 
   const result = useQuery(queryKey, async () => {
-    const { data } = await apiClient.get(src, { responseType: 'blob' })
+    if (src == null && placeholderSrc != null) {
+      const { data } = await axios.get(placeholderSrc, { responseType: 'blob' })
 
-    return data
+      return data
+    } else
+    if (src != null) {
+      const { data } = await apiClient.get(src, { responseType: 'blob' })
+
+      return data
+    } else {
+      return null
+    }
   }, {
     select(data) {
       const url = URL.createObjectURL(data)

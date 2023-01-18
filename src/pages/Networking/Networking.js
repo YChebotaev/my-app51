@@ -1,5 +1,4 @@
 import { useState, useMemo, useRef } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import context from './context'
 import { MyCardLink } from './MyCardLink'
@@ -10,6 +9,7 @@ import { FilterPopup } from './FilterPopup'
 import { ListSkeleton } from './ListSkeleton'
 import { GridSkeleton } from './GridSkeleton'
 import { Empty } from './Empty'
+import { BlockedBackdrop } from './BlockedBackdrop'
 import { useApiClient } from '../../hooks'
 import { PageTitle } from '../../components/common/PageTitle'
 import { TitleSeparator } from '../../components/networking/TitleSeparator'
@@ -17,11 +17,22 @@ import classes from './Networking.module.css'
 
 export const Networking = () => {
   const apiClient = useApiClient()
-  const navigate = useNavigate()
   const filterButtonRef = useRef()
   const [viewMode, setViewMode] = useState('list') // 'list' | 'grid'
   const [isFilterPopupOpen, setIsFilterPopupOpen] = useState(false)
   const [activeFilters, setActiveFilters] = useState([])
+  const [isBlocked, setIsBlocked] = useState(false)
+  useQuery(['cards', 'my_card'], async () => {
+    const { data } = await apiClient.get('/cards/my_card')
+
+    return data // === null ? { blocked: true } : data
+  }, {
+    onSuccess(data) {
+      if (data === null) {
+        setIsBlocked(true)
+      }
+    }
+  })
   const { data, isLoading } = useQuery(['cards', 'all_cards', {
     ...(activeFilters[0] ? { first_tag: activeFilters[0].id } : null),
     ...(activeFilters[1] ? { second_tag: activeFilters[1].id } : null),
@@ -47,13 +58,8 @@ export const Networking = () => {
     //   ]
     // }
   }, {
-    onSuccess(data) {
-      if (data === null) {
-        navigate('/networking/create')
-      }
-    },
-    select({ cards }) {
-      return cards
+    select({ items }) {
+      return items
     }
   })
   const [possibleFilters, setPossibleFilters] = useState([
@@ -120,6 +126,9 @@ export const Networking = () => {
         </div>
         {isFilterPopupOpen && (
           <FilterPopup />
+        )}
+        {isBlocked && (
+          <BlockedBackdrop />
         )}
       </div>
     </context.Provider>

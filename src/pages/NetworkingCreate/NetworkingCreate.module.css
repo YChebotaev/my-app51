@@ -1,43 +1,39 @@
 .networkingCreate {
-  position: relative;
+  min-height: 100vh;
+  background-color: rgb(32, 33, 40);
 }
 
-.ncBackdrop {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  backdrop-filter: blur(8.5px);
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  gap: 20px;
-  padding: 15px;
-  box-sizing: border-box;
-}
-
-.ncbText {
+.pageTitle {
   font-weight: 500;
-  font-size: 20px;
-  line-height: 24px;
-  text-align: center;
-  color: #FFFFFF;
+  font-size: 28px;
+  color: #ffffff;
 }
 
-.ncbButton {
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 24px;
-  color: #FFFFFF;
-  background-color: #D73F51;
+.closeButton {
   border: none;
-  padding: 15px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  border-radius: 10px;
+  background: transparent;
+  background-image: url("../../styles/images/networking-me-close.svg");
+  background-size: contain;
+  width: 30px;
+  height: 30px;
+}
+
+.myCardWrapper {
+  padding: 15px;
+}
+
+.cardEditHelpText {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: #ffffff;
+  padding-right: 15px;
+}
+
+.bioWrapper {
+  padding: 15px;
+}
+
+.saveButtonWrapper {
+  padding: 15px;
 }
