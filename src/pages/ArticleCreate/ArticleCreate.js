@@ -1,8 +1,8 @@
 import React, { useMemo, useState } from 'react'
 import { useMutation } from '@tanstack/react-query'
 import { useForm } from 'react-hook-form'
-import TextareaAutosize from 'react-textarea-autosize'
-// import { ContentEditor } from './ContentEditor'
+// import TextareaAutosize from 'react-textarea-autosize'
+import { ContentEdit } from './ContentEdit'
 import { UploadImage } from './UploadImage'
 import { PageTitle } from '../../components/common/PageTitle'
 import { Notification } from '../../components/common/Notification'
@@ -50,7 +50,7 @@ export const ArticleCreate = () => {
       setSubmitResult('fail')
     }
   })
-  const { /* control, */ register, handleSubmit, watch } = useForm({
+  const { control, register, handleSubmit, watch } = useForm({
     defaultValues: {
       title: '',
       subtitle: '',
@@ -101,8 +101,6 @@ export const ArticleCreate = () => {
               lineHeight: '19px',
               padding: '5px 0'
             }}
-          // onChange={(e) => setTitle(e.target.value)}
-          // onKeyDown={handleKeyDown}
           />
         </div>
         <div style={{ padding: '23px 0px 24px 23px' }} >
@@ -131,8 +129,6 @@ export const ArticleCreate = () => {
               lineHeight: '18px',
               padding: '5px 0'
             }}
-          // onChange={(e) => setSubtitle(e.target.value)}
-          // onKeyDown={handleKeyDown}
           />
         </div>
         <div style={{
@@ -141,7 +137,8 @@ export const ArticleCreate = () => {
           display: 'flex',
           flexDirection: "column"
         }}>
-          <TextareaAutosize
+          <ContentEdit control={control} />
+          {/* <TextareaAutosize
             {...register('content')}
             className='inputText'
             placeholder="Текст записи..."
@@ -158,8 +155,7 @@ export const ArticleCreate = () => {
               lineHeight: '18px',
               padding: '5px 0'
             }}
-          />
-          {/* <ContentEditor name="content" control={control} /> */}
+          /> */}
         </div>
         <div style={{
           display: "flex",

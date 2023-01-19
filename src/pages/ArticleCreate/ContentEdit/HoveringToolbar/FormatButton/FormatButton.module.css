@@ -1,0 +1,8 @@
+.formatButton {
+  cursor: pointer;
+  color: white;
+}
+
+.fbActive {
+  color: #aaaaaa;
+}
