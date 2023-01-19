@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import classes from './MyCard.module.css'
 import cn from 'classnames'
-// import { Bio } from './Bio'
+import { Description } from './Description'
 import { Tags } from './Tags'
 import { ProfileImage } from './ProfileImage'
 import { ChatOpenToggle } from './ChatOpenToggle'
@@ -16,6 +16,7 @@ export const MyCard = ({
   description,
   rating,
   profileImg,
+  forceShowDescription,
   control
 }) => {
   const card = useMemo(() => {
@@ -44,9 +45,11 @@ export const MyCard = ({
                 {profession && <Profession profession={profession} />}
               </div>
             )}
-            {/* <div className={classes.mcBioWrapper}>
-                <Bio initialValue={data?.description} />
-              </div> */}
+            {(description || forceShowDescription) && (
+              <div className={classes.mcBioWrapper}>
+                <Description control={control} />
+              </div>
+            )}
             <div className={classes.mcTagsWrapper}>
               <Tags control={control} />
             </div>
@@ -60,13 +63,12 @@ export const MyCard = ({
         </div>
       </div>
     )
-  }, [control, usernameLink, firstName, surname, profession, profileImg])
+  }, [control, usernameLink, firstName, surname, profession, profileImg, description, forceShowDescription])
 
-  return rating
-    ? (
-      <div className={classes.mcWrapper}>
-        {card}
-      </div>
-    )
-    : card
+  return rating == null ? card : (
+    <div className={classes.mcWrapper}>
+      {card}
+      <div className={classes.mcRating}>#{rating}</div>
+    </div>
+  )
 }

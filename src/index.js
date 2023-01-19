@@ -1,19 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
-import './index.css';
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { QueryClientProvider } from '@tanstack/react-query'
+import { BrowserRouter } from 'react-router-dom'
 import App from './App';
-import { createApiClient, getTelegramUserId } from './utils'
+import { createApiClient, getTelegramUserId, createQueryClient } from './utils'
 import { useApiClient } from './hooks'
-import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from 'react-router-dom';
+import reportWebVitals from './reportWebVitals'
+import './index.css';
 
-const queryClient = new QueryClient()
 const apiClient = createApiClient({
   baseURL: process.env['REACT_APP_BACKEND_URL'] + '/api/v1',
   token: getTelegramUserId(),
   ngrokSkipBrowserWarning: '69420'
 })
+const queryClient = createQueryClient(apiClient)
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const isFirstTime = window.localStorage.getItem('isFirstTime') === 'true'
 window.localStorage.setItem('isFirstTime', false)

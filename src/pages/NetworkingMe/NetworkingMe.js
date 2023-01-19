@@ -13,24 +13,22 @@ import classes from './NetworkingMe.module.css'
 export const NetworkingMe = () => {
   const navigate = useNavigate()
   const apiClient = useApiClient()
-  const { data, isLoading } = useQuery(['cards', 'my_card'], async () => {
-    const { data } = await apiClient.get('/cards/my_card')
-
-    return data
-  })
+  const { data, isLoading } = useQuery(['cards', 'my_card'])
   const { mutate } = useMutation(['cards', 'update_card'], async ({
     chat_available,
     description,
     first_tag,
     second_tag,
-    third_tag
+    third_tag,
+    bio
   }) => {
     const { data } = await apiClient.post('/cards/update_card', {
       chat_open: chat_available,
       description,
       first_tag,
       second_tag,
-      third_tag
+      third_tag,
+      bio
     })
 
     return data
@@ -41,7 +39,8 @@ export const NetworkingMe = () => {
       first_tag: null,
       second_tag: null,
       third_tag: null,
-      chat_available: 'available'
+      chat_available: 'available',
+      bio: ''
     },
     values: {
       ...data,
@@ -68,6 +67,7 @@ export const NetworkingMe = () => {
             profession="student"
             rating={data?.raiting}
             profileImg={data?.card_profile_img}
+            description={data?.description}
             control={control}
           />
         )}
@@ -78,7 +78,12 @@ export const NetworkingMe = () => {
         </li>
       </ul>
       <div className={classes.nmCardTextWrapper}>
-        <CardTextEdit control={control} title="Описание профиля (био)" inputPlaceholder="Описание профиля" />
+        <CardTextEdit
+          name="bio"
+          control={control}
+          title="Описание профиля (био)"
+          inputPlaceholder="Описание профиля"
+        />
       </div>
       <div className={classes.nmSaveButtonWrapper}>
         <SaveButton />

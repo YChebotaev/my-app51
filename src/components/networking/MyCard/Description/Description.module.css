@@ -1,0 +1,41 @@
+.description {
+}
+
+.editDescription {
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+}
+
+.descriptionText {
+  color: rgba(255, 255, 255, 0.7);
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 11px;
+}
+
+.descriptionEditButton {
+  background-image: url('../../../../styles/images/networking-my-pencil.svg');
+  background-size: contain;
+  background: transparent;
+  border: none;
+  display: inline-block;
+  height: 7px;
+  margin-left: 1ex;
+  padding: 0;
+  width: 8px;
+}
+
+.descriptionInput {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: 'Gilroy';
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 11px;
+  padding: 3px 2px;
+  resize: none;
+  width: 100%;
+}

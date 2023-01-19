@@ -17,24 +17,32 @@ import failIcon from '../../styles/images/fail-icon.svg'
 export const NetworkingCreate = () => {
   const navigate = useNavigate()
   const apiClient = useApiClient()
-  const {
-    data,
-    isLoading
-  } = useQuery(['telegram_user', 'my_profile'], async () => {
-    const { data } = await apiClient.get('/telegram_user/my_profile')
-
-    return data
-  })
+  const { data, isLoading } = useQuery(['telegram_user', 'my_profile'])
   const { control, handleSubmit } = useForm({
     defaultValues: {
       description: '',
       first_tag: null,
       second_tag: null,
       third_tag: null,
-      chat_available: 'available'
+      chat_available: 'available',
+      bio: ''
+    },
+    resolver(values) {
+      const { first_tag, second_tag, third_tag } = values
+      const errors = {}
+
+      if (!first_tag && !second_tag && !third_tag) {
+        errors.first_tag = 'Заполните хотя-бы один тег'
+        errors.second_tag = 'Заполните хотя-бы один тег'
+        errors.third_tag = 'Заполните хотя-бы один тег'
+      }
+
+      return { errors, values }
     }
   })
   const [saveState, setSaveState] = useState(null) // null | 'success' | 'fail'
+  const [validationState, setValidationState] = useState(null) // null | 'fail'
+  const [validationErrorText, setValidationErrorText] = useState(null) // null | string
   const { mutate } = useMutation(['cards', 'create_card'], async (variables) => {
     const { data } = await apiClient.post('/cards/create_card', variables)
 
@@ -45,10 +53,14 @@ export const NetworkingCreate = () => {
 
       setTimeout(() => {
         navigate('/networking/me')
-      }, 5000)
+      }, 3000)
     },
     onError() {
       setSaveState('fail')
+
+      setTimeout(() => {
+        setSaveState(null)
+      }, 3000)
     }
   })
   const [notificationText, notificationIcon] = useMemo(() => {
@@ -66,7 +78,26 @@ export const NetworkingCreate = () => {
   }, [saveState])
 
   return (
-    <form className={classes.networkingCreate} onSubmit={handleSubmit((values) => mutate(values))}>
+    <form className={classes.networkingCreate} onSubmit={handleSubmit(
+      (values) => mutate(values),
+      (errors) => {
+        let firstError
+
+        for (const errorText of Object.values(errors)) {
+          firstError = errorText
+
+          break
+        }
+
+        setValidationState('fail')
+        setValidationErrorText(firstError)
+
+        setTimeout(() => {
+          setValidationState(null)
+          setValidationErrorText(null)
+        }, 3000)
+      }
+    )}>
       <PageTitle
         right={(
           <button
@@ -83,9 +114,11 @@ export const NetworkingCreate = () => {
           <Skeleton style={{ height: 147, borderRadius: 10 }} />
         ) : (
           <MyCard
+            forceShowDescription
             usernameLink={data?.username_link}
             firstName={data?.first_name}
             surname={data?.surname}
+            description={data?.description}
             profession="student"
             control={control}
           />
@@ -98,7 +131,7 @@ export const NetworkingCreate = () => {
       </ul>
       <div className={classes.bioWrapper}>
         <CardTextEdit
-          name="description"
+          name="bio"
           control={control}
           title="Описание профиля (био)"
           inputPlaceholder="Описание профиля"
@@ -107,7 +140,23 @@ export const NetworkingCreate = () => {
       <div className={classes.saveButtonWrapper}>
         <SaveButton />
       </div>
-      <Notification isOpen={saveState != null} icon={notificationIcon} text={notificationText} />
+      <Notification
+        isOpen={saveState != null}
+        icon={notificationIcon}
+        text={notificationText}
+        onClose={() => {
+          setSaveState(null)
+        }}
+      />
+      <Notification
+        isOpen={validationState != null}
+        icon={<img src={failIcon} alt="" />}
+        text={validationErrorText}
+        onClose={() => {
+          setValidationState(null)
+          setValidationErrorText(null)
+        }}
+      />
     </form>
   )
 }
