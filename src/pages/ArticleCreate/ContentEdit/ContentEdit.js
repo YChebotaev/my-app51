@@ -34,7 +34,7 @@ export const ContentEdit = ({ control }) => {
       >
         <HoveringToolbar />
         <Editable
-          // renderLeaf={props => <Leaf {...props} />}
+          renderLeaf={props => <Leaf {...props} />}
           placeholder="Текст статьи"
           style={{ color: '#ffffff' }}
           onDOMBeforeInput={(event) => {
