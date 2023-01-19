@@ -13,3 +13,8 @@
   border-radius: 4px;
   transition: opacity 0.75s;
 }
+
+.htFormatButtonIcon {
+  width: 10px;
+  height: 10px;
+}

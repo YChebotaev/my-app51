@@ -60,7 +60,7 @@ export const ArticleCreate = () => {
   const canSubmit = watch('title') !== '' && watch('subtitle') !== '' && watch('content') !== ''
 
   return (
-    <div className="main-wrapper">
+    <div className="main-wrapper" style={{ minHeight: 'calc(100vh + 60px)' }}>
       <form className="content-wrapper" onSubmit={handleSubmit(mutate)}>
         <PageTitle legacy>Новая запись</PageTitle>
         <div style={{

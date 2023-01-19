@@ -26,6 +26,9 @@ export const ContentEdit = ({ control }) => {
       >
         <HoveringToolbar />
         <Editable
+          onChange={(nodes) => {
+            console.log('nodes =', nodes)
+          }}
           style={{ color: '#ffffff' }}
           renderLeaf={props => <Leaf {...props} />}
           placeholder="Текст статьи"
