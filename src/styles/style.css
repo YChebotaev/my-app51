@@ -9,6 +9,7 @@
 }
 
 .main-wrapper {
+  position: relative;
   width: 100%;
   background: #1e1e1e;
   margin-top: 26px;
@@ -519,4 +520,35 @@
 
 .bottom-button-placeholder {
   height: 70px;
+}
+
+/* --- */
+
+.app-fade-enter {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+
+  transform: translate(100%, 0);
+}
+
+.app-fade-enter.app-fade-enter-active {
+  transform: translate(0, 0);
+
+  transition: opacity 250ms ease-out, transform 250ms ease;
+}
+
+.app-fade-exit {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+
+  transform: translate(0, 0);
+}
+
+.app-fade-exit.app-fade-exit-active {
+  transform: translate(-100%, 0);
+  transition: opacity 250ms ease-out, transform 250ms ease;
 }

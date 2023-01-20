@@ -1,0 +1,11 @@
+.skeleton {
+  display: flex;
+  flex-flow: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.skeletonItem {
+  height: 54px;
+  border-radius: 10px;
+}

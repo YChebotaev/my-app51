@@ -5,11 +5,21 @@ export const createQueryClient = (apiClient) => {
     defaultOptions: {
       queries: {
         async queryFn({ queryKey }) {
-          const url = '/' + queryKey.join('/')
+          const params = queryKey[queryKey.length - 1]
 
-          const { data } = await apiClient.get(url)
+          if (typeof params === 'object') {
+            const url = '/' + queryKey.slice(0, -1).join('/')
 
-          return data
+            const { data } = await apiClient.get(url, { params })
+
+            return data
+          } else {
+            const url = '/' + queryKey.join('/')
+
+            const { data } = await apiClient.get(url)
+
+            return data
+          }
         }
       }
     }

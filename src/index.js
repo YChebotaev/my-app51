@@ -8,6 +8,7 @@ import { useApiClient } from './hooks'
 import reportWebVitals from './reportWebVitals'
 import './index.css';
 
+window.Telegram.WebApp.backgroundColor = "#1E1E1E";
 const apiClient = createApiClient({
   baseURL: process.env['REACT_APP_BACKEND_URL'] + '/api/v1',
   token: getTelegramUserId(),
