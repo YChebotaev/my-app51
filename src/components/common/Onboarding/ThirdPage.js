@@ -15,14 +15,14 @@ const SecondPage = () => {
       <Counter />
       <Backdrop>
         <div className={commonClasses.textWrapper} style={{ position: 'absolute', top: 140, width: 'calc(100vw - 60px)' }}>
-          <p className={commonClasses.text}>Это раздел игр: здесь все понятно. Заходишь и играешь.</p>
+          <p className={commonClasses.text}>Это раздел нетворкинга: заходи и общайся.</p>
           <NextButton>Понятно, давай дальше</NextButton>
         </div>
         <div
           className={commonClasses.arrowDown}
           style={{
             position: 'absolute',
-            top: 270,
+            top: 250,
             left: 'calc(50% + 50px)',
             width: 110,
             height: 174

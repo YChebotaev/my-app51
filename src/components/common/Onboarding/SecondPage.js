@@ -38,7 +38,7 @@ const SecondPage = () => {
               style={{
                 position: 'absolute',
                 top: 40,
-                left: 'calc(50% - 180px)',
+                left: 'calc(50% - 270px)',
                 width: 'calc(100vw - 60px)'
               }}
             >

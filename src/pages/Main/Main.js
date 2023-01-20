@@ -1,11 +1,14 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { Networking } from './Networking'
+import { Chats } from './Chats'
 import Footer from '../../components/common/Footer';
 import Header from '../../components/common/Header';
 import Onboarding, { useOnboarding } from '../../components/common/Onboarding';
 import { WhatToRead } from '../../components/common/WhatToRead'
+import vomitingUnicornImg from '../../styles/images/vomiting-unicorn.png'
 import '../../styles/style.css';
+import classes from './Main.module.css'
 
 export const Main = ({ isFirstTime }) => {
   const {
@@ -31,7 +34,7 @@ export const Main = ({ isFirstTime }) => {
 
   return (
     <>
-      <div ref={mainWrapperRef} className="main-wrapper">
+      <div ref={mainWrapperRef} className={classes.mainWrapper}>
         <div className="header-title">Moove</div>
         <Header />
         <div className="content-wrapper">
@@ -41,41 +44,7 @@ export const Main = ({ isFirstTime }) => {
           </div>
           <WhatToRead ref={whatToReadRef} />
           <Networking ref={gamesRef} />
-          {/* <div ref={gamesRef} className="grad-rect rect2">
-            <div className="rect2-title">Игры</div>
-            <div className="rect-cols">
-              <div className="col-3">
-                <div className="item-game"></div>
-              </div>
-              <div className="col-3">
-                <div className="item-game"></div>
-              </div>
-              <div className="col-3">
-                <div className="item-game"></div>
-              </div>
-            </div>
-          </div> */}
-          <div ref={chatsRef} className="section section2">
-            <Link to="/chat"><div className="section-title">Чаты</div></Link>
-            <div className="chats-list">
-              <div className="chat-item">
-                <div className="chat-title chat-title-1">Название чата</div>
-                <div className="chat-num-members chat-num-members-1">11K участников</div>
-              </div>
-              <div className="chat-item">
-                <div className="chat-title chat-title-1">Название чата другое</div>
-                <div className="chat-num-members chat-num-members-1">11K участников</div>
-              </div>
-              <div className="chat-item">
-                <div className="chat-title chat-title-2">Длииинное название чата</div>
-                <div className="chat-num-members chat-num-members-2">11K участников</div>
-              </div>
-              <div className="chat-item">
-                <div className="chat-title chat-title-3">Длииинное название чата</div>
-                <div className="chat-num-members chat-num-members-3">11K участников</div>
-              </div>
-            </div>
-          </div>
+          <Chats ref={chatsRef} />
         </div>
         {isShowFooter && <Footer articleButtonRef={articleButtonRef} />}
       </div>
@@ -89,6 +58,7 @@ export const Main = ({ isFirstTime }) => {
           onClose={onClose}
         />
       )}
+      <img src={vomitingUnicornImg} alt="" className={classes.vomitingUnicorn} />
     </>
   )
 }

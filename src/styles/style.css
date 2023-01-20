@@ -277,8 +277,15 @@
 .section2 .chats-list .chat-item {
   width: 100%;
   display: flex;
-  justify-content: space-between;
   margin-bottom: 7px;
+  gap: 10px;
+}
+
+.section2 .chats-list .chat-icon {
+  width: 23px;
+  height: 23px;
+  background-color: #D9D9D9;
+  border-radius: 5px;
 }
 
 .section2 .chats-list .chat-title {
@@ -287,6 +294,8 @@
   font-weight: 600;
   font-size: 16px;
   line-height: 21px;
+  color: #ffffff;
+  flex-grow: 1;
 }
 
 .section2 .chats-list .chat-num-members {
@@ -299,38 +308,6 @@
   text-align: right;
   letter-spacing: 0.01em;
   color: #d73f51;
-}
-
-.section2 .chats-list .chat-title-1 {
-  color: #ffffff;
-}
-
-.section2 .chats-list .chat-title-2 {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.section2 .chats-list .chat-title-3 {
-  color: rgba(255, 255, 255, 0.2);
-}
-
-.section2 .chats-list .chat-num-members-4 {
-  color: #d73f51;
-}
-
-.section2 .chats-list .chat-num-members-5 {
-  color: rgba(255, 65, 99, 0.55);
-}
-
-.section2 .chats-list .chat-num-members-6 {
-  color: rgba(255, 65, 99, 0.25);
-}
-
-.section2 .chats-list .chat-num-members-2 {
-  opacity: 0.5;
-}
-
-.section2 .chats-list .chat-num-members-3 {
-  opacity: 0.2;
 }
 
 .chats-wrapper .chats {
