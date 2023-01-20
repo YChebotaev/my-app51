@@ -26,7 +26,9 @@ export const HoveringToolbar = () => {
       || Range.isCollapsed(selection)
       || Editor.string(editor, selection) === ''
     ) {
-      el.removeAttribute('style')
+      el.style.opacity = '0'
+
+      return
     }
 
     const domSelection = window.getSelection()
@@ -51,21 +53,21 @@ export const HoveringToolbar = () => {
         onMouseDown={(e) => e.preventDefault()}
       >
         <FormatButton
+          className={classes.htFormatButton}
           format="bold"
           icon={<img src={boldIcon} className={classes.htFormatButtonIcon} alt="Жирным" />}
         />
         <FormatButton
+          className={classes.htFormatButton}
           format="italic"
           icon={<img src={italicIcon} className={classes.htFormatButtonIcon} alt="Курсивом" />}
         />
         <FormatButton
+          className={classes.htFormatButton}
           format="underlined"
           icon={<img src={underlineIcon} className={classes.htFormatButtonIcon} alt="Курсивом" />}
         />
       </Menu>
-      <div className={classes.hoveringToolbar}>
-        {null}
-      </div>
     </Portal>
   )
 }

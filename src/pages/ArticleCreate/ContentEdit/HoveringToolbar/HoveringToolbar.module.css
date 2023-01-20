@@ -1,17 +1,32 @@
-.hoveringToolbar {
-}
-
 .htMenu {
-  padding: 8px 7px 6px;
+  /* padding: 8px 7px 6px; */
   position: absolute;
   z-index: 1;
   top: -10000px;
   left: -10000px;
   margin-top: -6px;
   opacity: 0;
-  background-color: #222;
-  border-radius: 4px;
+  backdrop-filter: blur(2px);
+  background-color: rgba(30, 30, 30, 0.63);
+  border-radius: 5px;
   transition: opacity 0.75s;
+  display: flex;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.htFormatButton {
+  padding: 0;
+  padding: 5px 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  /* background: transparent; */
+  color: #ffffff;
+}
+
+.htFormatButton:not(:last-of-type) {
+  border-right: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .htFormatButtonIcon {

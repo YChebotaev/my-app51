@@ -1,11 +1,12 @@
 import React, { useMemo, useState } from 'react'
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
 import { useForm } from 'react-hook-form'
-// import TextareaAutosize from 'react-textarea-autosize'
+import TextareaAutosize from 'react-textarea-autosize'
 import { ContentEdit } from './ContentEdit'
 import { UploadImage } from './UploadImage'
 import { PageTitle } from '../../components/common/PageTitle'
 import { Notification } from '../../components/common/Notification'
+import { Skeleton } from '../../components/common/Skeleton'
 import { useProfilePictureUrl, useApiClient } from '../../hooks'
 import imagePick from "../../styles/images/imagePick.svg"
 import play from "../../styles/images/play.svg"
@@ -16,6 +17,7 @@ import okIcon from '../../styles/images/ok-icon.svg'
 import failIcon from '../../styles/images/fail-icon.svg'
 
 import '../../styles/style.css';
+import { getFullName } from '../../utils'
 
 export const ArticleCreate = () => {
   const apiClient = useApiClient()
@@ -34,6 +36,7 @@ export const ArticleCreate = () => {
     }
   }, [submitResult])
   const { data: avatarUrl, isLoading: isLoadingAvatarUrl } = useProfilePictureUrl()
+  const { data: profile, isLoading: isProfileLoading } = useQuery(['telegram_user', 'my_profile'])
   const { mutate } = useMutation(['posts', 'create_post'], async (variables) => {
     const { data } = await apiClient.post('/posts/create_post', variables)
 
@@ -72,11 +75,15 @@ export const ArticleCreate = () => {
           <div>
             <img src={isLoadingAvatarUrl ? dummyAvatar : avatarUrl} width="15" alt="" style={{ borderRadius: 3 }} />
           </div>
-          <span style={{
-            fontSize: 15,
-            fontWeight: 300,
-            color: "#FFF"
-          }}>Автор статьи</span>
+          {isProfileLoading ? (
+            <Skeleton style={{ width: 100, height: 20, borderRadius: 5 }} />
+          ) : (
+            <span style={{
+              fontSize: 15,
+              fontWeight: 300,
+              color: "#FFF"
+            }}>{getFullName(profile.first_name, profile.surname) ?? profile.username_link}</span>
+          )}
         </div>
         <div style={{
           textAlign: "left",
@@ -84,7 +91,7 @@ export const ArticleCreate = () => {
           display: 'flex',
           flexDirection: "column"
         }}>
-          <input
+          <TextareaAutosize
             {...register('title')}
             placeholder="Текст заголовка..."
             className='inputText'
@@ -103,7 +110,7 @@ export const ArticleCreate = () => {
             }}
           />
         </div>
-        <div style={{ padding: '23px 0px 24px 23px' }} >
+        <div style={{ padding: '0px 0px 0px 23px' }}>
           <UploadImage />
         </div>
         <div style={{
@@ -112,7 +119,7 @@ export const ArticleCreate = () => {
           display: 'flex',
           flexDirection: "column"
         }}>
-          <input
+          <TextareaAutosize
             {...register('subtitle')}
             className='inputText'
             placeholder="Текст подзаголовка..."
