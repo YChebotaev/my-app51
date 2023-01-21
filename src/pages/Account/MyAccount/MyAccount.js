@@ -14,11 +14,7 @@ export const MyAccount = () => {
       username_link
     } = {},
     isLoading
-  } = useQuery(['telegram_user', 'my_profile'], async () => {
-    const { data } = await apiClient.get('/telegram_user/my_profile')
-
-    return data
-  })
+  } = useQuery(['telegram_user', 'my_profile'])
   const { data: avatarUrl, isLoading: isLoadingAvatarUrl } = useProfilePictureUrl()
   const fullName = getFullName(first_name, surname)
 

@@ -7,11 +7,16 @@ import {
   Type
 } from 'react-swipeable-list'
 import 'react-swipeable-list/dist/styles.css'
+import { Empty } from './Empty'
 import editIcon from '../../../styles/images/edit.svg'
 import deleteIcon from '../../../styles/images/delete.svg'
 import classes from './Articles.module.css'
 
 export const Articles = ({ data, onEdit, onDelete }) => {
+  if (data.length === 0) {
+    return <Empty />
+  }
+
   return (
     <div className={classes.articles}>
       <SwipeableList

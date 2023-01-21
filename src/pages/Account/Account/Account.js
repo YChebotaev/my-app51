@@ -4,9 +4,11 @@ import { Tabs, useTabs } from '../../../components/common/Tabs'
 import { Notification, useNotification } from '../../../components/common/Notification'
 import { MyAccount } from '../MyAccount'
 import { Articles } from '../Articles'
+import { ArticlesSkeleton } from './ArticlesSkeleton'
 import deleteIcon from '../../../styles/images/delete.svg'
 import classes from "./Account.module.css"
 import "../../../styles/style.css"
+import { useQuery } from "@tanstack/react-query"
 
 export const Account = () => {
   const { getTabProps, getContentProps } = useTabs(0)
@@ -14,6 +16,9 @@ export const Account = () => {
     isOpen: isDeleteNotificationOpen,
     onOpen: onDeleteNotificationOpen
   } = useNotification()
+  const { data, isLoading } = useQuery(['posts', 'my_posts'])
+
+  console.log('data =', data)
 
   return (
     <div className="main-wrapper">
@@ -29,87 +34,34 @@ export const Account = () => {
               <Tabs.Tab
                 {...getTabProps(1)}
                 count={
-                  <Tabs.Tab.Count>5</Tabs.Tab.Count>
+                  data?.draft?.draft_count != null && <Tabs.Tab.Count>{data.draft.draft_count}</Tabs.Tab.Count>
                 }>
                 Черновики
               </Tabs.Tab>
             </Tabs>
             <Tabs.Content {...getContentProps(0)}>
-              <Articles data={[
-                {
-                  id: '9aba7333-30c7-4f87-af7f-8d988f2d8561',
-                  title: 'Dicsord запустил платные подписки на сообщества',
-                  pubDate: new Date()
-                },
-                {
-                  id: 'af6677b3-d57f-43f5-90d2-047000d8713d',
-                  title: 'Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться',
-                  pubDate: new Date()
-                },
-                {
-                  id: '01b13b75-14ac-458a-a31d-fbe1db6f0e64',
-                  title: 'Dicsord запустил платные подписки на сообщества',
-                  pubDate: new Date()
-                },
-                {
-                  id: '12e2c121-9240-4346-8cfc-43f543a9d8c0',
-                  title: 'Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться',
-                  pubDate: new Date()
-                },
-                {
-                  id: '24e1f688-49fb-46eb-9640-03136049951b',
-                  title: 'Dicsord запустил платные подписки на сообщества',
-                  pubDate: new Date()
-                },
-              ]}
-                onEdit={(item) => { }}
-                onDelete={(item) => {
-                  onDeleteNotificationOpen({
-                    timeout: 3000
-                  })
-                }}
-              />
+              {isLoading ? <ArticlesSkeleton count={3} /> : (
+                <Articles data={data.published}
+                  onEdit={(item) => { }}
+                  onDelete={(item) => {
+                    onDeleteNotificationOpen({
+                      timeout: 3000
+                    })
+                  }}
+                />)}
             </Tabs.Content>
             <Tabs.Content {...getContentProps(1)}>
-              <Articles data={[
-                {
-                  id: '9aba7333-30c7-4f87-af7f-8d988f2d8561',
-                  title: 'Dicsord запустил платные подписки на сообщества',
-                  pubDate: new Date(),
-                  isDraft: true,
-                },
-                {
-                  id: 'af6677b3-d57f-43f5-90d2-047000d8713d',
-                  title: 'Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться',
-                  pubDate: new Date(),
-                  isDraft: true,
-                },
-                {
-                  id: '01b13b75-14ac-458a-a31d-fbe1db6f0e64',
-                  title: 'Dicsord запустил платные подписки на сообщества',
-                  pubDate: new Date(),
-                  isDraft: true,
-                },
-                {
-                  id: '12e2c121-9240-4346-8cfc-43f543a9d8c0',
-                  title: 'Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться',
-                  pubDate: new Date(),
-                  isDraft: true,
-                },
-                {
-                  id: '24e1f688-49fb-46eb-9640-03136049951b',
-                  title: 'Dicsord запустил платные подписки на сообщества',
-                  pubDate: new Date(),
-                  isDraft: true,
-                },
-              ]}
-                onEdit={(item) => { }}
-                onDelete={(item) => {
-                  onDeleteNotificationOpen({
-                    timeout: 3000
-                  })
-                }}
-              />
+              {isLoading ? <ArticlesSkeleton count={3} /> : (
+                <Articles
+                  data={[].concat(data.draft.posts).concat(data.not_approved)}
+                  onEdit={(item) => { }}
+                  onDelete={(item) => {
+                    onDeleteNotificationOpen({
+                      timeout: 3000
+                    })
+                  }}
+                />
+              )}
             </Tabs.Content>
           </Tabs.Wrapper>
         </div>
