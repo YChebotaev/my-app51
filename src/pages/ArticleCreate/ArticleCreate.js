@@ -7,6 +7,7 @@ import { UploadImage } from './UploadImage'
 import { PageTitle } from '../../components/common/PageTitle'
 import { Notification } from '../../components/common/Notification'
 import { Skeleton } from '../../components/common/Skeleton'
+import { PostAuthor } from '../../components/articles/PostAuthor'
 import { useProfilePictureUrl, useApiClient } from '../../hooks'
 import imagePick from "../../styles/images/imagePick.svg"
 import play from "../../styles/images/play.svg"
@@ -66,24 +67,15 @@ export const ArticleCreate = () => {
     <div className="main-wrapper" style={{ minHeight: 'calc(100vh + 60px)' }}>
       <form className="content-wrapper" onSubmit={handleSubmit(mutate)}>
         <PageTitle legacy>Новая запись</PageTitle>
-        <div style={{
-          textAlign: "left",
-          margin: "23px 0 24px 0",
-          display: 'flex',
-          gap: '10px'
-        }}>
-          <div>
-            <img src={isLoadingAvatarUrl ? dummyAvatar : avatarUrl} width="15" alt="" style={{ borderRadius: 3 }} />
-          </div>
-          {isProfileLoading ? (
-            <Skeleton style={{ width: 100, height: 20, borderRadius: 5 }} />
-          ) : (
-            <span style={{
-              fontSize: 15,
-              fontWeight: 300,
-              color: "#FFF"
-            }}>{getFullName(profile.first_name, profile.surname) ?? profile.username_link}</span>
-          )}
+        <div style={{ margin: "23px 0 24px 0" }}>
+          <PostAuthor
+            firstName={profile?.first_name}
+            surname={profile?.surname}
+            usernameLink={profile?.username_link}
+            isProfileLoading={isProfileLoading}
+            isLoadingAvatarUrl={isLoadingAvatarUrl}
+            avatarUrl={avatarUrl}
+          />
         </div>
         <div style={{
           textAlign: "left",

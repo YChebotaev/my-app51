@@ -10,6 +10,7 @@ import { Networking } from './pages/Networking'
 import { NetworkingMe } from './pages/NetworkingMe'
 import { NetworkingCreate } from './pages/NetworkingCreate'
 import { NetworkingCard } from './pages/NetworkingCard'
+import { Draft } from './pages/Draft'
 import './styles/style.css'
 import './styles/fonts/stylesheet.css'
 import './styles/toggle.css'
@@ -32,6 +33,7 @@ function App({ isFirstTime }) {
             <Route path="/networking/create" element={<NetworkingCreate />} />
             <Route path="/networking/:username" element={<NetworkingCard />} />
             <Route path="/networking" element={<Networking />} />
+            <Route path="/draft/:postId" element={<Draft />} />
           </Routes>
         </CSSTransition>
       </TransitionGroup>

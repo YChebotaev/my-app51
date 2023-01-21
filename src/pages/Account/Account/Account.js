@@ -18,8 +18,6 @@ export const Account = () => {
   } = useNotification()
   const { data, isLoading } = useQuery(['posts', 'my_posts'])
 
-  console.log('data =', data)
-
   return (
     <div className="main-wrapper">
       <PageTitle legacy>Мой аккаунт</PageTitle>
