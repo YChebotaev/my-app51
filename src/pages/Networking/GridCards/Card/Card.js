@@ -4,25 +4,29 @@ import { Profession } from '../../../../components/networking/Profession'
 import { getFullName, trimAtSymbol } from '../../../../utils'
 import { CardAvatar } from '../../../../components/networking/CardAvatar'
 import { CardTags } from '../../../../components/networking/CardTags'
+import { useNetworkingContext } from '../../useNetworkingContext'
 import classes from './Card.module.css'
 
-export const Card = ({ card: {
-  id,
-  author_username,
-  first_name,
-  surname,
-  raiting,
-  description,
-  aprroval_status,
-  role,
-  proffesion,
-  first_tag,
-  second_tag,
-  third_tag,
-  chat_open,
-  card_profile_img,
-} }) => {
+export const Card = ({
+  card: {
+    id,
+    author_username,
+    first_name,
+    surname,
+    raiting,
+    description,
+    aprroval_status,
+    role,
+    proffesion,
+    first_tag,
+    second_tag,
+    third_tag,
+    chat_open,
+    card_profile_img,
+  }
+}) => {
   const navigate = useNavigate()
+  const { onAddFilter } = useNetworkingContext()
   const fullName = getFullName(first_name, surname)
 
   return (
@@ -42,6 +46,7 @@ export const Card = ({ card: {
               firstTag={first_tag}
               secondTag={second_tag}
               thirdTag={third_tag}
+              onClick={onAddFilter}
             />
             <div className={classes.cardActions}>
               <button

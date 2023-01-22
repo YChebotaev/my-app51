@@ -56,9 +56,9 @@ export const FilterPopup = () => {
         <p style={{ color: '#ffffff' }}>Нет фильтров для выбора</p>
       ) : (
         possibleFilters.map(filter => (
-          <button key={filter.id} className={classes.fpFilter} onClick={() => onAddFilter(filter)}>
+          <button key={filter} className={classes.fpFilter} onClick={() => onAddFilter(filter)}>
             <div className={classes.fpfLeft}>
-              {filter.name}
+              {filter}
             </div>
             <div className={classes.fpfRight}>+</div>
           </button>

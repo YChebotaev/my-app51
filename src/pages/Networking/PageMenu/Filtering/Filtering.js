@@ -12,8 +12,8 @@ export const Filtering = () => {
       </button>
       <div className={classes.filteringItems}>
         {activeFilters.map(filter => (
-          <button key={filter.id} className={classes.filteringItem} onClick={() => onDeleteFilter(filter)}>
-            <div className={classes.fiLeft}>{filter.name}</div>
+          <button key={filter} className={classes.filteringItem} onClick={() => onDeleteFilter(filter)}>
+            <div className={classes.fiLeft}>{filter}</div>
             <div className={classes.fiRight}></div>
           </button>
         ))}
