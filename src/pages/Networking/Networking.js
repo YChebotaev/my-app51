@@ -1,4 +1,4 @@
-import { useState, useMemo, useRef } from 'react'
+import { useState, useMemo, useRef, useCallback } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import context from './context'
 import { MyCardLink } from './MyCardLink'
@@ -54,16 +54,9 @@ export const Networking = () => {
     }
   })
   const { data: rawPossibleFilters = [] } = useQuery(['cards', 'tags'])
-  // const [possibleFilters, setPossibleFilters] = useState([
-  //   {
-  //     id: 'dd439afb-c9f8-492e-a9e4-8b42242ead73',
-  //     name: 'Дизайн'
-  //   },
-  //   {
-  //     id: '1fbc0ec4-b758-4913-8630-fb7106c6ed29',
-  //     name: 'Финтех'
-  //   },
-  // ])
+  const handleAddFilter = useCallback((filter) => {
+    setActiveFilters([...activeFilters, filter])
+  }, [activeFilters])
   const possibleFilters = useMemo(() => {
     return rawPossibleFilters.filter(name => !activeFilters.includes(name))
   }, [rawPossibleFilters, activeFilters])
@@ -73,15 +66,15 @@ export const Networking = () => {
     }
 
     switch (viewMode) {
-      case 'list': return <ListCards data={data} />
-      case 'grid': return <GridCards data={data} />
+      case 'list': return <ListCards data={data} onAddFilter={handleAddFilter} />
+      case 'grid': return <GridCards data={data} onAddFilter={handleAddFilter} />
       default: return null
     }
-  }, [viewMode, data])
+  }, [viewMode, data, handleAddFilter])
   const skeleton = useMemo(() => {
     switch (viewMode) {
-      case 'list': return <ListSkeleton count={3} />
-      case 'grid': return <GridSkeleton count={3} />
+      case 'list': return <ListSkeleton count={3} onAddFilter={handleAddFilter} />
+      case 'grid': return <GridSkeleton count={3} onAddFilter={handleAddFilter} />
       default: return null
     }
   }, [viewMode])
@@ -104,9 +97,7 @@ export const Networking = () => {
       onDeleteFilter(filter) {
         setActiveFilters(activeFilters.filter(name => name !== filter))
       },
-      onAddFilter(filter) {
-        setActiveFilters([...activeFilters, filter])
-      }
+      onAddFilter: handleAddFilter
     }}>
       <div className={classes.networkingWrapper}>
         <div className={classes.networking}>

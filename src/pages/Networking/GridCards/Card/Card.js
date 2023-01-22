@@ -4,7 +4,6 @@ import { Profession } from '../../../../components/networking/Profession'
 import { getFullName, trimAtSymbol } from '../../../../utils'
 import { CardAvatar } from '../../../../components/networking/CardAvatar'
 import { CardTags } from '../../../../components/networking/CardTags'
-import { useNetworkingContext } from '../../useNetworkingContext'
 import classes from './Card.module.css'
 
 export const Card = ({
@@ -23,10 +22,10 @@ export const Card = ({
     third_tag,
     chat_open,
     card_profile_img,
-  }
+  },
+  onAddFilter
 }) => {
   const navigate = useNavigate()
-  const { onAddFilter } = useNetworkingContext()
   const fullName = getFullName(first_name, surname)
 
   return (

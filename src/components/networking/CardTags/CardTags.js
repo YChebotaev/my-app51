@@ -5,19 +5,19 @@ export const CardTags = ({ firstTag, secondTag, thirdTag, onClick }) => (
     {firstTag && (
       <div
         className={classes.cardTag}
-        onClick={() => onClick(firstTag)}
+        onClick={onClick ? () => onClick(firstTag) : null}
       >{firstTag}</div>
     )}
     {secondTag && (
       <div
         className={classes.cardTag}
-        onClick={() => onClick(secondTag)}
+        onClick={onClick ? () => onClick(secondTag) : null}
       >{secondTag}</div>
     )}
     {thirdTag && (
       <div
         className={classes.cardTag}
-        onClick={() => onClick(thirdTag)}
+        onClick={onClick ? () => onClick(thirdTag) : null}
       >{thirdTag}</div>
     )}
   </div>
