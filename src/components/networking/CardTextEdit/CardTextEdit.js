@@ -8,7 +8,7 @@ export const CardTextEdit = ({ control, name, title, inputPlaceholder }) => {
   return (
     <div className={classes.cardTextEdit}>
       <div className={classes.cteHeader}>{title}</div>
-      <TextareaAutosize className={classes.cteTextarea} {...field} placeholder={inputPlaceholder} />
+      <TextareaAutosize className={classes.cteTextarea} {...field} placeholder={inputPlaceholder} maxLength={500} />
     </div>
   )
 }
