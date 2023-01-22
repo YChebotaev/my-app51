@@ -1,11 +1,26 @@
 .card {
-  background-color: rgb(20, 22, 35);
-  border-radius: 10px;
+  background-color: #202128;
   padding: 15px;
+  border-radius: 8px;
+}
+
+.cbRare > .card {
+  border-radius: 7px;
 }
 
 .cardWrapper {
   position: relative;
+}
+
+.cardBackground {
+  border-radius: 10px;
+  padding: 2px;
+  background: rgba(217, 217, 217, 0.55);
+}
+
+.cbRare {
+  padding: 3px;
+  background: linear-gradient(135deg, rgb(228, 170, 82), rgb(198, 75, 84));
 }
 
 .cardAvatar {
@@ -76,11 +91,10 @@
   padding: 0;
 }
 
-.cardPlace {
+.cardIcon {
   position: absolute;
   top: 10px;
   left: 10px;
-  background-color: #D73F51;
   border-radius: 10px;
   color: #ffffff;
   font-size: 12px;
@@ -90,4 +104,16 @@
   align-items: center;
   justify-content: center;
   font-weight: 500;
+}
+
+.cardIconProfessor {
+  background-color: #F89E34;
+  background-image: url('../../../../styles/images/professor-icon.svg');
+  background-size: cover;
+}
+
+.cardIconStudent {
+  background-color: #9897C4;
+  background-image: url('../../../../styles/images/student-icon.svg');
+  background-size: cover;
 }

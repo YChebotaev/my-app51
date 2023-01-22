@@ -4,7 +4,7 @@ import { Skeleton } from '../../common/Skeleton'
 import classes from './CardAvatar.module.css'
 
 export const CardAvatar = ({ src, skeletonClassName, className, style }) => {
-  const { data, isLoading } = useLoadImage(['card_profile_img', src], src)
+  const { data, isLoading } = useLoadImage(['card_profile_img', src], `../../${src}`)
 
   if (isLoading) {
     return <Skeleton className={cn(classes.caSkeleton, skeletonClassName)} />

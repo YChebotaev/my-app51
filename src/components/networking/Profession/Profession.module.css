@@ -5,8 +5,13 @@
   font-weight: 500;
   font-size: 8px;
   line-height: 11px;
-  color: #D73F51;
-  border: 1px solid #D73F51;
+  color: rgba(255, 255, 255, 0.8);
+  border: 0.5px solid rgba(255, 255, 255, 0.65);
   padding: 2px 5px;
   border-radius: 7px;
+}
+
+.rareProfession {
+  color: rgba(255, 111, 49, 0.875015);
+  border: 0.5px solid rgba(255, 111, 49, 0.875015);
 }

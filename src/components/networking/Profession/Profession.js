@@ -1,4 +1,5 @@
 import { useMemo } from 'react'
+import cn from 'classnames'
 import classes from './Profession.module.css'
 
 export const Profession = ({ profession }) => {
@@ -9,9 +10,16 @@ export const Profession = ({ profession }) => {
       default: return null
     }
   }, [profession])
+  const isRare = useMemo(() => {
+    switch (profession) {
+      case 'student': return false
+      case 'profesor': return true
+      default: return false
+    }
+  }, [profession])
 
   return (
-    <div className={classes.profession}>
+    <div className={cn(classes.profession, isRare && classes.rareProfession)}>
       {professionText}
     </div>
   )

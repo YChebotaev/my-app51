@@ -1,7 +1,9 @@
 import { useNavigate } from 'react-router-dom'
+import cn from 'classnames'
 import { getFullName, trimAtSymbol } from '../../../../utils'
 import { Profession } from '../../../../components/networking/Profession'
 import { CardAvatar } from '../../../../components/networking/CardAvatar'
+import { CardTags } from '../../../../components/networking/CardTags'
 import classes from './Card.module.css'
 
 export const Card = ({
@@ -28,48 +30,56 @@ export const Card = ({
 
   return (
     <div className={classes.cardWrapper}>
-      <div className={classes.card}>
-        <div className={classes.cardLeft}>
-          <CardAvatar src={card_profile_img} />
-        </div>
-        <div className={classes.cardRight}>
-          <div className={classes.cardDetails}>
-            <div className={classes.cardName}>
-              <div className={classes.cnName}>{fullName}</div>
-              <Profession profession={proffesion} />
-            </div>
-            <div className={classes.cardBio}>{description}</div>
-            <div className={classes.cardTags}>
-              {first_tag && <div className={classes.cardTag}>{first_tag}</div>}
-              {second_tag && <div className={classes.cardTag}>{second_tag}</div>}
-              {third_tag && <div className={classes.cardTag}>{third_tag}</div>}
-            </div>
-            {showActions && (
-              <div className={classes.cardActions}>
-                <button
-                  className={classes.cardAction}
-                  onClick={(e) => {
-                    e.preventDefault()
-
-                    navigate(`/networking/${trimAtSymbol(author_username)}`)
-                  }}
-                >Написать письмо</button>
-                {chat_open === 'available' && (
+      <div className={cn(classes.cardBackground, proffesion === 'profesor' && classes.cbRare)}>
+        <div className={classes.card}>
+          <div className={classes.cardLeft}>
+            <CardAvatar src={card_profile_img} />
+          </div>
+          <div className={classes.cardRight}>
+            <div className={classes.cardDetails}>
+              <div className={classes.cardName}>
+                <div className={classes.cnName}>{fullName}</div>
+                {proffesion && <Profession profession={proffesion} />}
+              </div>
+              <div className={classes.cardBio}>{description}</div>
+              <CardTags
+                firstTag={first_tag}
+                secondTag={second_tag}
+                thirdTag={third_tag}
+              />
+              {showActions && (
+                <div className={classes.cardActions}>
                   <button
                     className={classes.cardAction}
                     onClick={(e) => {
                       e.preventDefault()
 
-                      window.open(`https://t.me/${trimAtSymbol(author_username)}`, '_blank')
+                      navigate(`/networking/${trimAtSymbol(author_username)}`)
                     }}
-                  >Начать чат</button>
-                )}
-              </div>
-            )}
+                  >Написать письмо</button>
+                  {chat_open === 'available' && (
+                    <button
+                      className={classes.cardAction}
+                      onClick={(e) => {
+                        e.preventDefault()
+
+                        window.open(`https://t.me/${trimAtSymbol(author_username)}`, '_blank')
+                      }}
+                    >Начать чат</button>
+                  )}
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
-      <div className={classes.cardPlace}>#{raiting}</div>
+      {proffesion != null && <div
+        className={cn(
+          classes.cardIcon,
+          proffesion === 'profesor' && classes.cardIconProfessor,
+          proffesion === 'student' && classes.cardIconStudent,
+        )}
+      />}
     </div>
   )
 }
