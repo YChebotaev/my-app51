@@ -6,9 +6,9 @@ export const PageTitle = ({ right, children }) => {
       <div className={classes.ptLeft}>
         {children}
       </div>
-      <div className={classes.ptRight}>
+      {right && <div className={classes.ptRight}>
         {right}
-      </div>
+      </div>}
     </div>
   )
 }

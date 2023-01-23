@@ -4,12 +4,12 @@ import { useQuery } from '@tanstack/react-query'
 import { Skeleton } from './Skeleton'
 
 export const WhatToRead = forwardRef(
-  (_, ref) => {
+  ({ withTitle = true }, ref) => {
     const { data, isLoading } = useQuery(['posts', 'three_last_posts'])
 
     return (
       <div ref={ref} className="section section1">
-        <Link to="/article"><div className="section-title">Есть что почитать</div></Link>
+        {withTitle && <Link to="/article"><div className="section-title">Есть что почитать</div></Link>}
         {isLoading ? (
           <Skeleton />
         ) : (

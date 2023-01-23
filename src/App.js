@@ -11,6 +11,7 @@ import { NetworkingMe } from './pages/NetworkingMe'
 import { NetworkingCreate } from './pages/NetworkingCreate'
 import { NetworkingCard } from './pages/NetworkingCard'
 import { Draft } from './pages/Draft'
+import { Moove } from './pages/Moove'
 import './styles/style.css'
 import './styles/fonts/stylesheet.css'
 import './styles/toggle.css'
@@ -34,6 +35,7 @@ function App({ isFirstTime }) {
             <Route path="/networking/:username" element={<NetworkingCard />} />
             <Route path="/networking" element={<Networking />} />
             <Route path="/draft/:postId" element={<Draft />} />
+            <Route path="/moove" element={<Moove />} />
           </Routes>
         </CSSTransition>
       </TransitionGroup>

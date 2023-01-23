@@ -1,14 +1,12 @@
 import { useEffect, useCallback, useRef } from 'react'
-import { useNetworkingContext } from '../useNetworkingContext'
 import classes from './FilterPopup.module.css'
 
-export const FilterPopup = () => {
-  const {
-    filterButtonRef,
-    possibleFilters,
-    onFilterPopupClose,
-    onAddFilter
-  } = useNetworkingContext()
+export const FilterPopup = ({
+  filterButtonRef,
+  possibleFilters,
+  onFilterPopupClose,
+  onAddFilter
+}) => {
   const ref = useRef()
   const recalculateStyles = useCallback(() => {
     const el = ref.current

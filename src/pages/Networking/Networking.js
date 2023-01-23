@@ -1,31 +1,29 @@
-import { useState, useMemo, useRef, useCallback } from 'react'
+import { useState, useMemo } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import context from './context'
 import { MyCardLink } from './MyCardLink'
 import { PageMenu } from './PageMenu'
 import { ListCards } from './ListCards'
 import { GridCards } from './GridCards'
-import { FilterPopup } from './FilterPopup'
 import { ListSkeleton } from './ListSkeleton'
 import { GridSkeleton } from './GridSkeleton'
 import { Empty } from './Empty'
 import { BlockedBackdrop } from './BlockedBackdrop'
-import { useApiClient } from '../../hooks'
+import { useApiClient, useFiltering } from '../../hooks'
 import { PageTitle } from '../../components/common/PageTitle'
 import { TitleSeparator } from '../../components/networking/TitleSeparator'
 import classes from './Networking.module.css'
 
 export const Networking = () => {
   const apiClient = useApiClient()
-  const filterButtonRef = useRef()
   const [viewMode, setViewMode] = useState('list') // 'list' | 'grid'
-  const [isFilterPopupOpen, setIsFilterPopupOpen] = useState(false)
-  const [activeFilters, setActiveFilters] = useState([])
   const [isBlocked, setIsBlocked] = useState(false)
+  const { data: rawPossibleFilters = [] } = useQuery(['cards', 'tags'])
+  const { activeFilters, possibleFilters, onAddFilter, onDeleteFilter } = useFiltering(rawPossibleFilters)
   useQuery(['cards', 'my_card'], async () => {
     const { data } = await apiClient.get('/cards/my_card')
 
-    return data // === null ? { blocked: true } : data
+    return data
   }, {
     onSuccess(data) {
       if (data === null) {
@@ -53,51 +51,34 @@ export const Networking = () => {
       return items
     }
   })
-  const { data: rawPossibleFilters = [] } = useQuery(['cards', 'tags'])
-  const handleAddFilter = useCallback((filter) => {
-    setActiveFilters([...activeFilters, filter])
-  }, [activeFilters])
-  const possibleFilters = useMemo(() => {
-    return rawPossibleFilters.filter(name => !activeFilters.includes(name))
-  }, [rawPossibleFilters, activeFilters])
-  const items = useMemo(() => {
+  const [items, skeleton] = useMemo(() => {
     if (data && data.length === 0) {
-      return <Empty />
+      return [<Empty />, null]
     }
 
     switch (viewMode) {
-      case 'list': return <ListCards data={data} onAddFilter={handleAddFilter} />
-      case 'grid': return <GridCards data={data} onAddFilter={handleAddFilter} />
-      default: return null
+      case 'list': return [
+        <ListCards data={data} onAddFilter={onAddFilter} />,
+        <ListSkeleton count={3} onAddFilter={onAddFilter} />
+      ]
+      case 'grid': return [
+        <GridCards data={data} onAddFilter={onAddFilter} />,
+        <GridSkeleton count={3} onAddFilter={onAddFilter} />
+      ]
+      default: return [null, null]
     }
-  }, [viewMode, data, handleAddFilter])
-  const skeleton = useMemo(() => {
-    switch (viewMode) {
-      case 'list': return <ListSkeleton count={3} onAddFilter={handleAddFilter} />
-      case 'grid': return <GridSkeleton count={3} onAddFilter={handleAddFilter} />
-      default: return null
-    }
-  }, [viewMode])
+  }, [data, viewMode, onAddFilter])
 
   return (
     <context.Provider value={{
       viewMode,
-      filterButtonRef,
       activeFilters,
       possibleFilters,
       onViewModeChange(viewMode) {
         setViewMode(viewMode)
       },
-      onFilterPopupClose() {
-        setIsFilterPopupOpen(false)
-      },
-      onFilterPopupOpen() {
-        setIsFilterPopupOpen(true)
-      },
-      onDeleteFilter(filter) {
-        setActiveFilters(activeFilters.filter(name => name !== filter))
-      },
-      onAddFilter: handleAddFilter
+      onDeleteFilter,
+      onAddFilter
     }}>
       <div className={classes.networkingWrapper}>
         <div className={classes.networking}>
@@ -108,9 +89,6 @@ export const Networking = () => {
           <PageMenu />
           {isLoading ? skeleton : items}
         </div>
-        {isFilterPopupOpen && (
-          <FilterPopup />
-        )}
         {isBlocked && (
           <BlockedBackdrop />
         )}

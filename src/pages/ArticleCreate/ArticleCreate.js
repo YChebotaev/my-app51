@@ -2,26 +2,25 @@ import React, { useMemo, useState } from 'react'
 import { useMutation, useQuery } from '@tanstack/react-query'
 import { useForm } from 'react-hook-form'
 import TextareaAutosize from 'react-textarea-autosize'
+import { useNavigate } from 'react-router-dom'
 import { ContentEdit } from './ContentEdit'
 import { UploadImage } from './UploadImage'
 import { PageTitle } from '../../components/common/PageTitle'
 import { Notification } from '../../components/common/Notification'
-import { Skeleton } from '../../components/common/Skeleton'
 import { PostAuthor } from '../../components/articles/PostAuthor'
 import { useProfilePictureUrl, useApiClient } from '../../hooks'
 import imagePick from "../../styles/images/imagePick.svg"
 import play from "../../styles/images/play.svg"
 import share from "../../styles/images/share.svg"
 import sendButtonBackground from '../../styles/images/send-button-background.svg'
-import dummyAvatar from '../../styles/images/dummy-avatar.svg'
 import okIcon from '../../styles/images/ok-icon.svg'
 import failIcon from '../../styles/images/fail-icon.svg'
 
 import '../../styles/style.css';
-import { getFullName } from '../../utils'
 
 export const ArticleCreate = () => {
   const apiClient = useApiClient()
+  const navigate = useNavigate()
   const [submitResult, setSubmitResult] = useState(null) // null | 'success' | 'fail'
   const [submitResultText, submitResultIcon] = useMemo(() => {
     switch (submitResult) {
@@ -43,14 +42,14 @@ export const ArticleCreate = () => {
 
     return data
   }, {
-    onSuccess() {
-      console.log('onSuccess')
-
+    onSuccess({ id }) {
       setSubmitResult('success')
+
+      setTimeout(() => {
+        navigate(`/draft/${id}`)
+      }, 3000)
     },
     onError() {
-      console.log('onError')
-
       setSubmitResult('fail')
     }
   })

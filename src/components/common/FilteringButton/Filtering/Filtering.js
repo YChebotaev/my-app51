@@ -1,10 +1,12 @@
-import { useNetworkingContext } from '../../useNetworkingContext'
 import classes from './Filtering.module.css'
 import filterIcon from '../../../../styles/images/networking-filter.svg'
 
-export const Filtering = () => {
-  const { filterButtonRef, activeFilters, onDeleteFilter, onFilterPopupOpen } = useNetworkingContext()
-
+export const Filtering = ({
+  filterButtonRef,
+  activeFilters,
+  onDeleteFilter,
+  onFilterPopupOpen
+}) => {
   return (
     <div className={classes.filtering}>
       <button ref={filterButtonRef} className={classes.filteringButton} onClick={onFilterPopupOpen}>
