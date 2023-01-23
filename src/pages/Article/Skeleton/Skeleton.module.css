@@ -1,0 +1,122 @@
+.skeleton {
+  position: relative;
+  width: 100%;
+  background: #1e1e1e;
+  margin-top: 26px;
+  border-radius: 12px 12px 0 0;
+  min-height: 100vh;
+}
+
+.headerTitle {
+  font-weight: 600;
+  font-size: 73px;
+  line-height: 78px;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin-left: 17px;
+  padding-top: 13px;
+}
+
+.header {
+  background-color: #D73F51;
+  width: 146px;
+  height: 19px;
+}
+
+.whatToRead {
+  padding: 5px 15px;
+  margin-top: 30px;
+}
+
+.wtrTitle {
+  width: 234px;
+  height: 22px;
+  border-radius: 10px;
+}
+
+.wtrContainer {
+  gap: 22px;
+  display: flex;
+}
+
+.wtrContent {
+  margin-top: 16px;
+  display: flex;
+  flex-flow: column;
+  flex-grow: 1;
+}
+
+.wtrContentBox {
+  height: 32px;
+  border-radius: 10px;
+}
+
+.wtrLikesCount {
+  width: 31px;
+  height: 10px;
+  border-radius: 3px;
+  margin-top: 3px;
+}
+
+.wtrLikesCountWrapper {
+}
+
+.leaderboardButtonWrapper {
+  padding: 0 15px;
+  margin-top: 28px;
+}
+
+.leaderboardButton {
+  height: 55px;
+  border-radius: 10px;
+}
+
+.articles {
+  padding: 0 15px;
+}
+
+.articlesWrapper {
+  margin-top: 20px;
+  background-color: #262626;
+  padding: 10px 0;
+}
+
+.articlesTabs {
+  display: flex;
+  gap: 20px;
+}
+
+.articlesTab {
+  width: 91px;
+  height: 21px;
+  border-radius: 10px;
+}
+
+.article {
+  margin-top: 20px;
+}
+
+.articleFirstBox {
+  height: 22px;
+  border-radius: 10px;
+}
+
+.articleSecondBox {
+  height: 22px;
+  border-radius: 10px;
+  margin-top: 7px;
+}
+
+.articleLikesCount {
+  height: 10px;
+  width: 64px;
+  border-radius: 3px;
+  margin-top: 10px;
+}
+
+.fullSizeArticle {
+  border-radius: 10px;
+  height: 43px;
+  margin-top: 15px;
+}

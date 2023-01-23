@@ -1,13 +1,30 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
 import { Articles } from './Articles'
+import { Skeleton } from './Skeleton'
 import Footer from '../../components/common/Footer';
 import { WhatToRead } from '../../components/common/WhatToRead';
 import Header from '../../components/common/Header';
 import heart from "../../styles/images/heart1.png";
 import '../../styles/style.css';
+import { useApiClient } from '../../hooks';
 
 export const Article = () => {
+  const apiClient = useApiClient()
+  const { isLoading } = useQuery(['posts', 'popular_posts'], async () => {
+    const { data } = apiClient.get('/posts/popular_posts', {
+      params: {
+        page: 1,
+        size: 3
+      }
+    })
+
+    return data
+  })
+
+  if (isLoading) return <Skeleton />
+
   return (
     <div className="main-wrapper">
       <div className="header-title">Moove</div>

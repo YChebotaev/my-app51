@@ -1,10 +1,8 @@
 import { useState } from 'react'
 import { Posts } from './Posts'
-// import classes from './Articles.module.css'
 
 export const Articles = () => {
   const [active, setActive] = useState("popular_posts")
-  // const [page, setPage] = useState(1)
 
   return (
     <div className="chats-wrapper">
