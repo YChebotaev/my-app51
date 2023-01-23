@@ -1,7 +1,8 @@
 import React from 'react'
-// import { Link } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query'
 import { Networking } from './Networking'
 import { Chats } from './Chats'
+import { Skeleton } from './Skeleton'
 import Footer from '../../components/common/Footer';
 import Header from '../../components/common/Header';
 import Onboarding, { useOnboarding } from '../../components/common/Onboarding';
@@ -11,6 +12,7 @@ import '../../styles/style.css';
 import classes from './Main.module.css'
 
 export const Main = ({ isFirstTime }) => {
+  const { isLoading } = useQuery(['posts', 'three_last_posts'])
   const {
     isOpen,
     page,
@@ -31,6 +33,8 @@ export const Main = ({ isFirstTime }) => {
   const articleButtonRef = (isOpen && page === 4) ? spotlightedRef : null
   const isShowFooter = isOpen ? page === 4 : true
   const isShowOnboarding = isOpen
+
+  if (isLoading) return <Skeleton />
 
   return (
     <>

@@ -2,16 +2,10 @@ import React, { forwardRef } from 'react'
 import { Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query'
 import { Skeleton } from './Skeleton'
-import { useApiClient } from '../../../hooks'
 
 export const WhatToRead = forwardRef(
   (_, ref) => {
-    const apiClient = useApiClient()
-    const { data, isLoading } = useQuery(['posts', 'three_last_posts'], async () => {
-      const { data } = await apiClient.get('/posts/three_last_posts')
-
-      return data
-    })
+    const { data, isLoading } = useQuery(['posts', 'three_last_posts'])
 
     return (
       <div ref={ref} className="section section1">
