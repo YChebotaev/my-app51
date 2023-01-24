@@ -1,4 +1,5 @@
 import React from 'react'
+import cn from 'classnames'
 import Footer from '../../components/common/Footer'
 import { PageTitle } from '../../components/common/PageTitle'
 import classes from './Leaderboard.module.css'
@@ -134,10 +135,10 @@ const Leaderboard = () => {
         <table className={classes.table}>
           <thead>
             <tr>
-              <th className={`${classes.headerCell} ${classes.placeHeaderCell}`}>Место</th>
-              <th className={`${classes.headerCell} ${classes.authorHeaderCell}`}>Автор</th>
-              <th className={`${classes.headerCell} ${classes.viewsHeaderCell}`}>Просмотры</th>
-              <th className={`${classes.headerCell} ${classes.reactionsHeaderCell}`}>Реакции</th>
+              <th className={cn(classes.headerCell, classes.placeHeaderCell)}>Место</th>
+              <th className={cn(classes.headerCell, classes.authorHeaderCell)}>Автор</th>
+              <th className={cn(classes.headerCell, classes.viewsHeaderCell)}>Просмотры</th>
+              <th className={cn(classes.headerCell, classes.reactionsHeaderCell)}>Реакции</th>
             </tr>
           </thead>
           <tbody>
@@ -146,14 +147,14 @@ const Leaderboard = () => {
 
               return (
                 <tr key={id}>
-                  <td className={`${classes.cell} ${isLeadingCell ? classes.leadingCell : ''} ${i === 0 ? classes.cellBorderTop : ''} ${i === 2 ? classes.cellBorderBottom : ''}`.trim()}>
-                    <div className={`${classes.place} ${isLeadingCell ? classes.leadingPlace : ''}`.trim()}>
+                  <td className={cn(classes.cell, isLeadingCell && classes.leadingCell, i === 0 && classes.cellBorderTop, i === 2 && classes.cellBorderBottom)}>
+                    <div className={cn(classes.place, isLeadingCell && classes.leadingPlace)}>
                       {isLeadingCell && <div className={classes.placePrefix}>#</div>}
-                      <div className={`${classes.placeNumber} ${isLeadingCell ? classes.leadingPlaceNumber : ''}`.trim()}>{place}</div>
+                      <div className={cn(classes.placeNumber, isLeadingCell && classes.leadingPlaceNumber)}>{place}</div>
                     </div>
                   </td>
-                  <td className={`${classes.cell} ${isLeadingCell ? classes.leadingCell : ''} ${i === 0 ? classes.cellBorderTop : ''} ${i === 2 ? classes.cellBorderBottom : ''}`.trim()}>
-                    <div className={`${classes.authorPadding} ${isLeadingCell ? classes.leadingAuthorPadding : ''}`.trim()}>
+                  <td className={cn(classes.cell, isLeadingCell && classes.leadingCell, i === 0 && classes.cellBorderTop, i === 2 && classes.cellBorderBottom)}>
+                    <div className={cn(classes.authorPadding, isLeadingCell && classes.leadingAuthorPadding)}>
                       <div className={classes.author}>
                         <div className={classes.authorLeft}>
                           <div className={classes.authorUserpic}></div>
@@ -165,10 +166,10 @@ const Leaderboard = () => {
                       </div>
                     </div>
                   </td>
-                  <td className={`${classes.cell} ${isLeadingCell ? classes.leadingCell : ''} ${i === 0 ? classes.cellBorderTop : ''} ${i === 2 ? classes.cellBorderBottom : ''}`.trim()}>
+                  <td className={cn(classes.cell, isLeadingCell && classes.leadingCell, i === 0 && classes.cellBorderTop, i === 2 && classes.cellBorderBottom)}>
                     <div className={classes.viewsCount}>{viewsCount}</div>
                   </td>
-                  <td className={`${classes.cell} ${classes.reactionsCell} ${isLeadingCell ? classes.leadingCell : ''} ${i === 0 ? classes.cellBorderTop : ''} ${i === 2 ? classes.cellBorderBottom : ''}`.trim()}>
+                  <td className={cn(classes.cell, classes.reactionsCell, isLeadingCell && classes.leadingCell, i === 0 && classes.cellBorderTop, i === 2 && classes.cellBorderBottom)}>
                     <div className={classes.reactionsCount}>{reactionsCount}</div>
                   </td>
 
