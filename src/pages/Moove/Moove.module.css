@@ -27,3 +27,18 @@
 .whatToReadWrapper {
   padding: 10px;
 }
+
+.articlesWrapper {}
+
+.backdrop {
+  background-color: rgb(26, 34, 58);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.separator {
+  height: 1px;
+  background-color: #151515;
+}
+
+.menu {}
