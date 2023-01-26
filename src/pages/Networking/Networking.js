@@ -19,7 +19,7 @@ export const Networking = () => {
   const [viewMode, setViewMode] = useState('list') // 'list' | 'grid'
   const [isBlocked, setIsBlocked] = useState(false)
   const { data: rawPossibleFilters = [] } = useQuery(['cards', 'tags'])
-  const { activeFilters, possibleFilters, onAddFilter, onDeleteFilter } = useFiltering(rawPossibleFilters)
+  const { activeFilters, possibleFilters, onAddFilter, onDeleteFilter } = useFiltering(rawPossibleFilters, { maxCount: 3 })
   useQuery(['cards', 'my_card'], async () => {
     const { data } = await apiClient.get('/cards/my_card')
 

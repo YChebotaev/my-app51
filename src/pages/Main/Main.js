@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query'
 import { Networking } from './Networking'
 import { Chats } from './Chats'
 import { Skeleton } from './Skeleton'
+import { Moove } from './Moove'
 import Footer from '../../components/common/Footer';
 import Header from '../../components/common/Header';
 import Onboarding, { useOnboarding } from '../../components/common/Onboarding';
@@ -47,6 +48,9 @@ export const Main = ({ isFirstTime }) => {
             <div className="rect1-title">Объясняем, что тут у нас происходит</div>
           </div>
           <WhatToRead ref={whatToReadRef} />
+          <div className={classes.mooveWrapper}>
+            <Moove />
+          </div>
           <Networking ref={gamesRef} />
           <Chats ref={chatsRef} />
         </div>

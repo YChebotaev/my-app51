@@ -1,3 +1,4 @@
+import { format } from 'date-fns'
 import classes from './Article.module.css'
 
 export const Article = ({
@@ -16,7 +17,7 @@ export const Article = ({
           {authorProfession}
         </div>
       </div>
-      <div className={classes.pubDate}>{pubDate}</div>
+      <div className={classes.pubDate}>{format(pubDate, 'd.M.yyyy')}</div>
     </div>
     <div className={classes.title}>{title}</div>
     <div className={classes.imageWrapper}>

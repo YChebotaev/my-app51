@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom'
+import { useQuery } from '@tanstack/react-query'
+import { useApiClient } from '../../hooks'
 import { FilteringButton } from '../../components/common/FilteringButton'
 import { useFiltering } from '../../hooks/useFiltering'
 import { PageTitle } from '../../components/common/PageTitle'
@@ -9,12 +11,21 @@ import classes from './Moove.module.css'
 import arrowIcon from '../../styles/images/arrow.svg'
 
 export const Moove = () => {
-  const { activeFilters, possibleFilters, onAddFilter, onDeleteFilter } = useFiltering([
-    'Питчинги',
-    'Лекции',
-    'Стартапы выпускников',
-    'Читать буквы'
-  ])
+  const apiClient = useApiClient()
+  const { data: rawCategories = [] } = useQuery(['moove_posts', 'all_categories'], async () => {
+    const { data } = await apiClient.post('/moove_posts/all_categories')
+
+    return data
+  }, {
+    select({ categories }) {
+      return categories
+    }
+  })
+  const { activeFilters, possibleFilters, onAddFilter, onDeleteFilter } = useFiltering(rawCategories, { maxCount: 1 })
+  const { data = [] } = useQuery(
+    ['moove_posts', 'all_moove_posts', { category: activeFilters[0] }],
+    { select: ({ items }) => items}
+  )
 
   return (
     <div className={classes.moove}>
@@ -41,9 +52,10 @@ export const Moove = () => {
           />
         </div>
         <div className={classes.articlesWrapper}>
-          <Articles />
+          <Articles data={data} />
         </div>
       </div>
+      <div className={classes.shark} />
     </div>
   )
 }
