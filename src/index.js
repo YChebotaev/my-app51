@@ -3,14 +3,19 @@ import ReactDOM from 'react-dom/client'
 import { QueryClientProvider } from '@tanstack/react-query'
 import { BrowserRouter } from 'react-router-dom'
 import App from './App';
-import { createApiClient, getTelegramUserId, createQueryClient } from './utils'
+import {
+  createApiClient,
+  getTelegramUserId,
+  createQueryClient,
+  getBackendUrl
+} from './utils'
 import { useApiClient } from './hooks'
 import reportWebVitals from './reportWebVitals'
 import './index.css';
 
 window.Telegram.WebApp.backgroundColor = "#1E1E1E";
 const apiClient = createApiClient({
-  baseURL: process.env['REACT_APP_BACKEND_URL'] + '/api/v1',
+  baseURL: getBackendUrl() + '/api/v1',
   token: getTelegramUserId(),
   ngrokSkipBrowserWarning: '69420'
 })

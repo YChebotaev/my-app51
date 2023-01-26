@@ -1,0 +1,16 @@
+.article {
+  position: relative;
+  width: 100%;
+  background: #1e1e1e;
+  margin-top: 26px;
+  border-radius: 12px 12px 0 0;
+  min-height: 100vh;
+}
+
+.whatToReadWrapper {
+  padding: 0 15px;
+}
+
+.leaderboardButtonWrapper {
+  padding: 0 15px;
+}

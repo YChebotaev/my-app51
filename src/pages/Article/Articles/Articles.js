@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Posts } from './Posts'
+import { Fresh } from './Fresh'
 
 export const Articles = () => {
   const [active, setActive] = useState("popular_posts")
@@ -50,28 +51,8 @@ export const Articles = () => {
         </div>
         <div className="chats-border" />
         <Posts queryKey={active} />
-
-        {/* <div className="chats-border" />
-        {articles.map(a => {
-          return (
-            <a key={a.id} href={a.telegraph_url} style={{ display: 'block', textDecoration: "none" }}>
-              <div className='chat-item'>
-                <div className='chat-data'>
-                  <div className='created-wrapper'>
-                    <div className='created-author-avatar'></div>
-                    <div className='created-author-name'>{a.author}</div>
-                    <div className='created-date'>{a.pubdate}</div>
-                  </div>
-                  <div className='chat-title'>{a.title}</div>
-                  <div className='image-wrapper'>
-                    <img src="https://via.placeholder.com/600x300.jpg" width="100%" alt="" />
-                  </div>
-                  <div className='chat-excerpt'></div>
-                </div>
-              </div>
-            </a>
-          )
-        })} */}
+        {active === 'popular_posts' && <div className="chats-border" />}
+        {active === 'popular_posts' && <Fresh />}
       </div>
     </div>
   )

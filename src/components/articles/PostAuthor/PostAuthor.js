@@ -2,7 +2,14 @@ import { getFullName } from '../../../utils'
 import { Skeleton } from '../../common/Skeleton'
 import dummyAvatar from '../../../styles/images/dummy-avatar.svg'
 
-export const PostAuthor = ({ firstName, surname, usernameLink, isProfileLoading, isLoadingAvatarUrl, avatarUrl }) => (
+export const PostAuthor = ({
+  firstName,
+  surname,
+  usernameLink,
+  isProfileLoading,
+  isLoadingAvatarUrl,
+  avatarUrl
+}) => (
   <div style={{
     display: 'flex',
     gap: '10px'

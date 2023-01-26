@@ -8,6 +8,6 @@ export const getFullName = (firstName, surname) => {
       if (surname) {
         return surname
       } else {
-        return null
+        return undefined
       }
 }

@@ -1,0 +1,55 @@
+.fresh {
+}
+
+.article {
+  display: flex;
+  flex-flow: column;
+  gap: 10px;
+  padding: 10px 0;
+}
+
+.articleCreated {
+  display: flex;
+  gap: 10px;
+}
+
+.articleAvatar {
+  width: 15px;
+  height: 15px;
+  border-radius: 3px;
+}
+
+.articleAuthor {
+  font-weight: 300;
+  font-size: 10px;
+  line-height: 12px;
+  letter-spacing: 0.01em;
+  color: #FFFFFF;
+}
+
+.articlePubDate {
+  font-weight: 300;
+  font-size: 10px;
+  line-height: 12px;
+  letter-spacing: 0.01em;
+  color: #FFFFFF;
+}
+
+.articleTitle {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+  color: #FFFFFF;
+}
+
+.articleImage {
+  display: block;
+  border-radius: 10px;
+}
+
+.articleExcerpt {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  color: rgba(255, 255, 255, 0.7);
+}

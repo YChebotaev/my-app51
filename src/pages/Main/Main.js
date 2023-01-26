@@ -13,7 +13,9 @@ import '../../styles/style.css';
 import classes from './Main.module.css'
 
 export const Main = ({ isFirstTime }) => {
-  const { isLoading } = useQuery(['posts', 'three_last_posts'])
+  const { isLoading: isPostsLoading } = useQuery(['posts', 'three_last_posts'])
+  const { isLoading: isCardsLoading } = useQuery(['cards', 'three_last_cards'])
+  const isLoading = isPostsLoading || isCardsLoading
   const {
     isOpen,
     page,
