@@ -28,7 +28,7 @@ export const Posts = ({ queryKey }) => {
     }
   })
 
-  const posts = 'items' in data ? data.items : data?.pages.map(page => page.items).flat() ?? []
+  const posts = (data != null && 'items' in data) ? data.items : data?.pages.map(page => page.items).flat() ?? []
 
   return (
     <>
