@@ -51,7 +51,9 @@ export const Main = ({ isFirstTime }) => {
           <div className={classes.mooveWrapper}>
             <Moove />
           </div>
-          <Networking ref={gamesRef} />
+          <div className={classes.networkingWrapper}>
+            <Networking ref={gamesRef} />
+          </div>
           <Chats ref={chatsRef} />
         </div>
         {isShowFooter && <Footer articleButtonRef={articleButtonRef} />}

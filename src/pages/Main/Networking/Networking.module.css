@@ -1,0 +1,47 @@
+.networking {
+  display: block;
+  border: 1px solid #D73F51;
+  border-radius: 10px;
+  text-decoration: none;
+  padding: 15px;
+}
+
+.supertitle {
+  font-weight: 600;
+  font-size: 27px;
+  line-height: 30px;
+  text-decoration-line: underline;
+  color: #FFFFFF;
+}
+
+.cards {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.card {
+  display: flex;
+  flex-flow: column;
+  gap: 5px;
+}
+
+.cardAvatar {
+  width: 91px;
+  height: 70px;
+  border-radius: 10px;
+}
+
+.cardTitle {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+  color: #FFFFFF;
+}
+
+.cardSubtitle {
+  font-weight: 500;
+  font-size: 9px;
+  line-height: 9px;
+  color: rgba(255, 255, 255, 0.7);
+}

@@ -1,21 +1,29 @@
 import { forwardRef } from 'react'
 import { Link } from 'react-router-dom'
+import { Skeleton } from '../../../components/common/Skeleton'
+import classes from './Networking.module.css'
 
 export const Networking = forwardRef(
   (_, ref) => (
-    <div ref={ref} className="grad-rect rect2">
-      <Link to="/networking" className="rect2-title">Нетворкинг</Link>
-      <div className="rect-cols">
-        <div className="col-3">
-          <div className="item-game"></div>
+    <Link ref={ref} to="/networking" className={classes.networking}>
+      <div className={classes.supertitle}>Нетворкинг</div>
+      <div className={classes.cards}>
+        <div className={classes.card}>
+          <Skeleton className={classes.cardAvatar} />
+          <div className={classes.cardTitle}>Вася Пупкин 🧑🏻‍🏫</div>
+          <div className={classes.cardSubtitle}>Преподаватель чего-то там</div>
         </div>
-        <div className="col-3">
-          <div className="item-game"></div>
+        <div className={classes.card}>
+          <Skeleton className={classes.cardAvatar} />
+          <div className={classes.cardTitle}>Вася Пупкин 🧑🏻‍🏫</div>
+          <div className={classes.cardSubtitle}>Преподаватель чего-то там</div>
         </div>
-        <div className="col-3">
-          <div className="item-game"></div>
+        <div className={classes.card}>
+          <Skeleton className={classes.cardAvatar} />
+          <div className={classes.cardTitle}>Вася Пупкин 🧑🏻‍🏫</div>
+          <div className={classes.cardSubtitle}>Преподаватель чего-то там</div>
         </div>
       </div>
-    </div>
+    </Link>
   )
 )
