@@ -11,6 +11,7 @@
   display: block;
   border-radius: 10px;
   min-height: 174px;
+  width: 100%;
 }
 
 .imageSkeleton {

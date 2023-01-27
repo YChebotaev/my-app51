@@ -4,6 +4,7 @@ import { Skeleton } from '../../../components/common/Skeleton'
 import { useApiClient } from '../../../hooks'
 import imagePlaceholder from '../../../styles/images/image-placeholder.svg'
 import classes from './UploadImage.module.css'
+import { getBackendUrl } from '../../../utils'
 
 export const UploadImage = () => {
   const fileRef = useRef()
@@ -16,8 +17,8 @@ export const UploadImage = () => {
 
     return data
   }, {
-    onSuccess({ img_url }) {
-      setImgUrl(img_url)
+    onSuccess({ img_path }) {
+      setImgUrl(img_path)
     }
   })
 
@@ -26,7 +27,7 @@ export const UploadImage = () => {
       {imgUrl ? (
         <img
           className={classes.uploadedImage}
-          src={imgUrl}
+          src={getBackendUrl() + imgUrl}
           alt=""
           onClick={() => { fileRef.current.click() }}
         />

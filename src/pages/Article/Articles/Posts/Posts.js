@@ -1,5 +1,6 @@
 import { useInfiniteQuery } from '@tanstack/react-query'
 import { Skeleton } from './Skeleton'
+import { Empty } from './Empty'
 import { useApiClient } from '../../../../hooks'
 import commentArticle from "../../../../styles/images/commentArticle.svg";
 import heartArticle from "../../../../styles/images/heartArticle.svg";
@@ -29,10 +30,13 @@ export const Posts = ({ queryKey }) => {
   })
 
   const posts = (data != null && 'items' in data) ? data.items : data?.pages.map(page => page.items).flat() ?? []
+  const isEmpty = posts.length === 0
 
   return (
     <>
-      {isLoading ? <Skeleton count={size} /> : (
+      {isLoading ? <Skeleton count={size} /> : (isEmpty ? (
+        <Empty />
+      ) : (
         posts.map((i) => (
           <a key={i.id} href={i.telegraph_url} style={{ textDecoration: "none" }}>
             <div className="chat-item">
@@ -49,7 +53,7 @@ export const Posts = ({ queryKey }) => {
             </div>
           </a>
         ))
-      )}
+      ))}
       {hasNextPage && (
         <div
           className='show-more'

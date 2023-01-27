@@ -1,10 +1,8 @@
 import { useState } from 'react'
 import cn from 'classnames'
-// import { useMutation } from '@tanstack/react-query'
 import TextareaAutosize from 'react-textarea-autosize'
 import { useController } from 'react-hook-form'
 import classes from './Description.module.css'
-// import { useApiClient } from '../../../../hooks'
 
 export const Description = ({ control }) => {
   const [isEditMode, setIsEditMode] = useState(false)

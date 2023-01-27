@@ -68,7 +68,13 @@ export const MyCard = ({
   return rating == null ? card : (
     <div className={classes.mcWrapper}>
       {card}
-      <div className={classes.mcRating}>#{rating}</div>
+      {profession != null && <div
+        className={cn(
+          classes.cardIcon,
+          profession === 'profesor' && classes.cardIconProfessor,
+          profession === 'student' && classes.cardIconStudent,
+        )}
+      />}
     </div>
   )
 }

@@ -92,3 +92,30 @@
   justify-content: center;
   font-weight: 500;
 }
+
+.cardIcon {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 12px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+}
+
+.cardIconProfessor {
+  background-color: #F89E34;
+  background-image: url('../../../styles/images/professor-icon.svg');
+  background-size: cover;
+}
+
+.cardIconStudent {
+  background-color: #9897C4;
+  background-image: url('../../../styles/images/student-icon.svg');
+  background-size: cover;
+}

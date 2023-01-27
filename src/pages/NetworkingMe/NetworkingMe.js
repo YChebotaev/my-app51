@@ -48,6 +48,8 @@ export const NetworkingMe = () => {
     }
   })
 
+  console.log('data =', data)
+
   return (
     <form className={classes.networkingMe} onSubmit={handleSubmit(values => mutate(values))}>
       <PageTitle right={
@@ -64,7 +66,7 @@ export const NetworkingMe = () => {
             usernameLink={data?.author_username}
             firstName={data?.first_name}
             surname={data?.surname}
-            profession="student"
+            profession={data?.proffesion}
             rating={data?.raiting}
             profileImg={data?.card_profile_img}
             description={data?.description}

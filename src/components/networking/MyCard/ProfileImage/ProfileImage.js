@@ -1,16 +1,20 @@
 import { useRef, useState } from 'react'
 import { useMutation } from '@tanstack/react-query'
 import { useApiClient, useLoadImage } from '../../../../hooks'
+import { getBackendUrl } from '../../../../utils'
 import { Skeleton, KIND_FETCHING, KIND_UPDATING } from '../../../../components/common/Skeleton'
 import classes from './ProfileImage.module.css'
 
 export const ProfileImage = ({ src }) => {
+  console.group('ProfileImage')
+  console.log('src =', src)
+
   const fileRef = useRef()
   const apiClient = useApiClient()
   const [imageSrc, setImageSrc] = useState(src)
   const { data: imageUrl, isLoading: isImageLoading } = useLoadImage(
     ['card_profile_img', imageSrc],
-    imageSrc,
+    imageSrc ? getBackendUrl() + imageSrc : undefined,
     src ? undefined : '/images/avatar-placeholder.png'
   )
   const { mutate, isLoading: isImageUpdating } = useMutation(['cards', 'upload_image'], async () => {
@@ -22,14 +26,29 @@ export const ProfileImage = ({ src }) => {
 
     return data
   }, {
-    onSuccess({ img_url }) {
-      setImageSrc(img_url)
+    onSuccess({ img_path }) {
+      setImageSrc(img_path)
     }
   })
 
-  if (isImageLoading || isImageUpdating) {
-    return <Skeleton kind={isImageUpdating ? KIND_UPDATING : (isImageLoading ? KIND_FETCHING : null)} className={classes.piSkeleton} />
+  console.log('imageSrc =', imageSrc)
+  console.log('isImageLoading =', isImageLoading)
+
+  if (imageSrc && isImageLoading) {
+    console.groupEnd('ProfileImage')
+
+    return <Skeleton kind={KIND_FETCHING} className={classes.piSkeleton} />
   }
+
+  console.log('isImageUpdating =', isImageUpdating)
+
+  if (isImageUpdating) {
+    console.groupEnd('ProfileImage')
+
+    return <Skeleton kind={KIND_UPDATING} className={classes.piSkeleton} />
+  }
+
+  console.groupEnd('ProfileImage')
 
   return (
     <div className={classes.piWrapper}>
