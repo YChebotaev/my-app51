@@ -48,8 +48,6 @@ export const NetworkingMe = () => {
     }
   })
 
-  console.log('data =', data)
-
   return (
     <form className={classes.networkingMe} onSubmit={handleSubmit(values => mutate(values))}>
       <PageTitle right={
@@ -70,6 +68,7 @@ export const NetworkingMe = () => {
             rating={data?.raiting}
             profileImg={data?.card_profile_img}
             description={data?.description}
+            forceShowDescription
             control={control}
           />
         )}

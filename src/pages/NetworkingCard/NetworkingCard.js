@@ -13,6 +13,7 @@ import { Card } from '../Networking/ListCards/Card'
 import classes from './NetworkingCard.module.css'
 import okIcon from '../../styles/images/ok-icon.svg'
 import failIcon from '../../styles/images/fail-icon.svg'
+import { getFullName } from '../../utils'
 
 export const NetworkingCard = () => {
   const navigate = useNavigate()
@@ -63,6 +64,7 @@ export const NetworkingCard = () => {
       }, 3000)
     }
   })
+  const fullName = getFullName(data?.first_name, data?.surname)
 
   return (
     <form className={classes.networkingCard} onSubmit={handleSubmit(mutate)}>
@@ -74,7 +76,7 @@ export const NetworkingCard = () => {
           />
         )}
       >
-        <div className={classes.pageTitle}>Вася Пупкин</div>
+        <div className={classes.pageTitle}>{fullName ?? data?.author_username}</div>
       </PageTitle>
       <TitleSeparator />
       <div className={classes.ncCardWrapper}>
