@@ -6,15 +6,19 @@ export const createApiClient = ({
   ngrokSkipBrowserWarning
 }) => {
   const apiClient = axios.create({
-    baseURL
+    baseURL,
+  })
+
+  apiClient.getDefaultHeaders = () => ({
+    TOKEN: token,
+    'ngrok-skip-browser-warning': ngrokSkipBrowserWarning
   })
 
   apiClient.interceptors.request.use(
     (config) => Object.assign(config, {
       headers: {
         ...config.headers,
-        TOKEN: token,
-        'ngrok-skip-browser-warning': ngrokSkipBrowserWarning
+        ...apiClient.getDefaultHeaders()
       }
     })
   )
