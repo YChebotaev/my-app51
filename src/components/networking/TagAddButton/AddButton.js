@@ -4,7 +4,7 @@ import { Popup } from './Popup'
 import classes from './AddButton.module.css'
 import { useApiClient } from '../../../hooks'
 
-export const AddButton = ({ onAdd }) => {
+export const AddButton = ({ excludedItems, onAdd }) => {
   const popupWrapperRef = useRef()
   const apiClient = useApiClient()
   const [isPopupOpen, setIsPopupOpen] = useState(false)
@@ -48,6 +48,7 @@ export const AddButton = ({ onAdd }) => {
         <div ref={popupWrapperRef} className={classes.abPopupWrapper}>
           <Popup
             items={data}
+            excludedItems={excludedItems}
             onAdd={onAdd}
             onClose={() => setIsPopupOpen(false)}
           />

@@ -57,20 +57,23 @@ export const Tags = ({ control }) => {
         </button>
       )}
       {isTagsNotFull && (
-        <AddButton onAdd={(name) => {
-          switch (true) {
-            case !firstTagField.value:
-              firstTagField.onChange(name)
-              break
-            case !secondTagField.value:
-              secondTagField.onChange(name)
-              break
-            case !thirdTagField.value:
-              thirdTagField.onChange(name)
-              break
-            default: break
-          }
-        }} />
+        <AddButton
+          excludedItems={[firstTagField.value, secondTagField.value, thirdTagField.value].filter(Boolean)}
+          onAdd={(name) => {
+            switch (true) {
+              case !firstTagField.value:
+                firstTagField.onChange(name)
+                break
+              case !secondTagField.value:
+                secondTagField.onChange(name)
+                break
+              case !thirdTagField.value:
+                thirdTagField.onChange(name)
+                break
+              default: break
+            }
+          }}
+        />
       )}
     </div>
   )

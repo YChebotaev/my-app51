@@ -41,9 +41,9 @@ export const Draft = () => {
           <img src={data.post_image} className={classes.draftImage} alt="" />
         </div>
       )}
-      {/* <div className={classes.subtitleWrapper}>
-        <div className={classes.subtitle}>Если вам нужен Lorem Ipsum для серьёзного проекта, вы наверняка не хотите какой-нибудь шутки, скрытой в середине абзаца. </div>
-      </div> */}
+      <div className={classes.subtitleWrapper}>
+        <div className={classes.subtitle}>{data?.subtitle}</div>
+      </div>
       <div className={classes.content}>
         <div className={classes.paragraph}>{data?.content}</div>
         {/* <div className={classes.heading}>Давно выяснено, что при оценке дизайна</div>

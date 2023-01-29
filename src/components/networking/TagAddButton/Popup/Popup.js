@@ -1,11 +1,13 @@
 import { useState, useMemo } from 'react'
 import classes from './Popup.module.css'
 
-export const Popup = ({ items, onAdd, onClose }) => {
+export const Popup = ({ items, excludedItems, onAdd, onClose }) => {
   const [searchString, setSearchString] = useState('')
   const foundItems = useMemo(() => {
-    return items.filter(it => it.toLowerCase().includes(searchString.toLowerCase()))
-  }, [searchString, items])
+    return items
+      .filter(it => !excludedItems.includes(it))
+      .filter(it => it.toLowerCase().includes(searchString.toLowerCase()))
+  }, [searchString, items, excludedItems])
 
   return (
     <div className={classes.popup}>

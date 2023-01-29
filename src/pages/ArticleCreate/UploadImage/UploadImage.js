@@ -45,6 +45,7 @@ export const UploadImage = () => {
       <input
         ref={fileRef}
         type="file"
+        accept="image/png, image/jpeg"
         style={{ display: 'none' }}
         onChange={() => mutate()}
       />

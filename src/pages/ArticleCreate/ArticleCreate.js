@@ -9,48 +9,56 @@ import { PageTitle } from '../../components/common/PageTitle'
 import { Notification } from '../../components/common/Notification'
 import { PostAuthor } from '../../components/articles/PostAuthor'
 import { useProfilePictureUrl, useApiClient } from '../../hooks'
+import {
+  useMutationStateNotification,
+  SUCCESS_STATE,
+  FAIL_STATE,
+  SUCCESS_ICON,
+  FAIL_ICON
+} from '../../hooks/useMutationStateNotification'
 import imagePick from "../../styles/images/imagePick.svg"
 import play from "../../styles/images/play.svg"
 import share from "../../styles/images/share.svg"
 import sendButtonBackground from '../../styles/images/send-button-background.svg'
-import okIcon from '../../styles/images/ok-icon.svg'
-import failIcon from '../../styles/images/fail-icon.svg'
 
 import '../../styles/style.css';
 
 export const ArticleCreate = () => {
   const apiClient = useApiClient()
   const navigate = useNavigate()
-  const [submitResult, setSubmitResult] = useState(null) // null | 'success' | 'fail'
-  const [submitResultText, submitResultIcon] = useMemo(() => {
-    switch (submitResult) {
-      case 'success': return [
-        'Статья отправлена на модерацию',
-        <img src={okIcon} alt="" />
-      ]
-      case 'fail': return [
-        'Что-то пошло не так, попробуйте позже',
-        <img src={failIcon} alt="" />
-      ]
-      default: return [null, null]
-    }
-  }, [submitResult])
   const { data: avatarUrl, isLoading: isLoadingAvatarUrl } = useProfilePictureUrl()
   const { data: profile, isLoading: isProfileLoading } = useQuery(['telegram_user', 'my_profile'])
+  const {
+    setSucceed,
+    setFailed,
+    getNotificationProps
+  } = useMutationStateNotification((state) => {
+    switch (state) {
+      case SUCCESS_STATE: return {
+        text: 'Статья отправлена на модерацию',
+        icon: SUCCESS_ICON
+      }
+      case FAIL_STATE: return {
+        text: 'Что-то пошло не так, попробуйте позже',
+        icon: FAIL_ICON
+      }
+      default: return { text: null, icon: null }
+    }
+  })
   const { mutate } = useMutation(['posts', 'create_post'], async (variables) => {
     const { data } = await apiClient.post('/posts/create_post', variables)
 
     return data
   }, {
     onSuccess({ id }) {
-      setSubmitResult('success')
-
-      setTimeout(() => {
-        navigate(`/draft/${id}`)
-      }, 3000)
+      setSucceed({
+        onTimeout() {
+          navigate(`/draft/${id}`)
+        }
+      })
     },
     onError() {
-      setSubmitResult('fail')
+      setFailed()
     }
   })
   const { control, register, handleSubmit, watch } = useForm({
@@ -199,10 +207,10 @@ export const ArticleCreate = () => {
               <img src={share} alt="" />
             </div>
           </div>
-          {submitResult == null && (
-            <button
+          <button
               type='submit'
               className={canSubmit ? "rect6" : ''}
+              disabled={!canSubmit}
               style={{
                 ...(canSubmit ? {
                   background: `url(${sendButtonBackground})`,
@@ -219,10 +227,9 @@ export const ArticleCreate = () => {
                 fontWeight: 600
               }}
             >Отправить</button>
-          )}
         </div>
       </form>
-      <Notification isOpen={submitResult != null} icon={submitResultIcon} text={submitResultText} />
+      <Notification {...getNotificationProps()} />
     </div>
   )
 }

@@ -9,10 +9,15 @@ import { TitleSeparator } from '../../components/networking/TitleSeparator'
 import { CardTextEdit } from '../../components/networking/CardTextEdit'
 import { SaveButton } from '../../components/networking/SaveButton'
 import { Notification } from '../../components/common/Notification'
+import {
+  useMutationStateNotification,
+  SUCCESS_STATE,
+  FAIL_STATE,
+  SUCCESS_ICON,
+  FAIL_ICON
+} from '../../hooks/useMutationStateNotification'
 import { Card } from '../Networking/ListCards/Card'
 import classes from './NetworkingCard.module.css'
-import okIcon from '../../styles/images/ok-icon.svg'
-import failIcon from '../../styles/images/fail-icon.svg'
 import { getFullName } from '../../utils'
 
 export const NetworkingCard = () => {
@@ -30,38 +35,33 @@ export const NetworkingCard = () => {
       text: ''
     }
   })
-  const [sendState, setSendState] = useState(null) // null | 'success' | 'fail'
-  const [sendIcon, sendText] = useMemo(() => {
-    switch (sendState) {
-      case 'success': return [
-        'Сообщение отправлено',
-        <img src={okIcon} alt="" />
-      ]
-      case 'fail': return [
-        'Что-то пошло не так, попробуйте позже',
-        <img src={failIcon} alt="" />
-      ]
-      default: return [null, null]
+  const {
+    setSucceed,
+    setFailed,
+    getNotificationProps
+  } = useMutationStateNotification((state) => {
+    switch (state) {
+      case SUCCESS_STATE: return {
+        text: 'Сообщение отправлено',
+        icon: SUCCESS_ICON
+      }
+      case FAIL_STATE: return {
+        text: 'Что-то пошло не так, попробуйте позже',
+        icon: FAIL_ICON
+      }
+      default: return { text: null, icon: null }
     }
-  }, [sendState])
+  })
   const { mutate } = useMutation(['cards', 'send_message'], async (variables) => {
     const { data } = apiClient.post('/cards/send_message', variables)
 
     return data
   }, {
     onSuccess() {
-      setSendState('success')
-
-      setTimeout(() => {
-        setSendState(null)
-      }, 3000)
+      setSucceed()
     },
     onError() {
-      setSendState('fail')
-
-      setTimeout(() => {
-        setSendState(null)
-      }, 3000)
+      setFailed()
     }
   })
   const fullName = getFullName(data?.first_name, data?.surname)
@@ -93,14 +93,7 @@ export const NetworkingCard = () => {
       <div className={classes.ncSaveButtonWrapper}>
         <SaveButton>Отправить</SaveButton>
       </div>
-      <Notification
-        isOpen={sendState != null}
-        icon={sendIcon}
-        text={sendText}
-        onClose={() => {
-          setSendState(null)
-        }}
-      />
+      <Notification {...getNotificationProps()} />
     </form>
   )
 }

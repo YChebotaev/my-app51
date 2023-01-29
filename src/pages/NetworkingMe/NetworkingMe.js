@@ -1,3 +1,4 @@
+import { useState, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { useQuery, useMutation } from '@tanstack/react-query'
@@ -8,12 +9,38 @@ import { CardTextEdit } from '../../components/networking/CardTextEdit'
 import { SaveButton } from '../../components/networking/SaveButton'
 import { useApiClient } from '../../hooks'
 import { Skeleton } from '../../components/common/Skeleton'
+import { Notification } from '../../components/common/Notification'
 import classes from './NetworkingMe.module.css'
+import {
+  useMutationStateNotification,
+  SUCCESS_STATE,
+  FAIL_STATE,
+  SUCCESS_ICON,
+  FAIL_ICON
+} from '../../hooks/useMutationStateNotification'
 
 export const NetworkingMe = () => {
   const navigate = useNavigate()
   const apiClient = useApiClient()
   const { data, isLoading } = useQuery(['cards', 'my_card'])
+  const {
+    setSucceed,
+    setFailed,
+    clearState,
+    getNotificationProps
+  } = useMutationStateNotification((state) => {
+    switch (state) {
+      case SUCCESS_STATE: return {
+        text: 'Изменения сохранены',
+        icon: SUCCESS_ICON
+      }
+      case FAIL_STATE: return {
+        text: 'Что-то пошло не так, попробуйте позже',
+        icon: FAIL_ICON
+      }
+      default: return { text: null, icon: null }
+    }
+  })
   const { mutate } = useMutation(['cards', 'update_card'], async ({
     chat_available,
     description,
@@ -32,6 +59,20 @@ export const NetworkingMe = () => {
     })
 
     return data
+  }, {
+    onSuccess() {
+      setSucceed()
+
+      setTimeout(() => {
+      }, 3000)
+    },
+    onError() {
+      setFailed()
+
+      setTimeout(() => {
+        clearState()
+      }, 3000)
+    }
   })
   const { control, handleSubmit } = useForm({
     defaultValues: {
@@ -47,6 +88,13 @@ export const NetworkingMe = () => {
       chat_available: data?.chat_open
     }
   })
+  // const [ updateText, updateIcon ] = useMemo(() => {
+  //   switch (updateState) {
+  //     case 'success': return ['Изменения сохранены', <img src={okIcon} alt="" />]
+  //     case 'fail': return ['Что-то пошло не так, попробуйте позже', <img src={failIcon} alt="" />]
+  //     default: return [null, null]
+  //   }
+  // }, [updateState])
 
   return (
     <form className={classes.networkingMe} onSubmit={handleSubmit(values => mutate(values))}>
@@ -89,6 +137,7 @@ export const NetworkingMe = () => {
       <div className={classes.nmSaveButtonWrapper}>
         <SaveButton />
       </div>
+      <Notification {...getNotificationProps()} />
     </form>
   )
 }

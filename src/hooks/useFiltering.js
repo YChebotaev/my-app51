@@ -9,12 +9,12 @@ export const useFiltering = (rawPossibleFilters, { maxCount = Infinity } = {}) =
   const onAddFilter = useCallback((filter) => {
     setActiveFilters(activeFilters => {
       if (activeFilters.length >= maxCount) {
-        return [...activeFilters.slice(1), filter]
+        return Array.from(new Set([...activeFilters.slice(1), filter]))
       } else {
-        return [...activeFilters, filter]
+        return Array.from(new Set([...activeFilters, filter]))
       }
     })
-  }, [setActiveFilters])
+  }, [setActiveFilters, maxCount])
 
   return useMemo(() => ({
     activeFilters,
