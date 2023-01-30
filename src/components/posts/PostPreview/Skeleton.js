@@ -1,16 +1,16 @@
-import { Skeleton as BaseSkeleton } from '../../components/common/Skeleton'
-import classes from './Draft.module.css'
+import { Skeleton as BaseSkeleton } from '../../common/Skeleton'
+import classes from './PostPreview.module.css'
 
 export const Skeleton = () => {
   return (
-    <div className={classes.draft}>
-      <div className={classes.draftTitleWrapper}>
+    <div className={classes.postPreview}>
+      <div className={classes.titleWrapper}>
         <BaseSkeleton className={classes.titleSkeleton} />
       </div>
-      <div className={classes.draftAuthorWrapper}>
+      <div className={classes.authorWrapper}>
         <BaseSkeleton className={classes.authorSkeleton} />
       </div>
-      <div className={classes.draftImageWrapper}>
+      <div className={classes.imageWrapper}>
         <BaseSkeleton className={classes.imageSkeleton} />
       </div>
       <div className={classes.content}>

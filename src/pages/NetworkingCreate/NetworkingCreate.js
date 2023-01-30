@@ -13,6 +13,7 @@ import { Skeleton } from '../../components/common/Skeleton'
 import classes from './NetworkingCreate.module.css'
 import okIcon from '../../styles/images/ok-icon.svg'
 import failIcon from '../../styles/images/fail-icon.svg'
+import { TopmostMenu } from '../../components/common/TopmostMenu'
 
 export const NetworkingCreate = () => {
   const navigate = useNavigate()
@@ -98,6 +99,8 @@ export const NetworkingCreate = () => {
         }, 3000)
       }
     )}>
+      <TopmostMenu />
+      <TopmostMenu.TitleSeparator />
       <PageTitle
         right={(
           <button

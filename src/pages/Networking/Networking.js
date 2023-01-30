@@ -13,6 +13,7 @@ import { useApiClient, useFiltering } from '../../hooks'
 import { PageTitle } from '../../components/common/PageTitle'
 import { TitleSeparator } from '../../components/networking/TitleSeparator'
 import classes from './Networking.module.css'
+import { TopmostMenu } from '../../components/common/TopmostMenu/TopmostMenu'
 
 export const Networking = () => {
   const apiClient = useApiClient()
@@ -82,6 +83,8 @@ export const Networking = () => {
     }}>
       <div className={classes.networkingWrapper}>
         <div className={classes.networking}>
+          <TopmostMenu />
+          <TopmostMenu.TitleSeparator />
           <PageTitle right={<MyCardLink />}>
             <div className={classes.pageTitle}>Нетворкинг</div>
           </PageTitle>

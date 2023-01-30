@@ -1,0 +1,44 @@
+.topmostMenu {
+  display: flex;
+  justify-content: space-between;
+  background-color: #151515;
+}
+
+.left {
+  display: flex;
+  padding: 20px 10px 15px;
+  gap: 20px;
+}
+
+.right {
+  display: flex;
+  padding: 20px 10px 15px;
+  gap: 20px;
+}
+
+.backButton {
+  border: none;
+  background: transparent;
+  background-image: url("../../../styles/images/arrow.svg");
+  background-size: cover;
+  width: 20px;
+  height: 20px;
+}
+
+.shareButton {
+  border: none;
+  background: transparent;
+  background-image: url("../../../styles/images/share-2.svg");
+  background-size: cover;
+  width: 22px;
+  height: 20px;
+}
+
+.threeDotsButton {
+  border: none;
+  background: transparent;
+  background-image: url("../../../styles/images/three-dots.svg");
+  background-size: cover;
+  width: 20px;
+  height: 20px;
+}

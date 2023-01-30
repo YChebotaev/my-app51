@@ -3,11 +3,11 @@ import { useProfilePictureUrl } from '../../hooks'
 import { useParams } from 'react-router-dom'
 import { PostPreview } from '../../components/posts/PostPreview'
 
-export const Draft = () => {
+export const ArticleView = () => {
   const { postId } = useParams()
   const { data: profile, isLoading: isProfileLoading } = useQuery(['telegram_user', 'my_profile'])
   const { data: avatarUrl, isLoading: isLoadingAvatarUrl } = useProfilePictureUrl()
-  const { data, isLoading: isLoadingPost } = useQuery(['posts', 'draft_post', { post_id: postId }])
+  const { data, isLoading: isLoadingPost } = useQuery(['posts', 'post', postId])
   const isLoading = isProfileLoading || isLoadingAvatarUrl || isLoadingPost
 
   if (isLoading) {

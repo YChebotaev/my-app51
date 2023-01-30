@@ -16,14 +16,14 @@ export const WhatToRead = forwardRef(
           <Skeleton />
         ) : (
           <div className="section-cols">
-            {data.map(({ created_at, content, likes_amount }) => (
-              <div key={created_at} className="col-3">
-                <div className="post-author">@username</div>
-                <div className="post-title">{content}</div>
+            {data.map(({ id, title, likes_amount, author_username }) => (
+              <Link to={`/article/${id}`} key={id} className={cn("col-3", classes.post)}>
+                <div className="post-author">{author_username}</div>
+                <div className="post-title">{title}</div>
                 <div className="post-likes">
                   <span className="post-likes-num">{likes_amount}</span>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         )}

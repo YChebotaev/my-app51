@@ -1,3 +1,7 @@
 .noMarginSection {
   margin: 0;
 }
+
+.post {
+  text-decoration: none;
+}

@@ -1,0 +1,16 @@
+.titleSeparator {
+  position: absolute;
+  background-color: rgb(21 21 21);
+  height: 10px;
+  width: 100%;
+}
+
+.titleSeparator::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 10px;
+  background-color: #1c1c1c;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}

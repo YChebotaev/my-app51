@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import cn from 'classnames'
 import { getFullName, trimAtSymbol } from '../../../../utils'
 import { Profession } from '../../../../components/networking/Profession'
@@ -39,7 +39,7 @@ export const Card = ({
           <div className={classes.cardRight}>
             <div className={classes.cardDetails}>
               <div className={classes.cardName}>
-                <div className={classes.cnName}>{fullName}</div>
+                <Link to={`/networking/${trimAtSymbol(author_username)}`} className={classes.cnName}>{fullName}</Link>
                 {proffesion && <Profession profession={proffesion} />}
               </div>
               <div className={classes.cardBio}>{description}</div>
@@ -51,14 +51,14 @@ export const Card = ({
               />
               {showActions && (
                 <div className={classes.cardActions}>
-                  <button
+                  {chat_open === 'not_available' && <button
                     className={classes.cardAction}
                     onClick={(e) => {
                       e.preventDefault()
 
-                      navigate(`/networking/${trimAtSymbol(author_username)}`)
+                      navigate(`/networking/${trimAtSymbol(author_username)}/mail`)
                     }}
-                  >Написать письмо</button>
+                  >Написать письмо</button>}
                   {chat_open === 'available' && (
                     <button
                       className={classes.cardAction}

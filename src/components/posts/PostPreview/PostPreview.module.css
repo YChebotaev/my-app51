@@ -1,27 +1,27 @@
-.draft {
+.postPreview {
   min-height: 100vh;
   background-color: #151515;
 }
 
-.draftTitle {
+.title {
   font-weight: 600;
   font-size: 18px;
   line-height: 21px;
   color: #FFFFFF;
 }
 
-.draftTitleWrapper {
+.titleWrapper {
   padding: 15px 15px 0 15px;
 }
 
-.draftAuthorWrapper {
+.authorWrapper {
   display: flex;
   align-items: center;
   gap: 20px;
   padding: 15px 15px 0px 15px;
 }
 
-.draftPubDate {
+.pubDate {
   font-weight: 300;
   font-size: 15px;
   line-height: 17px;
@@ -29,11 +29,11 @@
   color: #ffffff;
 }
 
-.draftImageWrapper {
+.imageWrapper {
   padding: 15px 15px 0px 15px;
 }
 
-.draftImage {
+.image {
   width: 100%;
   border-radius: 10px;
 }
@@ -77,7 +77,7 @@
 .button {
   border: none;
   background: transparent;
-  background-image: url("../../styles/images/preview-button-background.svg");
+  background-image: url("../../../styles/images/preview-button-background.svg");
   background-size: cover;
   width: 100%;
   border-radius: 10px;

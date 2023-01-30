@@ -9,9 +9,11 @@ import { Account } from './pages/Account'
 import { Networking } from './pages/Networking'
 import { NetworkingMe } from './pages/NetworkingMe'
 import { NetworkingCreate } from './pages/NetworkingCreate'
+import { NetworkingMail } from './pages/NetworkingMail'
 import { NetworkingCard } from './pages/NetworkingCard'
 import { Draft } from './pages/Draft'
 import { Moove } from './pages/Moove'
+import { ArticleView } from './pages/ArticleView'
 import './styles/style.css'
 import './styles/fonts/stylesheet.css'
 import './styles/toggle.css'
@@ -26,12 +28,14 @@ function App({ isFirstTime }) {
           <Routes location={location}>
             <Route path="" element={<Main isFirstTime={isFirstTime} />} />
             <Route path="/chat" element={<Chat />} />
+            <Route path="/article/:postId" element={<ArticleView />} />
             <Route path="/article" element={<Article />} />
             <Route path="/createArticle" element={<ArticleCreate />} />
             <Route path="/leaderboard" element={<Leaderboard />} />
             <Route path="/account" element={<Account />} />
             <Route path="/networking/me" element={<NetworkingMe />} />
             <Route path="/networking/create" element={<NetworkingCreate />} />
+            <Route path="/networking/:username/mail" element={<NetworkingMail />} />
             <Route path="/networking/:username" element={<NetworkingCard />} />
             <Route path="/networking" element={<Networking />} />
             <Route path="/draft/:postId" element={<Draft />} />
