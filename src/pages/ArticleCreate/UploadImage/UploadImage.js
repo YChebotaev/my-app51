@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import { useMutation } from '@tanstack/react-query'
 import { Skeleton } from '../../../components/common/Skeleton'
-import { useApiClient } from '../../../hooks'
+import { useApiClient, useLoadImage } from '../../../hooks'
 import imagePlaceholder from '../../../styles/images/image-placeholder.svg'
 import classes from './UploadImage.module.css'
 import { getBackendUrl } from '../../../utils'
@@ -9,7 +9,8 @@ import { getBackendUrl } from '../../../utils'
 export const UploadImage = () => {
   const fileRef = useRef()
   const apiClient = useApiClient()
-  const [imgUrl, setImgUrl] = useState(null)
+  const [imgUrl, setImgUrl] = useState()
+  const { data: imageUrl } = useLoadImage(['post_image', imgUrl], imgUrl ? getBackendUrl() + imgUrl : undefined, imagePlaceholder)
   const { mutate, isLoading } = useMutation(['posts', 'upload_image'], async () => {
     const formData = new FormData()
     formData.append('image', fileRef.current.files[0])
@@ -38,7 +39,7 @@ export const UploadImage = () => {
           <div
             className={classes.imagePlaceholder}
             onClick={() => { fileRef.current.click() }}>
-            <img src={imagePlaceholder} alt="" />
+            <img src={imageUrl} alt="" />
           </div>
         )
       )}
