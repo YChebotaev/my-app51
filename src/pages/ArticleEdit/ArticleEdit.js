@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useMutation, useQuery } from '@tanstack/react-query'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { PostEdit } from '../../components/posts/PostEdit'
 import { Notification } from '../../components/common/Notification'
 import { useProfilePictureUrl, useApiClient } from '../../hooks'
@@ -13,11 +13,12 @@ import {
 } from '../../hooks/useMutationStateNotification'
 
 import '../../styles/style.css';
-import { getBackendUrl } from '../../utils'
+import { getBackendUrl, trimFirstImage } from '../../utils'
 
-export const ArticleCreate = () => {
+export const ArticleEdit = () => {
   const apiClient = useApiClient()
   const navigate = useNavigate()
+  const { postId } = useParams()
   const [imgUrl, setImgUrl] = useState()
   const { data: avatarUrl, isLoading: isLoadingAvatarUrl } = useProfilePictureUrl()
   const { data: profile, isLoading: isProfileLoading } = useQuery(['telegram_user', 'my_profile'])
@@ -38,18 +39,32 @@ export const ArticleCreate = () => {
       default: return { text: null, icon: null }
     }
   })
-  const { mutate } = useMutation(['posts', 'create_post'], async (variables) => {
-    const { data } = await apiClient.post('/posts/create_post', {
-      ...variables,
-      content: imgUrl ? `<img src="${getBackendUrl() + imgUrl}" />\n${variables.content}` : variables.content
+  const { data, isLoading } = useQuery(['posts', 'post', postId])
+  const { mutate } = useMutation(['posts', 'edit_post', postId], async ({
+    title,
+    subtitle,
+    content
+  }) => {
+    const { data: resp } = await apiClient.post('/posts/edit_post', {
+      title,
+      subtitle,
+      content: imgUrl ? `<img src="${getBackendUrl() + imgUrl}" />\n${content}` : content
+    }, {
+      params: {
+        post_url: data.telegraph_url
+      }
     })
 
-    return data
+    return resp
   }, {
     onSuccess({ id }) {
       setSucceed({
         onTimeout() {
-          navigate(`/draft/${id}`)
+          if (data.status === 'draft') {
+            navigate(`/draft/${postId}`)
+          } else {
+            navigate(`/article/${postId}`)
+          }
         }
       })
     },
@@ -58,9 +73,14 @@ export const ArticleCreate = () => {
     }
   })
 
-  return (
+  return isLoading ? null : (
     <PostEdit
-      pageTitle="Создать статью"
+      defaultValues={{
+        title: data.title,
+        subtitle: data.subtitle,
+        content: trimFirstImage(data.content)
+      }}
+      pageTitle="Редактировать статью"
       firstName={profile?.first_name}
       surname={profile?.surname}
       usernameLink={profile?.username_link}

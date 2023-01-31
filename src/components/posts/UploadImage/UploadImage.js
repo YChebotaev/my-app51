@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 import { useMutation } from '@tanstack/react-query'
 import { Skeleton, KIND_UPDATING } from '../../../components/common/Skeleton'
 import { useApiClient, useLoadImage } from '../../../hooks'
@@ -6,11 +6,14 @@ import imagePlaceholder from '../../../styles/images/image-placeholder.svg'
 import classes from './UploadImage.module.css'
 import { getBackendUrl } from '../../../utils'
 
-export const UploadImage = () => {
+export const UploadImage = ({ imgUrl, onChange }) => {
   const fileRef = useRef()
   const apiClient = useApiClient()
-  const [imgUrl, setImgUrl] = useState()
-  const { data: imageUrl, isLoading } = useLoadImage(['post_image', imgUrl], imgUrl ? getBackendUrl() + imgUrl : undefined, imagePlaceholder)
+  const { data: imageUrl, isLoading } = useLoadImage(
+    ['post_image', imgUrl],
+    imgUrl ? getBackendUrl() + imgUrl : undefined,
+    imagePlaceholder
+  )
   const { mutate, isLoading: isUpdating } = useMutation(['posts', 'upload_image'], async () => {
     const formData = new FormData()
     formData.append('image', fileRef.current.files[0])
@@ -19,7 +22,7 @@ export const UploadImage = () => {
     return data
   }, {
     onSuccess({ img_path }) {
-      setImgUrl(img_path)
+      onChange(img_path)
     }
   })
 

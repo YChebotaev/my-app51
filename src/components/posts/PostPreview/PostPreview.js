@@ -1,6 +1,7 @@
 import { format, parseISO } from 'date-fns'
 import { PostAuthor } from '../../articles/PostAuthor'
 import { Skeleton } from './Skeleton'
+import { trimFirstImage } from '../../../utils'
 import classes from './PostPreview.module.css'
 
 export const PostPreview = ({
@@ -46,7 +47,7 @@ export const PostPreview = ({
       <div className={classes.subtitle}>{subtitle}</div>
     </div>
     <div className={classes.content}>
-      <div className={classes.paragraph} dangerouslySetInnerHTML={{ __html: content }} />
+      <div className={classes.paragraph} dangerouslySetInnerHTML={{ __html: trimFirstImage(content) }} />
     </div>
     <div className={classes.buttonWrapper}>
       <button

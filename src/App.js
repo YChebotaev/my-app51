@@ -14,6 +14,7 @@ import { NetworkingCard } from './pages/NetworkingCard'
 import { Draft } from './pages/Draft'
 import { Moove } from './pages/Moove'
 import { ArticleView } from './pages/ArticleView'
+import { ArticleEdit } from './pages/ArticleEdit'
 import './styles/style.css'
 import './styles/fonts/stylesheet.css'
 import './styles/toggle.css'
@@ -28,6 +29,7 @@ function App({ isFirstTime }) {
           <Routes location={location}>
             <Route path="" element={<Main isFirstTime={isFirstTime} />} />
             <Route path="/chat" element={<Chat />} />
+            <Route path="/article/:postId/edit" element={<ArticleEdit />} />
             <Route path="/article/:postId" element={<ArticleView />} />
             <Route path="/article" element={<Article />} />
             <Route path="/createArticle" element={<ArticleCreate />} />

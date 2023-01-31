@@ -1,22 +1,61 @@
+import { useNavigate } from "react-router-dom"
+import { useMutation, useQuery } from "@tanstack/react-query"
 import { PageTitle } from "../../../components/common/PageTitle"
 import Footer from "../../../components/common/Footer"
 import { Tabs, useTabs } from '../../../components/common/Tabs'
-import { Notification, useNotification } from '../../../components/common/Notification'
+import { Notification } from '../../../components/common/Notification'
 import { MyAccount } from '../MyAccount'
 import { Articles } from '../Articles'
 import { ArticlesSkeleton } from './ArticlesSkeleton'
-import deleteIcon from '../../../styles/images/delete.svg'
 import classes from "./Account.module.css"
 import "../../../styles/style.css"
-import { useQuery } from "@tanstack/react-query"
+import {
+  useApiClient,
+  useMutationStateNotification,
+  SUCCESS_STATE,
+  FAIL_STATE,
+  SUCCESS_ICON,
+  FAIL_ICON
+} from "../../../hooks"
 
 export const Account = () => {
+  const apiClient = useApiClient()
+  const navigate = useNavigate()
   const { getTabProps, getContentProps } = useTabs(0)
   const {
-    isOpen: isDeleteNotificationOpen,
-    onOpen: onDeleteNotificationOpen
-  } = useNotification()
+    setSucceed,
+    setFailed,
+    getNotificationProps
+  } = useMutationStateNotification((state) => {
+    switch (state) {
+      case SUCCESS_STATE: return {
+        text: 'Статья удалена',
+        icon: SUCCESS_ICON
+      }
+      case FAIL_STATE: return {
+        text: 'Что-то пошло не так, попробуйте позже',
+        icon: FAIL_ICON
+      }
+      default: return { text: null, icon: null }
+    }
+  })
   const { data, isLoading } = useQuery(['posts', 'my_posts'])
+  const { mutate } = useMutation(['posts', 'delete_post'], async ({ postUrl }) => {
+    const { data } = await apiClient.post('/posts/delete_post', undefined, {
+      params: {
+        post_url: postUrl
+      }
+    })
+
+    return data
+  }, {
+    onSuccess() {
+      setSucceed()
+    },
+    onError() {
+      setFailed()
+    }
+  })
 
   return (
     <div className="main-wrapper">
@@ -40,11 +79,11 @@ export const Account = () => {
             <Tabs.Content {...getContentProps(0)}>
               {isLoading ? <ArticlesSkeleton count={3} /> : (
                 <Articles data={data.published}
-                  onEdit={(item) => { }}
+                  onEdit={(item) => {
+                    navigate(`/article/${item.id}/edit`)
+                  }}
                   onDelete={(item) => {
-                    onDeleteNotificationOpen({
-                      timeout: 3000
-                    })
+                    mutate({ postUrl: item.telegraph_url })
                   }}
                 />)}
             </Tabs.Content>
@@ -52,11 +91,11 @@ export const Account = () => {
               {isLoading ? <ArticlesSkeleton count={3} /> : (
                 <Articles
                   data={[].concat(data.draft.posts).concat(data.not_approved)}
-                  onEdit={(item) => { }}
+                  onEdit={(item) => {
+                    navigate(`/article/${item.id}/edit`)
+                  }}
                   onDelete={(item) => {
-                    onDeleteNotificationOpen({
-                      timeout: 3000
-                    })
+                    mutate({ postUrl: item.telegraph_url })
                   }}
                 />
               )}
@@ -65,11 +104,7 @@ export const Account = () => {
         </div>
       </div>
       <Footer withoutPlaceholder />
-      <Notification
-        isOpen={isDeleteNotificationOpen}
-        icon={<img src={deleteIcon} alt="" />}
-        text="Статья удалена"
-      />
+      <Notification {...getNotificationProps()} />
     </div>
   )
 }
