@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { CardImage } from './CardImage'
 import classes from './Networking.module.css'
-import { getFullName, getBackendUrl } from '../../../utils'
+import { getFullName } from '../../../utils'
 
 export const Networking = forwardRef(
   (_, ref) => {

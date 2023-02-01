@@ -7,18 +7,17 @@ import { Leaf } from './Leaf'
 import { toggleFormat } from './toggleFormat'
 import classes from './ContentEdit.module.css'
 import { renderToHTML } from './renderToHTML'
+import { parseEditorHTML } from './parseEditorHTML'
 
 export const ContentEdit = ({ control }) => {
   const { field } = useController({ control, name: 'content' })
   const editor = useMemo(() => withReact(createEditor()), [])
 
-  // console.log('field.value =', field.value)
-
   return (
     <div className={classes.contentEdit} >
       <Slate
         editor={editor}
-        value={[{
+        value={parseEditorHTML(field.value) ?? [{
           type: 'paragraph',
           children: [
             {

@@ -6,14 +6,15 @@ export const renderToHTML = (nodes) => {
           let result = text
 
           if (bold) result = `<strong>${result}</strong>`
-
           if (italic) result = `<em>${result}</em>`
-
           if (underlined) result = `<u>${result}</u>`
 
           return result
-        }).join('')
-      default: return '<br />'
+        })
+          .join('')
+      default: return undefined
     }
-  }).join('\n')
+  })
+    .filter(Boolean)
+    .join('\n')
 }

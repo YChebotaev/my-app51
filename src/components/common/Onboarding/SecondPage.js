@@ -13,6 +13,7 @@ const SecondPage = () => {
   const textWrapperRef = useRef()
   const arrowRef = useRef()
   const { spotlightRef } = useOnboardingInternal()
+  // eslint-disable-next-line no-unused-vars
   const [_, windowHeight] = useWindowMeasure()
 
   useSpotlight()

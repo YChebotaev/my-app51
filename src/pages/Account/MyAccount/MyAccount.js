@@ -1,12 +1,11 @@
 import { useQuery } from '@tanstack/react-query'
 import cn from 'classnames'
-import { useApiClient, useProfilePictureUrl } from '../../../hooks'
+import { useProfilePictureUrl } from '../../../hooks'
 import { getFullName } from '../../../utils'
 import classes from "./MyAccount.module.css"
 import { Skeleton } from '../../../components/common/Skeleton'
 
 export const MyAccount = () => {
-  const apiClient = useApiClient()
   const {
     data: {
       first_name,

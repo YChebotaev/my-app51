@@ -1,4 +1,5 @@
 import { format, parseISO } from 'date-fns'
+import { normalizeContentHTML } from '../../../../utils'
 import classes from './Article.module.css'
 
 export const Article = ({ article: { content, created_at, status } }) => {
@@ -10,7 +11,7 @@ export const Article = ({ article: { content, created_at, status } }) => {
         <div className={classes.articlePreview} />
       </div>
       <div className={classes.articleRight}>
-        <div className={classes.articleTitle}>{content}</div>
+        <div className={classes.articleTitle} dangerouslySetInnerHTML={{ __html: normalizeContentHTML(content) }} />
         <div className={classes.articlePubDate}>
           {isDraft ? 'Черновик' : 'Опубликовано'} {format(parseISO(created_at), 'd.M.yyyy')}
         </div>

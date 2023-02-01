@@ -2,7 +2,7 @@ import { useInfiniteQuery } from '@tanstack/react-query'
 import { parseISO} from 'date-fns'
 import { Skeleton } from '../../../../components/common/Skeleton'
 import { useApiClient } from '../../../../hooks'
-import { formatArticleDate, trimFirstImage } from '../../../../utils'
+import { formatArticleDate } from '../../../../utils'
 import { ScrollPlaceholder } from '../../../../components/common/ScrollPlaceholder'
 import classes from './Fresh.module.css'
 

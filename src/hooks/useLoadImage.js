@@ -2,7 +2,6 @@ import { useEffect } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { useApiClient } from './useApiClient'
 import axios from 'axios'
-import { getTelegramUserId } from '../utils'
 
 export const useLoadImage = (queryKey, src, placeholderSrc) => {
   const apiClient = useApiClient()
