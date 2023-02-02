@@ -1,4 +1,5 @@
 import { format, parseISO } from 'date-fns'
+import cn from 'classnames'
 import { PostAuthor } from '../../articles/PostAuthor'
 import { Skeleton } from './Skeleton'
 import { normalizeContentHTML } from '../../../utils'
@@ -17,7 +18,8 @@ export const PostPreview = ({
   postImage,
   subtitle,
   content,
-  telegraphUrl
+  telegraphUrl,
+  status
 }) => (
   <div className={classes.postPreview}>
     {title != null && (
@@ -51,7 +53,8 @@ export const PostPreview = ({
     </div>
     <div className={classes.buttonWrapper}>
       <button
-        className={classes.button}
+        disabled={status === 'draft'}
+        className={cn(classes.button, status === 'draft' && classes.disabledButton)}
         onClick={() => {
           window.location = telegraphUrl
         }}

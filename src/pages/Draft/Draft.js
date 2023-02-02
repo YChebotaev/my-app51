@@ -29,6 +29,7 @@ export const Draft = () => {
       subtitle={data.subtitle}
       content={data.content}
       telegraphUrl={data.telegraph_url}
+      status={data.status}
     />
   )
 }
