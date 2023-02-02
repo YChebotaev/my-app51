@@ -1,13 +1,13 @@
-import Marquee from "react-fast-marquee";
+import { Marquee } from './Marquee'
 
 const Header = () => {
   return (
     <Marquee
-      className="marquee"
-      gradient={false}
-      data-duplicated='true'
-      data-direction='left'
-    >By skolkovo &emsp; By skolkovo &emsp; By skolkovo &emsp; </Marquee>
+      text="BY SKOLKOVO"
+      height={20}
+      speed={20}
+      offset={20}
+    />
   )
 }
 
