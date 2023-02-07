@@ -18,7 +18,7 @@ export const PostPreview = ({
   postImage,
   subtitle,
   content,
-  telegraphUrl,
+  urlToPost,
   status
 }) => (
   <div className={classes.postPreview}>
@@ -56,7 +56,7 @@ export const PostPreview = ({
         disabled={status === 'draft'}
         className={cn(classes.button, status === 'draft' && classes.disabledButton)}
         onClick={() => {
-          window.location = telegraphUrl
+          window.location = urlToPost
         }}
       >
         Перейти в статью на канале

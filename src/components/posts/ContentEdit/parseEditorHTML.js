@@ -20,9 +20,11 @@ const parseLine = (html) => {
 
       switch (el) {
         case 'strong':
+        case 'b':
           last.bold = true
         break
         case 'em':
+        case 'i':
           last.italic = true
         break
         case 'u':

@@ -38,7 +38,7 @@ export const Posts = ({ queryKey }) => {
         <Empty />
       ) : (
         posts.map((i) => (
-          <a key={i.id} href={i.telegraph_url} style={{ textDecoration: "none" }}>
+          <a key={i.id} href={`/article/${i.id}`} style={{ textDecoration: "none" }}>
             <div className="chat-item">
               <div className="chat-data" style={{ display: "flex", marginLeft: 0, flexDirection: "column", justifyContent: "flex-start", alignItems: "flex-start" }}>
                 <div className="chat-title">{i.title}</div>

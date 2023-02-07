@@ -62,11 +62,11 @@ export const HoveringToolbar = () => {
           format="italic"
           icon={<img src={italicIcon} className={classes.htFormatButtonIcon} alt="Курсивом" />}
         />
-        <FormatButton
+        {/* <FormatButton
           className={classes.htFormatButton}
           format="underlined"
           icon={<img src={underlineIcon} className={classes.htFormatButtonIcon} alt="Курсивом" />}
-        />
+        /> */}
       </Menu>
     </Portal>
   )

@@ -5,8 +5,8 @@ export const renderToHTML = (nodes) => {
         return children.map(({ text, bold, italic, underlined }) => {
           let result = text
 
-          if (bold) result = `<strong>${result}</strong>`
-          if (italic) result = `<em>${result}</em>`
+          if (bold) result = `<b>${result}</b>`
+          if (italic) result = `<i>${result}</i>`
           if (underlined) result = `<u>${result}</u>`
 
           return result

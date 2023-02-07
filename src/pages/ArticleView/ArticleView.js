@@ -28,7 +28,7 @@ export const ArticleView = () => {
       postImage={data.post_image}
       subtitle={data.subtitle}
       content={data.content}
-      telegraphUrl={data.telegraph_url}
+      urlToPost={data.url_to_post}
       status={data.status}
     />
   )
