@@ -49,13 +49,13 @@ export const Main = ({ isFirstTime }) => {
             <div className="rect1-question" />
             <div className="rect1-title">Объясняем, что тут у нас происходит</div>
           </div>
-          <WhatToRead ref={whatToReadRef} />
+          {/* <WhatToRead ref={whatToReadRef} /> */}
           <div className={classes.mooveWrapper}>
             <Moove />
           </div>
-          <div className={classes.networkingWrapper}>
+          {/* <div className={classes.networkingWrapper}>
             <Networking ref={gamesRef} />
-          </div>
+          </div> */}
           <Chats ref={chatsRef} />
         </div>
         {isShowFooter && <Footer articleButtonRef={articleButtonRef} />}

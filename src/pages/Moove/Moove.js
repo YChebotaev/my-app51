@@ -7,6 +7,7 @@ import { PageTitle } from '../../components/common/PageTitle'
 import { About } from './About'
 import { WhatToRead } from '../../components/common/WhatToRead'
 import { Articles } from './Articles'
+import { Events } from './Events'
 import classes from './Moove.module.css'
 import arrowIcon from '../../styles/images/arrow.svg'
 
@@ -37,6 +38,9 @@ export const Moove = () => {
       </PageTitle>
       <div className={classes.aboutWrapper}>
         <About />
+      </div>
+      <div className={classes.eventsWrapper}>
+        <Events />
       </div>
       <div className={classes.backdrop}>
         <div className={classes.whatToReadWrapper}>

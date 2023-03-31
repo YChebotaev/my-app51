@@ -1,0 +1,75 @@
+.event {
+  display: flex;
+  flex-flow: column;
+  gap: 10px;
+  border: 1px solid rgba(215, 63, 81, 0.54);
+  border-radius: 10px;
+  padding: 10px;
+  min-width: 300px;
+}
+
+.title {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  color: #FFFFFF;
+}
+
+.imageWrapper {
+}
+
+.image {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.infoLeft {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: #FFFFFF;
+}
+
+.infoRight {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: #FFFFFF;
+}
+
+.descriptionWrapper {
+}
+
+.description {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 18px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.buttonWrapper {
+}
+
+.button {
+  display: block;
+  background-image: url("../../../../styles/images/event-button-bg.svg");
+  background-size: cover;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.85);
+  border-radius: 10px;
+  padding: 10px 0;
+  text-decoration: none;
+}
