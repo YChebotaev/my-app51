@@ -3,10 +3,9 @@ import FirstPage from "./FirstPage";
 import SecondPage from './SecondPage'
 import ThirdPage from './ThirdPage'
 import FourthPage from './FourthPage'
-import FifthPage from './FifthPage'
 import context from './context'
 
-const Introduction = ({ page, spotlightedRef, mainWrapperRef, totalPages, onNextPage, onClose }) => {
+const Onboarding = ({ page, spotlightedRef, mainWrapperRef, totalPages, onNextPage, onClose }) => {
   const spotlightRef = useRef()
   const currentPage = useMemo(() => {
     switch (page) {
@@ -18,8 +17,6 @@ const Introduction = ({ page, spotlightedRef, mainWrapperRef, totalPages, onNext
         return <ThirdPage />
       case 3:
         return <FourthPage />
-      case 4:
-        return <FifthPage />
       default:
         return null
     }
@@ -50,4 +47,4 @@ const Introduction = ({ page, spotlightedRef, mainWrapperRef, totalPages, onNext
   )
 }
 
-export default Introduction
+export default Onboarding

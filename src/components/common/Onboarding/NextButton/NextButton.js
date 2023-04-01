@@ -1,11 +1,11 @@
 import { useOnboardingInternal } from '../useOnboardingInternal'
 import classes from './NextButton.module.css'
 
-const NextButton = ({ children }) => {
+const NextButton = ({ onClick, children }) => {
   const { onNextPage } = useOnboardingInternal()
 
   return (
-    <button className={classes.nextButton} onClick={onNextPage}>
+    <button className={classes.nextButton} onClick={onClick ?? onNextPage}>
       {children}
     </button>
   )

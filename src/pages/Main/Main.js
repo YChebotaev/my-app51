@@ -1,6 +1,6 @@
 import React from 'react'
 import { useQuery } from '@tanstack/react-query'
-import { Networking } from './Networking'
+// import { Networking } from './Networking'
 import { Chats } from './Chats'
 import { Skeleton } from './Skeleton'
 import { Moove } from './Moove'
@@ -27,14 +27,14 @@ export const Main = ({ isFirstTime }) => {
     onClose
   } = useOnboarding({
     initialPage: 0,
-    totalPages: 5,
+    totalPages: 4,
     initialOpen: isFirstTime
   })
-  const whatToReadRef = (isOpen && page === 1) ? spotlightedRef : null
-  const gamesRef = (isOpen && page === 2) ? spotlightedRef : null
-  const chatsRef = (isOpen && page === 3) ? spotlightedRef : null
-  const articleButtonRef = (isOpen && page === 4) ? spotlightedRef : null
-  const isShowFooter = isOpen ? page === 4 : true
+  const whatToReadRef = (isOpen && page === 0) ? spotlightedRef : null
+  // const gamesRef = (isOpen && page === 2) ? spotlightedRef : null
+  // const chatsRef = (isOpen && page === 3) ? spotlightedRef : null
+  const articleButtonRef = (isOpen && page === 1) ? spotlightedRef : null
+  const isShowFooter = isOpen ? page === 1 : true
   const isShowOnboarding = isOpen
 
   if (isLoading) return <Skeleton />
@@ -49,14 +49,14 @@ export const Main = ({ isFirstTime }) => {
             <div className="rect1-question" />
             <div className="rect1-title">Объясняем, что тут у нас происходит</div>
           </div>
-          {/* <WhatToRead ref={whatToReadRef} /> */}
+          <WhatToRead ref={whatToReadRef} />
           <div className={classes.mooveWrapper}>
             <Moove />
           </div>
           {/* <div className={classes.networkingWrapper}>
             <Networking ref={gamesRef} />
           </div> */}
-          <Chats ref={chatsRef} />
+          <Chats /* ref={chatsRef} */ />
         </div>
         {isShowFooter && <Footer articleButtonRef={articleButtonRef} />}
       </div>

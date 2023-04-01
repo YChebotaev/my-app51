@@ -3,6 +3,15 @@
   padding-right: 30px;
 }
 
+.header {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  color: #FFFFFF;  
+}
+
 .text {
   font-size: 18px;
   color: #ffffff;
