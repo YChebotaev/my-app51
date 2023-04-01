@@ -20,7 +20,7 @@ export const Event = ({ title, date, type, description }) => (
       <div className={classes.description}>{description}</div>
     </div>
     <div className={classes.buttonWrapper}>
-      <a className={classes.button} href="https://forms.gle/CUWRc7VCko3owdBy8">Задать вопрос</a>
+      <a className={classes.button} href="https://docs.google.com/forms/d/17XWt3yI39_G2JhAYVjL2FktvwLdEbsOyiSGeWfG4Xb0/edit#settings">Задать вопрос</a>
     </div>
   </div>
 )
