@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef } from "react";
-import FirstPage from "./FirstPage";
+// import FirstPage from "./FirstPage";
 import SecondPage from './SecondPage'
 import ThirdPage from './ThirdPage'
 import FourthPage from './FourthPage'
@@ -10,12 +10,10 @@ const Onboarding = ({ page, spotlightedRef, mainWrapperRef, totalPages, onNextPa
   const currentPage = useMemo(() => {
     switch (page) {
       case 0:
-        return <FirstPage />
-      case 1:
         return <SecondPage />
-      case 2:
+      case 1:
         return <ThirdPage />
-      case 3:
+      case 2:
         return <FourthPage />
       default:
         return null

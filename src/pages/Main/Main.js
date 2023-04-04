@@ -30,11 +30,11 @@ export const Main = ({ isFirstTime }) => {
     totalPages: 4,
     initialOpen: isFirstTime
   })
-  const whatToReadRef = (isOpen && page === 0) ? spotlightedRef : null
+  // const whatToReadRef = (isOpen && page === 0) ? spotlightedRef : null
   // const gamesRef = (isOpen && page === 2) ? spotlightedRef : null
   // const chatsRef = (isOpen && page === 3) ? spotlightedRef : null
-  const articleButtonRef = (isOpen && page === 1) ? spotlightedRef : null
-  const isShowFooter = isOpen ? page === 1 : true
+  const articleButtonRef = (isOpen && page === 0) ? spotlightedRef : null
+  const isShowFooter = isOpen ? page === 0 : true
   const isShowOnboarding = isOpen
 
   if (isLoading) return <Skeleton />
@@ -49,7 +49,7 @@ export const Main = ({ isFirstTime }) => {
             <div className="rect1-question" />
             <div className="rect1-title">Объясняем, что тут у нас происходит</div>
           </div>
-          <WhatToRead ref={whatToReadRef} />
+          {/* <WhatToRead ref={whatToReadRef} /> */}
           <div className={classes.mooveWrapper}>
             <Moove />
           </div>

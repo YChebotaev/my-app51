@@ -46,8 +46,8 @@ export const Moove = () => {
     totalPages: 4,
     initialOpen: isShowOnboarding
   })
-  const aboutMooveRef = (isOpen && page === 2) ? spotlightedRef : null
-  const eventsRef = (isOpen && page === 3) ? spotlightedRef : null
+  const aboutMooveRef = (isOpen && page === 1) ? spotlightedRef : null
+  const eventsRef = (isOpen && page === 2) ? spotlightedRef : null
 
   return (
     <div className={classes.moove}>
