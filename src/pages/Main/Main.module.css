@@ -14,7 +14,21 @@
   z-index: 1;
 }
 
-.mooveWrapper {
+.onboardingWrapper {
+  padding: 0 16px;
+}
+
+.aboutWrapper {
+  padding: 0 16px;
+  margin-top: 20px;
+}
+
+.libraryWrapper {
+  padding: 0 16px;
+  margin-top: 20px;
+}
+
+.eventsWrapper {
   margin-top: 20px;
 }
 

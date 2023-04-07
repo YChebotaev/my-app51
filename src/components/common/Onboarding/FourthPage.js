@@ -22,16 +22,16 @@ const SecondPage = () => {
           className={commonClasses.arrowUp}
           style={{
             position: 'absolute',
-            top: 360,
+            top: 310,
             left: 'calc(50% + -60px)',
             width: 110,
             height: 174
           }}
         />
-        <div className={commonClasses.textWrapper} style={{ position: 'absolute', top: 520, width: 'calc(100vw - 60px)' }}>
-          <div className={commonClasses.header}>Отправить вопрос</div>
-          <p className={commonClasses.text}>Напишите свои вопросы и мы обязательно ответим на мероприятии</p>
-          <NextButton onClick={() => { navigate('/') }}>Понятно, давай дальше</NextButton>
+        <div className={commonClasses.textWrapper} style={{ position: 'absolute', top: 460, width: 'calc(100vw - 60px)' }}>
+          <div className={commonClasses.header}>О программе MOOVE</div>
+          <p className={commonClasses.text}>(Узнай подробности совместной программы Школы Управления Сколково и МТС по запуску стартапа и управлению цифровым продуктом внутри компании)</p>
+          <NextButton>Понятно, давай дальше</NextButton>
         </div>
       </Backdrop>
     </>

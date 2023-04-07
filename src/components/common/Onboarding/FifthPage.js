@@ -18,18 +18,18 @@ const SecondPage = () => {
           className={commonClasses.textWrapper}
           style={{
             position: 'absolute',
-            top: 'calc(100vh - 380px)',
+            top: 180,
             width: 'calc(100vw - 60px)'
           }}
         >
-          <p className={commonClasses.text}>Чтобы перейти к написанию новой  статьи, нажми на эту кнопку</p>
+          <p className={commonClasses.text}>Чтобы перейти к написанию новой статьи, нажми на эту кнопку</p>
           <NextButton>Понятно, давай дальше</NextButton>
         </div>
         <div
           className={commonClasses.arrowDown2}
           style={{
             position: 'absolute',
-            top: 'calc(100vh - 260px)',
+            top: 290,
             left: 'calc(50% - 100px)',
             width: 154,
             height: 174

@@ -3,6 +3,7 @@ import React, { useEffect, useMemo, useRef } from "react";
 import SecondPage from './SecondPage'
 import ThirdPage from './ThirdPage'
 import FourthPage from './FourthPage'
+import FifthPage from './FifthPage'
 import context from './context'
 
 const Onboarding = ({ page, spotlightedRef, mainWrapperRef, totalPages, onNextPage, onClose }) => {
@@ -15,6 +16,8 @@ const Onboarding = ({ page, spotlightedRef, mainWrapperRef, totalPages, onNextPa
         return <ThirdPage />
       case 2:
         return <FourthPage />
+      case 3:
+        return <FifthPage />
       default:
         return null
     }

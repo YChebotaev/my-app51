@@ -3,7 +3,7 @@
   text-decoration: none;
 }
 
-.moove {
+.library {
   background-image: url("../../../styles/images/about-moove-background.svg");
   background-size: cover;
   border-radius: 10px;
@@ -31,14 +31,4 @@
   font-size: 14px;
   line-height: 18px;
   color: #ffffff;
-}
-
-.shark {
-  position: absolute;
-  top: -20px;
-  right: 0px;
-  background-image: url("../../../styles/images/shark-at-computer.png");
-  background-size: cover;
-  width: 109px;
-  height: 109px;
 }

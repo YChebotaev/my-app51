@@ -51,10 +51,20 @@
 
 .shark {
   position: absolute;
-  top: 480px;
+  top: 10px;
   right: 30px;
   background-image: url("../../styles/images/shark-at-computer.png");
   background-size: cover;
   width: 109px;
   height: 109px;
+}
+
+.heart {
+  position: absolute;
+  top: 10px;
+  right: 30px;
+  background-image: url("../../styles/images/heart1.png");
+  background-size: cover;
+  width: 111px;
+  height: 111px;
 }
