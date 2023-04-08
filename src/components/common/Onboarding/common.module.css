@@ -29,16 +29,19 @@
   background-size: cover;
   width: 160px;
   height: 174px;
+  pointer-events: none;
 }
 
 .arrowDown {
   background-image: url('../../../styles/images/swoosh-arrow-down.svg');
   background-repeat: no-repeat;
   background-size: cover;
+  pointer-events: none;
 }
 
 .arrowDown2 {
   background-image: url('../../../styles/images/swoosh-arrow-down-2.svg');
   background-repeat: no-repeat;
   background-size: cover;
+  pointer-events: none;
 }

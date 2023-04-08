@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query'
 // import { Networking } from './Networking'
 // import { Chats } from './Chats'
 import { Skeleton } from './Skeleton'
-import { Moove } from './Moove'
+// import { Moove } from './Moove'
 import { Library } from './Library'
 import { Events } from './Events'
 import { About } from './About'
@@ -30,7 +30,7 @@ export const Main = ({ isFirstTime }) => {
     onClose
   } = useOnboarding({
     initialPage: 0,
-    totalPages: 5,
+    totalPages: 4,
     initialOpen: isFirstTime
   })
   // const whatToReadRef = (isOpen && page === 0) ? spotlightedRef : null
@@ -72,7 +72,7 @@ export const Main = ({ isFirstTime }) => {
           </div> */}
           {/* <Chats ref={chatsRef} /> */}
         </div>
-        {isShowFooter && <Footer articleButtonRef={articleButtonRef} />}
+        {isShowFooter && <Footer backButton={false} articleButtonRef={articleButtonRef} />}
       </div>
       {isShowOnboarding && (
         <Onboarding

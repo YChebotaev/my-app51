@@ -18,11 +18,12 @@
 }
 
 .header-title {
-  font-weight: 600;
-  font-size: 73px;
-  line-height: 78px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 72px;
+  line-height: 87px;
   letter-spacing: 0.02em;
-  color: #ffffff;
+  color: #FFFFFF;
   text-transform: uppercase;
   margin-left: 17px;
   padding-top: 13px;
@@ -520,6 +521,13 @@
 
 .bottom-button-placeholder {
   height: 70px;
+}
+
+.bottom-btn_fake {
+  width: 44px;
+  height: 40px;
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* --- */

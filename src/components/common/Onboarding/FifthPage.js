@@ -22,7 +22,9 @@ const SecondPage = () => {
             width: 'calc(100vw - 60px)'
           }}
         >
-          <p className={commonClasses.text}>Чтобы перейти к написанию новой статьи, нажми на эту кнопку</p>
+
+          <div className={commonClasses.header}>Задать вопрос</div>
+          <p className={commonClasses.text}>Напишите свои вопросы и мы обязательно ответим на мероприятии</p>
           <NextButton>Понятно, давай дальше</NextButton>
         </div>
         <div
