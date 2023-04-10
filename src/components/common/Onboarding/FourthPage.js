@@ -22,7 +22,7 @@ const SecondPage = () => {
           className={commonClasses.arrowUp}
           style={{
             position: 'absolute',
-            top: 270,
+            top: 320,
             left: 'calc(50% + -60px)',
             width: '13vh',
             height: '16vh'

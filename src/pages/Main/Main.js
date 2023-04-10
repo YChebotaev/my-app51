@@ -36,11 +36,11 @@ export const Main = ({ isFirstTime }) => {
   // const whatToReadRef = (isOpen && page === 0) ? spotlightedRef : null
   // const gamesRef = (isOpen && page === 2) ? spotlightedRef : null
   // const chatsRef = (isOpen && page === 3) ? spotlightedRef : null
-  const libraryRef = (isOpen && page === 0) ? spotlightedRef : null
-  const articleButtonRef = (isOpen && page === 1) ? spotlightedRef : null
-  const aboutRef = (isOpen && page === 2) ? spotlightedRef : null
-  const eventsRef = (isOpen && page === 3) ? spotlightedRef : null
-  const isShowFooter = isOpen ? page === 1 : true
+  const aboutRef = (isOpen && page === 0) ? spotlightedRef : null
+  const libraryRef = (isOpen && page === 1) ? spotlightedRef : null
+  const eventsRef = (isOpen && page === 2) ? spotlightedRef : null
+  const articleButtonRef = (isOpen && page === 3) ? spotlightedRef : null
+  const isShowFooter = isOpen ? page === 3 : true
   const isShowOnboarding = isOpen
 
   if (isLoading) return <Skeleton />

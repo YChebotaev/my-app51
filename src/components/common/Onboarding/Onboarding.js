@@ -11,13 +11,13 @@ const Onboarding = ({ page, spotlightedRef, mainWrapperRef, totalPages, onNextPa
   const currentPage = useMemo(() => {
     switch (page) {
       case 0:
-        return <SecondPage />
-      case 1:
-        return <ThirdPage />
-      case 2:
         return <FourthPage />
-      case 3:
+      case 1:
+        return <SecondPage />
+      case 2:
         return <FifthPage />
+      case 3:
+        return <ThirdPage />
       default:
         return null
     }

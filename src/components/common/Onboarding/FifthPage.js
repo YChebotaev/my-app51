@@ -31,7 +31,7 @@ const SecondPage = () => {
           className={commonClasses.arrowDown2}
           style={{
             position: 'absolute',
-            top: 290,
+            top: 310,
             left: 'calc(50% - 100px)',
             width: 154,
             height: 174
