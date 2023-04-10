@@ -26,7 +26,7 @@
 .arrowUp {
   background-image: url('../../../styles/images/swoosh-arrow-up.svg');
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   width: 160px;
   height: 174px;
   pointer-events: none;
@@ -35,13 +35,13 @@
 .arrowDown {
   background-image: url('../../../styles/images/swoosh-arrow-down.svg');
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   pointer-events: none;
 }
 
 .arrowDown2 {
   background-image: url('../../../styles/images/swoosh-arrow-down-2.svg');
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   pointer-events: none;
 }
