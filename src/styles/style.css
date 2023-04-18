@@ -107,6 +107,10 @@
   display: flex;
   align-items: center;
   gap: 15px;
+  background-image: url("../styles/images/onboarding-button-background.svg");
+  background-size: cover;
+  padding: 15px;
+  filter: drop-shadow(1px 2px 11px rgba(45, 73, 217, 0.4));
 }
 
 .content-wrapper .rect3 {
@@ -117,23 +121,28 @@
 
 .content-wrapper .rect1 .rect1-title,
 .content-wrapper .rect3 .rect3-title {
-  font-family: "Gilroy";
   font-style: normal;
-  font-weight: 600;
-  font-size: 24px;
+  font-weight: 500;
+  font-size: 18px;
   line-height: 24px;
-  color: #ffffff;
-  letter-spacing: 0.36px;
+  color: #FFFFFF;
 }
 
 .content-wrapper .rect1 .rect1-question {
-  width: 59px;
+  /* width: 59px;
   height: 54px;
   background: url("images/rect1-question.svg");
-  flex-shrink: 0;
+  flex-shrink: 0; */
   /* position: absolute;
   top: calc(50% - 27px);
   left: calc(100% - 59px - 23px); */
+  font-style: normal;
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 49px;
+  text-align: center;
+  color: #FFFFFF;
+  padding-left: 15px;
 }
 
 .content-wrapper .rect1 .rect1-heart_img,

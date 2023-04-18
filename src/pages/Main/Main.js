@@ -53,7 +53,7 @@ export const Main = ({ isFirstTime }) => {
         <div className="content-wrapper" style={{ padding: 0 }}>
           <div className={classes.onboardingWrapper}>
             <div className="grad-rect rect1" onClick={() => onOpen()}>
-              <div className="rect1-question" />
+              <div className="rect1-question">?</div>
               <div className="rect1-title">Объясняем, что тут у нас происходит</div>
             </div>
           </div>

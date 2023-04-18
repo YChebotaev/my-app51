@@ -28,8 +28,8 @@ const SecondPage = () => {
       <Counter />
       <Backdrop>
         <div ref={textWrapperRef} className={commonClasses.textWrapper} style={{ position: 'absolute', top: '40vh', width: 'calc(100vw - 60px)' }}>
-          <div className={commonClasses.header}>Отправить статью</div>
-          <p className={commonClasses.text}>Мы принимаем авторские материалы по теме комьюнити с редакционной поддержкой с нашей стороны</p>
+          <div className={commonClasses.header}>Загрузить статью</div>
+          <p className={commonClasses.text}>Мы принимаем авторские материалы о карьере, стартапах и комьюнити, предоставляя редакционную поддержку нашим смелым сторителлерам</p>
           <NextButton>Понятно, давай дальше</NextButton>
         </div>
         <div

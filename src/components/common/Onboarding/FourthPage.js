@@ -39,8 +39,8 @@ const SecondPage = () => {
           }}
         />
         <div ref={textWrapperRef} className={commonClasses.textWrapper} style={{ position: 'absolute', bottom: '10vh', width: 'calc(100vw - 60px)' }}>
-          <div className={commonClasses.header}>О программе MOOVE</div>
-          <p className={commonClasses.text}>Узнай подробности совместной программы Школы Управления Сколково и МТС по запуску стартапа и управлению цифровым продуктом внутри компании</p>
+          <div className={commonClasses.header}>Программа MOOVE</div>
+          <p className={commonClasses.text}>Нажми на карточку, чтобы узнать больше о программе по запуску стартапов</p>
           <NextButton>Понятно, давай дальше</NextButton>
         </div>
       </Backdrop>

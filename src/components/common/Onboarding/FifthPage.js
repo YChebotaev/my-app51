@@ -24,7 +24,7 @@ const SecondPage = () => {
         >
 
           <div className={commonClasses.header}>Задать вопрос</div>
-          <p className={commonClasses.text}>Напишите свои вопросы и мы обязательно ответим на мероприятии</p>
+          <p className={commonClasses.text}>Выбери интересующее тебя мероприятие, напиши свои вопросы по теме, и мы обязательно ответим на них в рамках встречи</p>
           <NextButton>Понятно, давай дальше</NextButton>
         </div>
         <div

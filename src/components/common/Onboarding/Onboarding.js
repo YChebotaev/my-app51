@@ -14,9 +14,9 @@ const Onboarding = ({ page, spotlightedRef, mainWrapperRef, totalPages, onNextPa
         return <FourthPage />
       case 1:
         return <SecondPage />
-      case 2:
-        return <FifthPage />
       case 3:
+        return <FifthPage />
+      case 2:
         return <ThirdPage />
       default:
         return null

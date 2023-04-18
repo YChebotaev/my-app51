@@ -39,8 +39,8 @@ const SecondPage = () => {
             width: 'calc(100vw - 60px)'
           }}
         >
-          <div className={commonClasses.header}>Библиотека</div>
-          <p className={commonClasses.text}>Изучите все образовательные материалы программы MOOVE</p>
+          <div className={commonClasses.header}>База знаний</div>
+          <p className={commonClasses.text}>Жми на карточку и изучай полезные материалы из мира стартапов</p>
           <NextButton>Понятно, давай дальше</NextButton>
         </div>
         <div
